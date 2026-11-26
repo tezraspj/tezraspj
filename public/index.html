@@ -1,0 +1,1529 @@
+<!DOCTYPE html>
+<html lang="ru" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0A0A0A">
+  <meta name="description" content="tezraspj — доставка еды в Пенджикенте: фастфуд, шаурма, чайхана, суши. Быстрая доставка на дом.">
+  <title>tezraspj — Доставка еды в Пенджикенте</title>
+  <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">🍔</text></svg>'>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,600;0,700;1,700;1,800;1,900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0A0A0A;
+      --surface: #131313;
+      --card: #171717;
+      --card-2: #1E1E1E;
+      --text: #FFFFFF;
+      --muted: #9C9C9C;
+      --line: rgba(255, 255, 255, .09);
+      --yellow: #FFD600;
+      --yellow-ink: #0A0A0A;
+      --header-bg: rgba(10, 10, 10, .9);
+      --font-d: 'Archivo', sans-serif;
+      --font-b: 'Inter', sans-serif;
+      --shadow: 0 24px 50px -30px rgba(0, 0, 0, .9);
+    }
+    html:not(.dark) {
+      --bg: #F2F2F0;
+      --surface: #FFFFFF;
+      --card: #FFFFFF;
+      --card-2: #F4F4F2;
+      --text: #0D0D0D;
+      --muted: #6A6A6A;
+      --line: rgba(10, 10, 10, .12);
+      --header-bg: rgba(242, 242, 240, .92);
+      --shadow: 0 24px 50px -34px rgba(0, 0, 0, .35);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-b);
+      line-height: 1.5;
+      min-height: 100dvh;
+      padding-bottom: 76px;
+      transition: background-color .3s, color .3s;
+    }
+    @media (min-width: 761px) { body { padding-bottom: 0; } }
+    img { display: block; max-width: 100%; }
+    button { font-family: inherit; }
+    a { color: inherit; text-decoration: none; }
+    .hidden { display: none !important; }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+    @keyframes bump { 0% { transform: scale(1); } 40% { transform: scale(1.35); } 100% { transform: scale(1); } }
+    @keyframes glow { 0%, 100% { opacity: .55; } 50% { opacity: 1; } }
+    .anim { animation: fadeUp .5s ease both; animation-delay: var(--d, 0ms); }
+    .badge.bump { animation: bump .35s; }
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+      html { scroll-behavior: auto; }
+    }
+
+    .disp {
+      font-family: var(--font-d);
+      font-style: italic;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -.02em;
+      line-height: .95;
+    }
+    .yl { color: var(--yellow); }
+
+    /* ---------- Header ---------- */
+    .header {
+      position: sticky; top: 0; z-index: 40;
+      background: var(--header-bg);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+    .header__inner { display: flex; align-items: center; gap: 26px; height: 76px; }
+    .logo { display: flex; align-items: center; gap: 12px; cursor: pointer; user-select: none; }
+    .logo__mark {
+      width: 30px; height: 24px; background: var(--yellow);
+      clip-path: polygon(22% 0, 100% 0, 78% 100%, 0 100%);
+      flex-shrink: 0;
+    }
+    .logo__name {
+      font-family: var(--font-d); font-style: italic; font-weight: 900;
+      font-size: 26px; letter-spacing: .02em; text-transform: uppercase; line-height: 1;
+    }
+    .logo__tag {
+      border-left: 1px solid var(--line); padding-left: 12px;
+      font-size: 9.5px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .1em; color: var(--muted); line-height: 1.35; max-width: 130px;
+    }
+    .nav { display: flex; gap: 26px; margin-left: 18px; }
+    .nav a {
+      font-size: 12.5px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .08em; color: var(--text); opacity: .85;
+      padding: 6px 0; border-bottom: 2px solid transparent; transition: .2s;
+      white-space: nowrap;
+    }
+    .nav a:hover { opacity: 1; color: var(--yellow); border-color: var(--yellow); }
+    .header__actions { display: flex; gap: 8px; align-items: center; margin-left: auto; }
+    .icon-btn {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: transparent; border: 1px solid var(--line);
+      color: var(--text); display: grid; place-items: center;
+      cursor: pointer; transition: border-color .2s, transform .15s, background .2s;
+      position: relative;
+    }
+    .icon-btn:hover { border-color: var(--yellow); }
+    .icon-btn:active { transform: scale(.94); }
+    .cart-btn {
+      display: flex; align-items: center; gap: 9px;
+      padding: 12px 16px; border: none; border-radius: 12px;
+      background: var(--yellow); color: var(--yellow-ink);
+      font: 800 13px var(--font-b); text-transform: uppercase; letter-spacing: .04em;
+      cursor: pointer; transition: filter .2s, transform .15s;
+    }
+    .cart-btn:hover { filter: brightness(1.06); }
+    .cart-btn:active { transform: scale(.97); }
+    .badge {
+      min-width: 22px; height: 22px; padding: 0 6px;
+      background: var(--yellow-ink); color: var(--yellow); border-radius: 999px;
+      font: 800 12px/22px var(--font-b); text-align: center;
+    }
+    html:not(.dark) .badge { background: #0A0A0A; color: var(--yellow); }
+
+    .search { position: relative; width: 250px; }
+    .search svg { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--muted); pointer-events: none; }
+    .search input {
+      width: 100%; padding: 12px 14px 12px 40px;
+      background: var(--surface); border: 1px solid var(--line);
+      border-radius: 12px; color: var(--text); font: 500 14px var(--font-b);
+      transition: border-color .2s;
+    }
+    .search input::placeholder { color: var(--muted); }
+    .search input:focus { outline: none; border-color: var(--yellow); }
+
+    /* ---------- Hero ---------- */
+    .hero { position: relative; padding: 56px 0 30px; overflow: hidden; }
+    .hero__grid {
+      display: grid; grid-template-columns: 1fr 1.15fr .75fr;
+      gap: 34px; align-items: center;
+    }
+    .hero__label {
+      display: flex; align-items: center; gap: 14px;
+      font-size: 12px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .18em; color: var(--muted); margin-bottom: 22px;
+    }
+    .hero__label::after { content: ''; flex: 1; height: 1px; background: var(--line); max-width: 140px; }
+    .hero h1 { font-size: clamp(44px, 6vw, 84px); margin-bottom: 22px; }
+    .hero__sub {
+      color: var(--muted); font-size: 14.5px; font-weight: 500;
+      text-transform: uppercase; letter-spacing: .04em; max-width: 420px; line-height: 1.65;
+    }
+    .btn-main {
+      display: inline-flex; align-items: center; gap: 12px;
+      margin-top: 30px; padding: 17px 34px; border: none; border-radius: 12px;
+      background: var(--yellow); color: var(--yellow-ink);
+      font: 800 16px var(--font-b); cursor: pointer;
+      transition: filter .2s, transform .15s, gap .2s;
+    }
+    .btn-main:hover { filter: brightness(1.06); gap: 18px; }
+    .btn-main:active { transform: scale(.97); }
+
+    .hero__visual { position: relative; }
+    .hero__frame {
+      position: relative; border: 1px solid rgba(255, 255, 255, .25);
+      border-radius: 6px; padding: 14px;
+    }
+    html:not(.dark) .hero__frame { border-color: rgba(0, 0, 0, .25); }
+    .hero__frame img {
+      width: 100%; height: clamp(300px, 42vw, 470px); object-fit: cover;
+      border-radius: 4px;
+    }
+    .hero__frame::before, .hero__frame::after,
+    .hero__cross::before, .hero__cross::after {
+      content: ''; position: absolute; width: 34px; height: 34px; z-index: 2;
+      border: 3px solid #fff;
+    }
+    .hero__frame::before { top: 6px; left: 6px; border-right: none; border-bottom: none; }
+    .hero__frame::after { top: 6px; right: 6px; border-left: none; border-bottom: none; }
+    .hero__cross::before { bottom: 6px; left: 6px; border-right: none; border-top: none; }
+    .hero__cross::after { bottom: 6px; right: 6px; border-left: none; border-top: none; }
+    .hero__arrow {
+      position: absolute; top: 50%; transform: translateY(-50%); z-index: 3;
+      width: 46px; height: 46px; border-radius: 8px; border: none;
+      background: rgba(220, 220, 220, .9); color: #111; font-size: 20px;
+      cursor: pointer; display: grid; place-items: center; transition: background .2s;
+    }
+    .hero__arrow:hover { background: #fff; }
+    .hero__arrow.left { left: -23px; }
+    .hero__arrow.right { right: -23px; }
+
+    .hero__side { display: flex; flex-direction: column; gap: 14px; }
+    .stars { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 15px; }
+    .stars .s { color: var(--yellow); letter-spacing: 2px; font-size: 17px; }
+    .stars .muted { color: var(--muted); font-weight: 600; font-size: 14px; }
+    .hero__price { font-family: var(--font-d); font-style: italic; font-weight: 900; font-size: clamp(44px, 5vw, 64px); line-height: 1; }
+    .acc { display: flex; flex-direction: column; gap: 8px; margin-top: 6px; }
+    .acc details {
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: 10px; overflow: hidden;
+    }
+    .acc summary {
+      list-style: none; cursor: pointer; padding: 13px 16px;
+      font: 700 13.5px var(--font-b); display: flex; justify-content: space-between; align-items: center;
+    }
+    .acc summary::-webkit-details-marker { display: none; }
+    .acc summary::after { content: '⌄'; color: var(--muted); transition: transform .2s; }
+    .acc details[open] summary::after { transform: rotate(180deg); }
+    .acc details p { padding: 0 16px 14px; color: var(--muted); font-size: 13px; }
+    .acc__compare { font: 700 13.5px var(--font-b); display: flex; gap: 10px; align-items: center; color: var(--text); }
+    .acc__compare span { color: var(--yellow); font-size: 18px; }
+
+    .hero__meta {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      gap: 24px; margin-top: 34px; flex-wrap: wrap;
+    }
+    .hero__delivery { display: flex; align-items: center; gap: 14px; }
+    .hero__delivery .bolt {
+      width: 44px; height: 44px; border-radius: 10px; background: var(--yellow);
+      color: var(--yellow-ink); display: grid; place-items: center; font-size: 20px;
+    }
+    .hero__delivery b { display: block; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+    .hero__delivery strong { font-family: var(--font-d); font-style: italic; font-weight: 800; font-size: 21px; text-transform: uppercase; }
+    .hero__place {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--card); border: 1px solid var(--line); border-radius: 999px;
+      padding: 12px 22px; font: 800 13px var(--font-b); text-transform: uppercase; letter-spacing: .1em;
+      cursor: pointer; transition: border-color .2s;
+    }
+    .hero__place:hover { border-color: var(--yellow); }
+    .hero__place .pin { color: var(--yellow); }
+
+    /* ---------- Section head & chips ---------- */
+    .sec-head { display: flex; align-items: baseline; gap: 16px; margin: 46px 0 22px; }
+    .sec-head h2 { font-family: var(--font-d); font-style: italic; font-weight: 900; font-size: clamp(26px, 3.4vw, 40px); text-transform: uppercase; letter-spacing: -.01em; }
+    .sec-head__all {
+      margin-left: auto; color: var(--yellow); font: 800 14px var(--font-b);
+      display: inline-flex; gap: 8px; align-items: center; cursor: pointer;
+      background: none; border: none; transition: gap .2s;
+    }
+    .sec-head__all:hover { gap: 14px; }
+
+    .chips { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 6px; margin-bottom: 28px; }
+    .chip {
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      min-width: 104px; padding: 16px 14px 13px; border-radius: 16px;
+      border: 1.5px solid var(--line); background: var(--card);
+      color: var(--text); font: 700 13px var(--font-b);
+      white-space: nowrap; cursor: pointer; transition: .2s;
+    }
+    .chip .ico { font-size: 24px; line-height: 1; filter: grayscale(.2); }
+    .chip:hover { border-color: rgba(255, 214, 0, .55); }
+    .chip.active { border-color: var(--yellow); background: rgba(255, 214, 0, .08); color: var(--text); }
+    .chip.active .ico { filter: none; }
+
+    /* ---------- Grids & cards ---------- */
+    .grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 22px; padding-bottom: 20px;
+    }
+    .rcard, .mcard {
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: 20px; overflow: hidden; display: flex; flex-direction: column;
+      transition: transform .3s, border-color .3s, box-shadow .3s;
+    }
+    .rcard { cursor: pointer; }
+    .rcard:hover {
+      transform: translateY(-6px); border-color: rgba(255, 214, 0, .5);
+      box-shadow: var(--shadow);
+    }
+    .rcard__media { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: var(--card-2); }
+    .rcard__media img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
+    .rcard:hover .rcard__media img { transform: scale(1.06); }
+    .rcard__index {
+      position: absolute; top: 12px; left: 12px;
+      background: rgba(10, 10, 10, .8); color: var(--yellow);
+      font: 800 11px var(--font-b); padding: 6px 10px; border-radius: 8px;
+      backdrop-filter: blur(6px);
+    }
+    .rcard__rating {
+      position: absolute; top: 12px; right: 12px;
+      background: rgba(10, 10, 10, .8); color: var(--yellow);
+      backdrop-filter: blur(6px); padding: 6px 11px; border-radius: 999px;
+      font: 800 12px var(--font-b);
+    }
+    .rcard__body { padding: 20px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+    .rcard__body h3 { font-family: var(--font-d); font-style: italic; font-weight: 800; font-size: 19px; line-height: 1.2; text-transform: uppercase; }
+    .rcard__body p {
+      color: var(--muted); font-size: 13.5px; line-height: 1.55;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .rcard__meta {
+      margin-top: auto; display: flex; justify-content: space-between;
+      align-items: center; gap: 10px; padding-top: 14px; border-top: 1px solid var(--line);
+    }
+    .rcard__facts { display: flex; gap: 14px; font: 700 12.5px var(--font-b); color: var(--muted); flex-wrap: wrap; }
+    .rcard__cta {
+      color: var(--yellow-ink); background: var(--yellow);
+      font: 800 11.5px var(--font-b); text-transform: uppercase; letter-spacing: .06em;
+      padding: 8px 14px; border-radius: 8px; white-space: nowrap;
+    }
+
+    /* ---------- Menu view ---------- */
+    .back-btn {
+      display: inline-flex; gap: 8px; align-items: center;
+      background: none; border: none; padding: 26px 0 6px;
+      color: var(--yellow); font: 800 13px var(--font-b);
+      text-transform: uppercase; letter-spacing: .08em; cursor: pointer; transition: gap .2s;
+    }
+    .back-btn:hover { gap: 14px; }
+    .rhead {
+      display: flex; gap: 24px; align-items: center;
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: 22px; padding: 24px; margin: 16px 0 28px;
+    }
+    .rhead img { width: 120px; height: 120px; object-fit: cover; border-radius: 16px; flex-shrink: 0; }
+    .rhead__label { font: 800 10.5px var(--font-b); text-transform: uppercase; letter-spacing: .18em; color: var(--yellow); }
+    .rhead h1 {
+      font-family: var(--font-d); font-style: italic; font-weight: 900;
+      font-size: clamp(24px, 3.4vw, 40px); text-transform: uppercase;
+      margin: 8px 0; line-height: 1.05;
+    }
+    .rhead p { color: var(--muted); font-size: 14px; max-width: 640px; }
+    .rhead__stats { display: flex; gap: 18px; margin-top: 13px; font: 700 13px var(--font-b); color: var(--muted); flex-wrap: wrap; }
+    .rhead__stats .star { color: var(--yellow); }
+
+    .mcard__media { aspect-ratio: 4 / 3; overflow: hidden; background: var(--card-2); position: relative; }
+    .mcard__media img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
+    .mcard:hover .mcard__media img { transform: scale(1.05); }
+    .mcard:hover { border-color: rgba(255, 214, 0, .45); }
+    .mcard__body { padding: 18px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+    .mcard__body h4 { font: 800 16px/1.3 var(--font-b); }
+    .mcard__body > p {
+      color: var(--muted); font-size: 13px;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .mcard__row {
+      margin-top: auto; display: flex; justify-content: space-between;
+      align-items: center; gap: 10px; padding-top: 13px; border-top: 1px solid var(--line);
+    }
+    .price { font-family: var(--font-d); font-style: italic; font-weight: 900; font-size: 22px; }
+    .price i { font-style: normal; font: 700 12px var(--font-b); color: var(--muted); margin-left: 4px; text-transform: lowercase; }
+    .btn-add {
+      background: var(--yellow); border: none; color: var(--yellow-ink);
+      width: 40px; height: 40px; border-radius: 10px;
+      font: 800 22px/1 var(--font-b); cursor: pointer; transition: .2s;
+      display: grid; place-items: center;
+    }
+    .btn-add:hover { filter: brightness(1.08); transform: translateY(-2px); }
+    .btn-add:active { transform: scale(.94); }
+
+    .empty { grid-column: 1 / -1; text-align: center; padding: 64px 20px; color: var(--muted); }
+    .empty span { font-size: 38px; }
+    .empty p { font: 800 17px var(--font-b); color: var(--text); margin-top: 10px; }
+    .empty small { font-size: 13.5px; }
+
+    /* ---------- Free delivery banner ---------- */
+    .free {
+      position: relative; overflow: hidden; margin: 40px 0 10px;
+      background: var(--card); border: 1px solid var(--line); border-radius: 24px;
+      display: flex; align-items: center; gap: 28px;
+      padding: 38px 44px;
+    }
+    .free::after {
+      content: ''; position: absolute; right: -80px; top: -120px;
+      width: 420px; height: 420px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 214, 0, .16), transparent 65%);
+      pointer-events: none;
+    }
+    .free__text { position: relative; z-index: 1; }
+    .free__text h3 { font-family: var(--font-d); font-style: italic; font-weight: 900; font-size: clamp(26px, 3.6vw, 42px); text-transform: uppercase; line-height: 1.02; }
+    .free__text h3 span { color: var(--yellow); }
+    .free__text p { color: var(--muted); font-size: 14.5px; margin-top: 10px; }
+    .free__bolt {
+      position: relative; z-index: 1; margin-left: auto;
+      width: 64px; height: 64px; border-radius: 16px; background: var(--yellow);
+      color: var(--yellow-ink); display: grid; place-items: center;
+      font-size: 28px; flex-shrink: 0; cursor: pointer; border: none;
+      transition: transform .2s, filter .2s;
+    }
+    .free__bolt:hover { transform: translateX(6px); filter: brightness(1.06); }
+    .free__scooter { position: relative; z-index: 1; font-size: 64px; line-height: 1; }
+
+    /* ---------- Footer ---------- */
+    .footer { border-top: 1px solid var(--line); margin-top: 46px; }
+    .footer__inner { display: flex; justify-content: space-between; align-items: center; gap: 18px; flex-wrap: wrap; padding: 30px 24px; }
+    .footer__logo { display: flex; align-items: center; gap: 10px; font-family: var(--font-d); font-style: italic; font-weight: 900; font-size: 20px; text-transform: uppercase; }
+    .footer__logo .logo__mark { width: 24px; height: 19px; }
+    .footer p, .footer__copy { color: var(--muted); font-size: 13px; }
+    .footer__promo { font: 700 13px var(--font-b); color: var(--muted); }
+    .footer__promo b { color: var(--yellow); font-family: var(--font-d); font-style: italic; font-size: 14px; }
+
+    /* ---------- Bottom nav (mobile) ---------- */
+    .bnav {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 45;
+      display: none; background: var(--header-bg);
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      border-top: 1px solid var(--line);
+      padding: 8px 6px calc(10px + env(safe-area-inset-bottom));
+    }
+    .bnav__item {
+      flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px;
+      background: none; border: none; color: var(--muted);
+      font: 700 10.5px var(--font-b); cursor: pointer; padding: 4px 0;
+      transition: color .2s;
+    }
+    .bnav__item svg { width: 22px; height: 22px; }
+    .bnav__item.active, .bnav__item:hover { color: var(--yellow); }
+    @media (max-width: 760px) { .bnav { display: flex; } }
+
+    /* ---------- Cart ---------- */
+    .overlay {
+      position: fixed; inset: 0; z-index: 50;
+      background: rgba(0, 0, 0, .65); backdrop-filter: blur(3px);
+      opacity: 0; pointer-events: none; transition: opacity .3s;
+    }
+    .overlay.open { opacity: 1; pointer-events: auto; }
+    .cart {
+      position: fixed; top: 0; right: 0; z-index: 60;
+      width: min(440px, 100%); height: 100dvh;
+      background: var(--surface); border-left: 1px solid var(--line);
+      transform: translateX(100%); transition: transform .38s cubic-bezier(.4, 0, .2, 1);
+      display: flex; flex-direction: column;
+    }
+    .cart.open { transform: translateX(0); }
+    .cart__head {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 22px; border-bottom: 1px solid var(--line);
+    }
+    .cart__head h3 { font-family: var(--font-d); font-style: italic; font-weight: 900; font-size: 17px; text-transform: uppercase; }
+    .cart__head h3 span { color: var(--yellow); }
+    .cart__items {
+      flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain;
+      padding: 18px 22px; display: flex; flex-direction: column; gap: 12px;
+    }
+    .citem {
+      display: flex; gap: 12px; align-items: center;
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: 14px; padding: 10px;
+    }
+    .citem img { width: 54px; height: 54px; border-radius: 10px; object-fit: cover; }
+    .citem__info { flex: 1; min-width: 0; }
+    .citem__info h5 {
+      font: 800 13.5px/1.3 var(--font-b);
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .citem__price { display: block; color: var(--yellow); font: 800 13px var(--font-b); margin-top: 4px; }
+    .qty {
+      display: flex; align-items: center; gap: 4px;
+      background: var(--bg); border: 1px solid var(--line);
+      border-radius: 999px; padding: 4px; flex-shrink: 0;
+    }
+    .qty button {
+      width: 27px; height: 27px; border: none; border-radius: 50%;
+      background: transparent; color: var(--text);
+      font: 800 16px var(--font-b); cursor: pointer; transition: .15s;
+    }
+    .qty button:hover { background: var(--yellow); color: var(--yellow-ink); }
+    .qty span { min-width: 18px; text-align: center; font: 800 13px var(--font-b); }
+    .cart__empty { text-align: center; padding: 56px 20px; color: var(--muted); margin: auto; }
+    .cart__empty span { font-size: 40px; }
+    .cart__empty p { font: 800 16px var(--font-b); color: var(--text); margin-top: 10px; }
+    .cart__empty small { font-size: 13px; }
+
+    .cart__foot {
+      border-top: 1px solid var(--line); background: var(--card);
+      padding: 18px 22px 22px; display: flex; flex-direction: column; gap: 12px;
+      max-height: 62%; overflow-y: auto;
+    }
+    .label-h { font: 800 10.5px var(--font-b); text-transform: uppercase; letter-spacing: .14em; color: var(--muted); }
+    .field {
+      width: 100%; padding: 12px 14px;
+      background: var(--bg); border: 1px solid var(--line); border-radius: 12px;
+      color: var(--text); font: 500 14px var(--font-b); transition: border-color .2s;
+    }
+    .field::placeholder { color: var(--muted); }
+    .field:focus { outline: none; border-color: var(--yellow); }
+    .form { display: flex; flex-direction: column; gap: 8px; }
+    .promo { display: flex; gap: 8px; }
+    .promo .field { flex: 1; text-transform: uppercase; font-family: ui-monospace, Menlo, monospace; font-size: 13px; }
+    .promo button {
+      background: var(--yellow); border: none; color: var(--yellow-ink);
+      padding: 12px 16px; border-radius: 12px;
+      font: 800 13px var(--font-b); cursor: pointer; transition: filter .2s;
+    }
+    .promo button:hover { filter: brightness(1.08); }
+    .totals { display: flex; flex-direction: column; gap: 8px; font-size: 14px; }
+    .totals__row { display: flex; justify-content: space-between; color: var(--muted); }
+    .totals__row b { color: var(--text); font-weight: 800; }
+    .totals__row.discount { display: none; color: #2FBF71; }
+    .totals__row.discount.show { display: flex; }
+    .totals__row.discount b { color: #2FBF71; }
+    .totals__row.grand {
+      border-top: 1px solid var(--line); padding-top: 11px;
+      font-weight: 800; color: var(--text); font-size: 15.5px; align-items: center;
+    }
+    .totals__row.grand b { color: var(--yellow); font-family: var(--font-d); font-style: italic; font-size: 19px; }
+    .btn-wa {
+      width: 100%; background: var(--yellow); color: var(--yellow-ink); border: none;
+      padding: 16px; border-radius: 14px;
+      font: 800 15px var(--font-b); display: flex; gap: 10px;
+      align-items: center; justify-content: center; cursor: pointer;
+      transition: filter .2s, transform .15s;
+    }
+    .btn-wa:hover { filter: brightness(1.06); }
+    .btn-wa:active { transform: scale(.98); }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 1100px) {
+      .nav { display: none; }
+      .hero__grid { grid-template-columns: 1fr 1fr; }
+      .hero__side { grid-column: 1 / -1; flex-direction: row; flex-wrap: wrap; align-items: center; }
+      .hero__side .acc { flex: 1; min-width: 280px; }
+    }
+    @media (max-width: 860px) {
+      .logo__tag { display: none; }
+      .search { width: auto; flex: 1; }
+      .hero__grid { grid-template-columns: 1fr; }
+      .hero { padding-top: 36px; }
+      .hero__side { flex-direction: column; align-items: stretch; }
+      .hero__arrow.left { left: 8px; }
+      .hero__arrow.right { right: 8px; }
+    }
+    @media (max-width: 760px) {
+      .header__inner { flex-wrap: wrap; height: auto; padding: 12px 0; row-gap: 10px; gap: 12px; }
+      .search { order: 3; flex: 1 1 100%; width: 100%; }
+      .cart-label { display: none; }
+      .rhead { flex-direction: column; align-items: flex-start; gap: 16px; padding: 18px; }
+      .rhead img { width: 84px; height: 84px; }
+      .free { flex-direction: column; align-items: flex-start; padding: 28px 24px; gap: 18px; }
+      .free__bolt { margin-left: 0; }
+      .free__scooter { display: none; }
+      .footer__inner { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 480px) {
+      .grid { grid-template-columns: 1fr; }
+      .container { padding: 0 16px; }
+      .hero h1 { font-size: 42px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container header__inner">
+      <div class="logo" onclick="showRestaurantsView()" role="button" tabindex="0"
+           onkeydown="if(event.key==='Enter')showRestaurantsView()">
+        <span class="logo__mark"></span>
+        <span class="logo__name">tezraspj</span>
+        <span class="logo__tag">Доставка еды<br>в Пенджикенте</span>
+      </div>
+
+      <nav class="nav">
+        <a href="#secRestaurants" onclick="showRestaurantsView()">Меню</a>
+        <a href="#secRestaurants" onclick="showRestaurantsView()">Рестораны</a>
+        <a href="#secFree">Акции</a>
+        <a href="#footer">О нас</a>
+        <a href="#footer">Поддержка</a>
+      </nav>
+
+      <div class="search">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input type="text" id="searchInput" oninput="handleSearch()" placeholder="Поиск блюд или заведений..." aria-label="Поиск">
+      </div>
+
+      <div class="header__actions">
+        <button class="icon-btn" onclick="toggleDarkMode()" aria-label="Сменить тему" id="themeBtn">
+          <span id="themeIcon"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></span>
+        </button>
+        <button class="cart-btn" onclick="toggleCartSidebar()" aria-label="Корзина">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l1 14H5L6 7z"/><path d="M9 7a3 3 0 016 0"/></svg>
+          <span class="cart-label">Корзина</span>
+          <span class="badge" id="cartCountBadge">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- RESTAURANTS LIST VIEW -->
+    <div id="restaurantsView">
+
+      <section class="hero">
+        <div class="hero__grid">
+          <div class="hero__text">
+            <div class="hero__label">Быстрая доставка</div>
+            <h1 class="disp">Вкус<br>ближе<br><span class="yl">к тебе</span></h1>
+            <p class="hero__sub">Любимая еда из ресторанов Пенджикента. Быстро, удобно, надёжно.</p>
+            <button class="btn-main" onclick="showRestaurantsView(); document.getElementById('secRestaurants').scrollIntoView({behavior:'smooth'})">
+              Заказать сейчас
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+          </div>
+
+          <div class="hero__visual">
+            <div class="hero__frame">
+              <span class="hero__cross"></span>
+              <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=80" alt="Сочный бургер">
+              <button class="hero__arrow left" aria-label="Назад" onclick="document.getElementById('secRestaurants').scrollIntoView({behavior:'smooth'})">←</button>
+              <button class="hero__arrow right" aria-label="Вперёд" onclick="document.getElementById('secRestaurants').scrollIntoView({behavior:'smooth'})">→</button>
+            </div>
+          </div>
+
+          <div class="hero__side">
+            <div class="stars">
+              <span class="s">★★★★★</span> 4.9 <span class="muted">(1 248)</span>
+            </div>
+            <div class="hero__price">5 <span class="yl">смн</span></div>
+            <div class="acc">
+              <details open>
+                <summary>Описание</summary>
+                <p>Доставка горячих блюд по Пенджикенту от лучших заведений города.</p>
+              </details>
+              <details>
+                <summary>Доставка</summary>
+                <p>По городу — 5 смн. Время в пути 20–35 минут.</p>
+              </details>
+              <details>
+                <summary>Промокод</summary>
+                <p>SALE10 — скидка 10% на весь заказ.</p>
+              </details>
+            </div>
+            <div class="acc__compare">Промокод <span>+</span></div>
+          </div>
+        </div>
+
+        <div class="hero__meta">
+          <div class="hero__delivery">
+            <span class="bolt">⚡</span>
+            <span>
+              <b>Доставка</b>
+              <strong>от 30 мин</strong>
+            </span>
+          </div>
+          <button class="hero__place" onclick="document.getElementById('secRestaurants').scrollIntoView({behavior:'smooth'})">
+            <span class="pin">📍</span> Пенджикент
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+      </section>
+
+      <div class="sec-head" id="secRestaurants">
+        <h2>Категории</h2>
+      </div>
+
+      <div class="chips no-scrollbar">
+        <button class="chip rest-cat-btn active" onclick="filterRestaurants('all', this)"><span class="ico">🍽</span>Все</button>
+        <button class="chip rest-cat-btn" onclick="filterRestaurants('fastfood', this)"><span class="ico">🍔</span>Фастфуд</button>
+        <button class="chip rest-cat-btn" onclick="filterRestaurants('streetfood', this)"><span class="ico">🌭</span>Уличная еда</button>
+        <button class="chip rest-cat-btn" onclick="filterRestaurants('chaihona', this)"><span class="ico">🫖</span>Чайхана</button>
+        <button class="chip rest-cat-btn" onclick="filterRestaurants('sushi', this)"><span class="ico">🍣</span>Суши &amp; Роллы</button>
+      </div>
+
+      <div class="sec-head">
+        <h2>Доступные заведения</h2>
+        <button class="sec-head__all" onclick="filterRestaurants('all', document.querySelector('.rest-cat-btn'))">
+          Смотреть всё
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+
+      <div id="restaurantsGrid" class="grid">
+        <!-- JS rendered -->
+      </div>
+
+      <section class="free" id="secFree">
+        <div class="free__text">
+          <h3>Доставка <span>бесплатно</span><br>по городу</h3>
+          <p>При заказе от 100 смн — доставка по Пенджикенту 0 смн. Обычная доставка: 5 смн.</p>
+        </div>
+        <span class="free__scooter">🛵</span>
+        <button class="free__bolt" onclick="document.getElementById('secRestaurants').scrollIntoView({behavior:'smooth'})" aria-label="К заведениям">→</button>
+      </section>
+    </div>
+
+    <!-- RESTAURANT MENU VIEW -->
+    <div id="menuView" class="hidden">
+      <button onclick="showRestaurantsView()" class="back-btn">← Назад к выбору заведений</button>
+
+      <div id="restaurantHeader" class="rhead">
+        <!-- JS rendered -->
+      </div>
+
+      <div id="menuCategoryFilter" class="chips no-scrollbar">
+        <!-- JS rendered -->
+      </div>
+
+      <div id="menuGrid" class="grid">
+        <!-- JS rendered -->
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" id="footer">
+    <div class="container footer__inner">
+      <div class="footer__logo"><span class="logo__mark"></span> tezraspj</div>
+      <p>Доставка еды по Пенджикенту</p>
+      <div class="footer__promo">Промокод <b>SALE10</b> — минус 10%</div>
+      <div class="footer__copy">© 2026 tezraspj</div>
+    </div>
+  </footer>
+
+  <!-- Bottom nav (mobile) -->
+  <nav class="bnav">
+    <button class="bnav__item active" onclick="showRestaurantsView()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5L12 3l9 7.5V21a1 1 0 01-1 1h-5v-7h-6v7H4a1 1 0 01-1-1z"/></svg>
+      Главная
+    </button>
+    <button class="bnav__item" onclick="showRestaurantsView(); document.getElementById('secRestaurants').scrollIntoView({behavior:'smooth'})">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+      Каталог
+    </button>
+    <button class="bnav__item" onclick="toggleCartSidebar()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l1 14H5L6 7z"/><path d="M9 7a3 3 0 016 0"/></svg>
+      Заказы
+    </button>
+    <button class="bnav__item" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+      Наверх
+    </button>
+  </nav>
+
+  <!-- Cart -->
+  <div class="overlay" id="cartOverlay" onclick="toggleCartSidebar()"></div>
+  <aside class="cart" id="cartSidebar" aria-label="Корзина">
+    <div class="cart__head">
+      <h3>Ваш <span>заказ</span></h3>
+      <button class="icon-btn" onclick="toggleCartSidebar()" aria-label="Закрыть корзину">✕</button>
+    </div>
+
+    <div id="cartItemsList" class="cart__items">
+      <!-- Dynamic cart items -->
+    </div>
+
+    <div class="cart__foot">
+      <div class="form">
+        <span class="label-h">Данные доставки (Пенджикент)</span>
+        <input type="text" id="clientName" class="field" placeholder="Ваше имя *">
+        <input type="tel" id="clientPhone" class="field" placeholder="Номер телефона *">
+        <input type="text" id="clientAddress" class="field" placeholder="Адрес (Улица, дом, ориентир) *">
+        <input type="text" id="clientComment" class="field" placeholder="Комментарий к заказу">
+      </div>
+
+      <div class="promo">
+        <input type="text" id="promoCodeInput" class="field" placeholder="Промокод (SALE10)">
+        <button onclick="applyPromoCode()">Применить</button>
+      </div>
+
+      <div class="totals">
+        <div class="totals__row"><span>Сумма товаров:</span><b id="cartSubtotal">0 смн</b></div>
+        <div class="totals__row"><span>Доставка по городу:</span><b id="cartDeliveryFee">5 смн</b></div>
+        <div class="totals__row discount" id="discountRow"><span>Скидка:</span><b id="cartDiscount">-0 смн</b></div>
+        <div class="totals__row grand"><span>Итого к оплате:</span><b id="cartTotal">5 смн</b></div>
+      </div>
+
+      <button class="btn-wa" onclick="checkoutWhatsApp()">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Заказать через WhatsApp
+      </button>
+    </div>
+  </aside>
+
+  <script>
+    // System Data with FULL menu items for ALL restaurants without truncation
+        const restaurants = [
+      // 1. ФАСТФУД
+      {
+        id: 'simin',
+        name: 'Кафе «СиМин»',
+        category: 'fastfood',
+        rating: '4.9',
+        deliveryTime: '20-30 мин',
+        minOrder: '20 смн',
+        image: 'https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=800&q=80',
+        description: 'Легендарный фастфуд Пенджикента! Сочные бургеры, хрустящие бакеты и комбо-наборы.',
+        menu: [
+          // Бургеры
+          { id: 'sim-1', name: 'Шеф Бургер', category: 'Бургеры', price: 26, image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80', description: 'Фирменный бургер с куриным филе, томатами и зеленью.' },
+          { id: 'sim-2', name: 'Гамбургер', category: 'Бургеры', price: 20, image: 'https://images.unsplash.com/photo-1571091718767-18b5b1457add?auto=format&fit=crop&w=600&q=80', description: 'Классическая котлета, маринованные огурцы и соус.' },
+          { id: 'sim-3', name: 'Big-Бургер', category: 'Бургеры', price: 22, image: 'https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=600&q=80', description: 'Увеличенный бургер с двойным соусом.' },
+          { id: 'sim-4', name: 'ЧиКеН Бургер куриный', category: 'Бургеры', price: 24, image: 'https://images.unsplash.com/photo-1615297928064-24977384d0da?auto=format&fit=crop&w=600&q=80', description: 'Сочная куриная котлета, салат и свежие томаты.' },
+          { id: 'sim-5', name: 'ЧизБургер', category: 'Бургеры', price: 25, image: 'https://images.unsplash.com/photo-1534790566855-4cb788d389ec?auto=format&fit=crop&w=600&q=80', description: 'Сочный бургер с нежным расплавленным сыром Чеддер.' },
+          { id: 'sim-6', name: 'Даблю Бургер', category: 'Бургеры', price: 30, image: 'https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=600&q=80', description: 'Двойная котлета, сыр и фирменный соус.' },
+          { id: 'sim-7', name: 'Большой Бургер', category: 'Бургеры', price: 50, image: 'https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?auto=format&fit=crop&w=600&q=80', description: 'Гигантский бургер для сытного перекуса.' },
+          // Баскеты
+          { id: 'sim-8', name: 'Баскет СиМин (1 кг)', category: 'Баскеты', price: 98, image: 'https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=600&q=80', description: 'Микс куриных крыльев, голеней и стрипсов весом 1 кг.' },
+          { id: 'sim-9', name: 'Баскет Нагетцы (1 кг)', category: 'Баскеты', price: 95, image: 'https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=600&q=80', description: '1 килограмм хрустящих горячих наггетсов.' },
+          { id: 'sim-10', name: 'Баскет Голен (1 кг)', category: 'Баскеты', price: 88, image: 'https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=600&q=80', description: 'Сочные обжаренные куриные голени весом 1 кг.' },
+          { id: 'sim-11', name: 'Баскет Крылышки (1 кг)', category: 'Баскеты', price: 94, image: 'https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=600&q=80', description: '1 кг легендарных острых крылышек СиМин.' },
+          // Комбо
+          { id: 'sim-12', name: 'Комбо 3х1', category: 'Комбо', price: 35, image: 'https://images.unsplash.com/photo-1610440042657-612c34d95e9f?auto=format&fit=crop&w=600&q=80', description: 'Бургер + Картофель Фри + Напиток.' },
+          { id: 'sim-13', name: 'Комбо 4х1', category: 'Комбо', price: 30, image: 'https://images.unsplash.com/photo-1594212699903-ec8a3eca50f6?auto=format&fit=crop&w=600&q=80', description: 'Твистер + Картофель Фри + Соус + Напиток.' },
+          { id: 'sim-14', name: 'Комбо 5х1', category: 'Комбо', price: 38, image: 'https://images.unsplash.com/photo-1561758033-d89a9ad46330?auto=format&fit=crop&w=600&q=80', description: 'Стрипсы/Крылышки + Фри + Соус + Напиток.' },
+          // Закуски
+          { id: 'sim-15', name: 'Твистер', category: 'Закуски', price: 22, image: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=600&q=80', description: 'Куриные стрипсы с овощами в лаваше.' },
+          { id: 'sim-16', name: 'Сэндвич большой бо қази', category: 'Закуски', price: 23, image: 'https://images.unsplash.com/photo-1509722747041-616f39b57569?auto=format&fit=crop&w=600&q=80', description: 'Сэндвич с добавлением таджикского казы.' },
+          { id: 'sim-17', name: 'Хот-дог НАЧО', category: 'Закуски', price: 15, image: 'https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80', description: 'Хот-дог с хрустящими начос.' },
+          { id: 'sim-18', name: 'Картошка Фри', category: 'Закуски', price: 8, image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80', description: 'Хрустящая золотистая картошка фри.' },
+          // Напитки
+          { id: 'sim-19', name: 'Напитки 0.5 л', category: 'Напитки', price: 6, image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=600&q=80', description: 'Coca-Cola, Fanta, Sprite или RC Cola.' }
+        ]
+      },
+      {
+        id: 'safar',
+        name: 'SaFar',
+        category: 'fastfood',
+        rating: '4.8',
+        deliveryTime: '25-35 мин',
+        minOrder: '25 смн',
+        image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=80',
+        description: 'Фирменная пицца, насыщенные бургеры, аппетитные хот-доги, тан туни и баскеты.',
+        menu: [
+          // Пиццы
+          { id: 'saf-p1', name: 'Пицца Маргарита (30см)', category: 'Пицца', price: 55, image: 'https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?auto=format&fit=crop&w=600&q=80', description: 'Соус маринара, сыр моцарелла, томаты, базилик, орегано.' },
+          { id: 'saf-p2', name: 'Пицца Маргарита (35см)', category: 'Пицца', price: 65, image: 'https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?auto=format&fit=crop&w=600&q=80', description: 'Соус маринара, сыр моцарелла, томаты, базилик.' },
+          { id: 'saf-p3', name: 'Пицца Маргарита (40см)', category: 'Пицца', price: 75, image: 'https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?auto=format&fit=crop&w=600&q=80', description: 'Соус маринара, сыр моцарелла, томаты, базилик.' },
+          { id: 'saf-p4', name: 'Пицца Маргарита (50см)', category: 'Пицца', price: 90, image: 'https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?auto=format&fit=crop&w=600&q=80', description: 'Огромная Маргарита 50см.' },
+          { id: 'saf-p5', name: 'Пицца Гавайская (30см)', category: 'Пицца', price: 55, image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=80', description: 'Соус маринара, моцарелла, куриная ветчина, ананас.' },
+          { id: 'saf-p6', name: 'Пицца Гавайская (50см)', category: 'Пицца', price: 100, image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=80', description: 'Гавайская пицца размера 50см.' },
+          { id: 'saf-p7', name: 'Пицца Курица Грибы (30см)', category: 'Пицца', price: 55, image: 'https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?auto=format&fit=crop&w=600&q=80', description: 'Куриное филе, грибы, сыр моцарелла, орегано.' },
+          { id: 'saf-p8', name: 'Пицца Курица Грибы (50см)', category: 'Пицца', price: 100, image: 'https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?auto=format&fit=crop&w=600&q=80', description: 'Пицца Курица Грибы 50см.' },
+          { id: 'saf-p9', name: 'Пицца Пеперони (30см)', category: 'Пицца', price: 55, image: 'https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=600&q=80', description: 'Салями пеперони, соус маринара, сыр моцарелла.' },
+          { id: 'saf-p10', name: 'Пицца Пеперони (50см)', category: 'Пицца', price: 100, image: 'https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=600&q=80', description: 'Гигантская Пеперони 50см.' },
+          { id: 'saf-p11', name: 'Пицца 4 Сезона (30см)', category: 'Пицца', price: 55, image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=600&q=80', description: 'Соус альфредо, маринара, пеперони, грибы, курица, томаты.' },
+          { id: 'saf-p12', name: 'Пицца 4 Сезона (50см)', category: 'Пицца', price: 100, image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=600&q=80', description: 'Пицца 4 Сезона 50см.' },
+          { id: 'saf-p13', name: 'Пицца Нурона (30см)', category: 'Пицца', price: 55, image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80', description: 'Соус маринара, моцарелла, сосиска полуканадская, картофель фри.' },
+          { id: 'saf-p14', name: 'SaFar фирменный (50см)', category: 'Пицца', price: 100, image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80', description: 'Фирменный состав: альфредо, чеддер, курица, салями, грибы, говядина, ананас.' },
+          { id: 'saf-p15', name: 'Домашний Ассорти (30см)', category: 'Пицца', price: 60, image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80', description: 'Салями, филе куриное, грибы, томаты, говядина, перец, лук.' },
+          { id: 'saf-p16', name: 'Кальцоне Буррак (30см)', category: 'Пицца', price: 55, image: 'https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?auto=format&fit=crop&w=600&q=80', description: 'Закрытая пицца кальцоне с куриной ветчиной, салатом и пармезаном.' },
+          { id: 'saf-p17', name: 'Пицца 4 сыра (30см)', category: 'Пицца', price: 55, image: 'https://images.unsplash.com/photo-1573821663912-569905455b1c?auto=format&fit=crop&w=600&q=80', description: 'Моцарелла, голландский, чеддер, пармезан.' },
+          { id: 'saf-p18', name: 'Пицца Мясная (30см)', category: 'Пицца', price: 55, image: 'https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?auto=format&fit=crop&w=600&q=80', description: 'Куриное филе, говядина, салями, соус маринара.' },
+          { id: 'saf-p19', name: 'Цыплёнок ранч (30см)', category: 'Пицца', price: 55, image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=80', description: 'Соус альфредо, моцарелла, куриное филе, помидоры.' },
+          { id: 'saf-p20', name: 'Трюфельная пицца (30см)', category: 'Пицца', price: 55, image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=600&q=80', description: 'Соус альфредо, моцарелла, грибы, орегано.' },
+          { id: 'saf-p21', name: 'Пицца Цезарь (30см)', category: 'Пицца', price: 55, image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=80', description: 'Куриное филе, салат айсберг, соус цезарь, пармезан.' },
+
+          // Бургеры
+          { id: 'saf-b1', name: 'Гамбургер', category: 'Бургеры', price: 24, image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80', description: 'Говяжья котлета, огурцы, лук, помидоры, кетчуп.' },
+          { id: 'saf-b2', name: 'Чизбургер', category: 'Бургеры', price: 30, image: 'https://images.unsplash.com/photo-1534790566855-4cb788d389ec?auto=format&fit=crop&w=600&q=80', description: 'Говяжья котлета, сыр плавленый сливочный, овощи.' },
+          { id: 'saf-b3', name: 'Бургер в лаваше', category: 'Бургеры', price: 30, image: 'https://images.unsplash.com/photo-1561758033-d89a9ad46330?auto=format&fit=crop&w=600&q=80', description: 'Лаваш, розовый соус, говяжья котлета, чипсы.' },
+          { id: 'saf-b4', name: 'Биф & чикен', category: 'Бургеры', price: 32, image: 'https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=600&q=80', description: 'Котлета из говядины + куриная котлета, сыр, чесночный соус.' },
+          { id: 'saf-b5', name: 'Potato бургер', category: 'Бургеры', price: 33, image: 'https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?auto=format&fit=crop&w=600&q=80', description: 'Говяжья котлета, картофель фри, сыр плавленый.' },
+          { id: 'saf-b6', name: 'Даблбургер', category: 'Бургеры', price: 38, image: 'https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=600&q=80', description: 'Говяжья котлета 2X, особый кетчуп, сыр.' },
+          { id: 'saf-b7', name: 'Двойной чизбургер', category: 'Бургеры', price: 40, image: 'https://images.unsplash.com/photo-1534790566855-4cb788d389ec?auto=format&fit=crop&w=600&q=80', description: 'Фирменный соус, сыр чедер, 2х говяжья котлета.' },
+          { id: 'saf-b8', name: 'Panj kent бургер', category: 'Бургеры', price: 42, image: 'https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?auto=format&fit=crop&w=600&q=80', description: 'Чесночный соус, тушенная говядина, чипсы хрустящие.' },
+          { id: 'saf-b9', name: 'Чикенбургер', category: 'Бургеры', price: 19, image: 'https://images.unsplash.com/photo-1615297928064-24977384d0da?auto=format&fit=crop&w=600&q=80', description: 'Куриные стрипсы, чесночный соус, салатный лист.' },
+          { id: 'saf-b10', name: 'Биг чикенбургер', category: 'Бургеры', price: 22, image: 'https://images.unsplash.com/photo-1615297928064-24977384d0da?auto=format&fit=crop&w=600&q=80', description: 'Увеличенное куриное филе со свежими овощами.' },
+          { id: 'saf-b11', name: 'Чикен чиз', category: 'Бургеры', price: 24, image: 'https://images.unsplash.com/photo-1615297928064-24977384d0da?auto=format&fit=crop&w=600&q=80', description: 'Куриная котлета, сырный соус, плавленый сыр.' },
+          { id: 'saf-b12', name: 'Цезарь бургер', category: 'Бургеры', price: 27, image: 'https://images.unsplash.com/photo-1615297928064-24977384d0da?auto=format&fit=crop&w=600&q=80', description: 'Куриная котлета, яйцо, соус чили, пекинская капуста.' },
+
+          // Хот-доги
+          { id: 'saf-h1', name: 'Хот дог мини', category: 'Хот-доги', price: 10, image: 'https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80', description: 'Булочка, соус чесночный, сосиска, огурцы.' },
+          { id: 'saf-h2', name: 'Хот дог стандарт', category: 'Хот-доги', price: 12, image: 'https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80', description: 'Сосиска 2шт, чесночный соус, салат.' },
+          { id: 'saf-h3', name: 'Хот дог гриль', category: 'Хот-доги', price: 12, image: 'https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80', description: 'Соус хот дог, сыр, кетчуп, сосиска, картошка.' },
+          { id: 'saf-h4', name: 'Хот дог лонгер', category: 'Хот-доги', price: 13, image: 'https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80', description: 'Стрипсы, лук, помидор, розовый соус.' },
+          { id: 'saf-h5', name: 'Хот дог BBQ', category: 'Хот-доги', price: 14, image: 'https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80', description: 'Соус BBQ, мед-горчичный соус, хрустящий лук.' },
+          { id: 'saf-h6', name: 'Хот дог SaFar', category: 'Хот-доги', price: 16, image: 'https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80', description: 'Сосиска канадская, картофельные стружки, сыр.' },
+          { id: 'saf-h7', name: 'Хот кебаб', category: 'Хот-доги', price: 17, image: 'https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80', description: 'Мясо тушенная говядина, острый перец, карамелизованный лук.' },
+          { id: 'saf-h8', name: 'Хот дог Panj kent', category: 'Хот-доги', price: 22, image: 'https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80', description: 'Тушенная мясо, сосиска, кинза, сырный соус.' },
+
+          // Твистеры & Тан туни
+          { id: 'saf-t1', name: 'Твистер острый', category: 'Твистеры & Тан туни', price: 20, image: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=600&q=80', description: 'Стрипсы, острый соус, пекинский салат, томатный соус.' },
+          { id: 'saf-t2', name: 'Твистер классический', category: 'Твистеры & Тан туни', price: 20, image: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=600&q=80', description: 'Лаваш, чесночный соус, стрипсы, огурцы.' },
+          { id: 'saf-t3', name: 'Твистер шаверма', category: 'Твистеры & Тан туни', price: 22, image: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=600&q=80', description: 'Лаваш, стрипсы, маринованные огурчики, майонез.' },
+          { id: 'saf-t4', name: 'Твистер сырный', category: 'Твистеры & Тан туни', price: 22, image: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=600&q=80', description: 'Лаваш сырный, розовый соус, картофель фри, стрипсы.' },
+          { id: 'saf-t5', name: 'Твистер шаверма сырный', category: 'Твистеры & Тан туни', price: 22, image: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=600&q=80', description: 'Сырный лаваш, картофельные стружки, стрипсы.' },
+          { id: 'saf-t6', name: 'Тан туни с курицей', category: 'Твистеры & Тан туни', price: 22, image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=600&q=80', description: 'Куриное филе, йогуртовый соус, кинза.' },
+          { id: 'saf-t7', name: 'Тан туни с говядиной', category: 'Твистеры & Тан туни', price: 25, image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=600&q=80', description: 'Мясо говядины, помидор, йогуртовый соус.' },
+
+          // Баскеты & Курица
+          { id: 'saf-k1', name: 'Баскет стрипцы 1кг', category: 'Курица & Баскеты', price: 89, image: 'https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=600&q=80', description: '1 кг хрустящих куриных стрипсов.' },
+          { id: 'saf-k2', name: 'Стрипцы 250гр', category: 'Курица & Баскеты', price: 24, image: 'https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=600&q=80', description: 'Порция стрипсов 250 грамм.' },
+          { id: 'saf-k3', name: 'Баскет ножки 1кг', category: 'Курица & Баскеты', price: 89, image: 'https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=600&q=80', description: '1 кг хрустящих куриных ножек.' },
+          { id: 'saf-k4', name: 'Ножки 250гр', category: 'Курица & Баскеты', price: 24, image: 'https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=600&q=80', description: 'Порция куриных ножек 250г.' },
+          { id: 'saf-k5', name: 'Баскет байтсы 1кг', category: 'Курица & Баскеты', price: 89, image: 'https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=600&q=80', description: '1 кг куриных байтсов.' },
+          { id: 'saf-k6', name: 'Байтсы 250гр', category: 'Курица & Баскеты', price: 24, image: 'https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=600&q=80', description: 'Порция байтсов 250г.' },
+          { id: 'saf-k7', name: 'Баскет крылышки 1кг', category: 'Курица & Баскеты', price: 89, image: 'https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=600&q=80', description: '1 кг обжаренных острых крылышек.' },
+          { id: 'saf-k8', name: 'Крылышки 250гр', category: 'Курица & Баскеты', price: 24, image: 'https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=600&q=80', description: 'Порция крылышек 250г.' },
+          { id: 'saf-k9', name: 'Баскет наггетсы 1кг', category: 'Курица & Баскеты', price: 89, image: 'https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=600&q=80', description: '1 кг сочных наггетсов.' },
+          { id: 'saf-k10', name: 'Наггетсы 250гр', category: 'Курица & Баскеты', price: 24, image: 'https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=600&q=80', description: 'Наггетсы порция 250г.' },
+          { id: 'saf-k11', name: 'Баскет микс 1кг', category: 'Курица & Баскеты', price: 89, image: 'https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=600&q=80', description: '1 кг ассорти курицы.' },
+          { id: 'saf-k12', name: 'Микс 250гр', category: 'Курица & Баскеты', price: 24, image: 'https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=600&q=80', description: 'Микс порция 250г.' },
+
+          // Комбо & Картофель
+          { id: 'saf-c1', name: 'Комбо Асия', category: 'Комбо & Гарниры', price: 25, image: 'https://images.unsplash.com/photo-1610440042657-612c34d95e9f?auto=format&fit=crop&w=600&q=80', description: 'Байтсы 125г, фри 70г, сосиска 2шт, соус, сок.' },
+          { id: 'saf-c2', name: 'Комбо 3 в 1', category: 'Комбо & Гарниры', price: 30, image: 'https://images.unsplash.com/photo-1610440042657-612c34d95e9f?auto=format&fit=crop&w=600&q=80', description: 'Фри + Кола 0.5 + Чикен бургер.' },
+          { id: 'saf-c3', name: 'Комбо X 3в1', category: 'Комбо & Гарниры', price: 35, image: 'https://images.unsplash.com/photo-1610440042657-612c34d95e9f?auto=format&fit=crop&w=600&q=80', description: 'Фри + Кола 0.5 + Гамбургер.' },
+          { id: 'saf-c4', name: 'Комбо 5 в 1', category: 'Комбо & Гарниры', price: 40, image: 'https://images.unsplash.com/photo-1594212699903-ec8a3eca50f6?auto=format&fit=crop&w=600&q=80', description: 'Мясо микс, соус, булочка, фри, кола 0.5.' },
+          { id: 'saf-c5', name: 'Комбо бургер 5 в 1', category: 'Комбо & Гарниры', price: 55, image: 'https://images.unsplash.com/photo-1594212699903-ec8a3eca50f6?auto=format&fit=crop&w=600&q=80', description: 'Мясо микс, соус, чикен бургер, фри, кола 0.5.' },
+          { id: 'saf-c6', name: 'Баскет комбо 2x', category: 'Комбо & Гарниры', price: 75, image: 'https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=600&q=80', description: 'Мясо 2 порции микс, соус 2шт, фри 2 порции, кола 2шт.' },
+          { id: 'saf-c7', name: 'Френд бокс', category: 'Комбо & Гарниры', price: 100, image: 'https://images.unsplash.com/photo-1610440042657-612c34d95e9f?auto=format&fit=crop&w=600&q=80', description: '2 бургера, фри, мясо микс, RC-кола 1L, 2 соуса.' },
+          { id: 'saf-c8', name: 'Фри с соусом', category: 'Комбо & Гарниры', price: 12, image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80', description: 'Картофель фри с порцией соуса.' },
+          { id: 'saf-c9', name: 'Фри с сосиской и соусом', category: 'Комбо & Гарниры', price: 16, image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80', description: 'Картофель фри с нарезной сосиской.' },
+          { id: 'saf-c10', name: 'Фри с тушеным мясом', category: 'Комбо & Гарниры', price: 18, image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80', description: 'Картофель фри с тушеной говядиной или курицей.' },
+          { id: 'saf-c11', name: 'Картофель по-деревенски 125гр', category: 'Комбо & Гарниры', price: 10, image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80', description: 'Ароматные дольки картофеля.' },
+          { id: 'saf-c12', name: 'Фри 125гр', category: 'Комбо & Гарниры', price: 10, image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80', description: 'Хрустящий картофель фри.' },
+
+          // Дополнения
+          { id: 'saf-a1', name: 'Котлета из говядины 100гр', category: 'Дополнения', price: 14, image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80', description: 'Дополнительная котлета 100г.' },
+          { id: 'saf-a2', name: 'Котлета из курицы 100гр', category: 'Дополнения', price: 7, image: 'https://images.unsplash.com/photo-1615297928064-24977384d0da?auto=format&fit=crop&w=600&q=80', description: 'Куриная котлета 100г.' },
+          { id: 'saf-a3', name: 'Сыр плавленый 1шт', category: 'Дополнения', price: 3, image: 'https://images.unsplash.com/photo-1534790566855-4cb788d389ec?auto=format&fit=crop&w=600&q=80', description: 'Ломтик плавленого сыра.' },
+          { id: 'saf-a4', name: 'Перец халапеньо 15гр', category: 'Дополнения', price: 0.5, image: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=600&q=80', description: 'Острый халапеньо (50 дирамов).' },
+          { id: 'saf-a5', name: 'Соусы на выбор (Сырный/Чесночный/Острый)', category: 'Дополнения', price: 2.5, image: 'https://images.unsplash.com/photo-1561758033-d89a9ad46330?auto=format&fit=crop&w=600&q=80', description: 'Порция соуса.' },
+          { id: 'saf-a6', name: 'Булочка 1шт', category: 'Дополнения', price: 2.5, image: 'https://images.unsplash.com/photo-1509722747041-616f39b57569?auto=format&fit=crop&w=600&q=80', description: 'Свежая булочка.' }
+        ]
+      },
+      {
+        id: 'hfc',
+        name: 'Halal Fried Chicken (HFC)',
+        category: 'fastfood',
+        rating: '4.7',
+        deliveryTime: '20-35 мин',
+        minOrder: '20 смн',
+        image: 'https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=800&q=80',
+        description: 'Халяльный куриный фастфуд: крылышки, бургеры, пиццы, хачапури и твистеры.',
+        menu: [
+          // Бургеры и Хот-доги
+          { id: 'hfc-b1', name: 'Классический хот-дог', category: 'Бургеры & Хот-доги', price: 8, image: 'https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80', description: 'Классическая сосиска с соусами.' },
+          { id: 'hfc-b2', name: 'Сырный хот-дог', category: 'Бургеры & Хот-доги', price: 10, image: 'https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80', description: 'Хот-дог с обильным сырным соусом.' },
+          { id: 'hfc-b3', name: 'Барбекю хот-дог', category: 'Бургеры & Хот-доги', price: 12, image: 'https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80', description: 'Хот-дог с соусом Барбекю.' },
+          { id: 'hfc-b4', name: 'Датский хот-дог', category: 'Бургеры & Хот-доги', price: 12, image: 'https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80', description: 'Датский рецепт со сливочным соусом.' },
+          { id: 'hfc-b5', name: 'Лонгер', category: 'Бургеры & Хот-доги', price: 15, image: 'https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80', description: 'Удлиненный хот-дог с филе.' },
+          { id: 'hfc-b6', name: 'Хот-дог HFC', category: 'Бургеры & Хот-доги', price: 15, image: 'https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80', description: 'Фирменный хот-дог от шефа HFC.' },
+          { id: 'hfc-b7', name: 'Чикенбургер', category: 'Бургеры & Хот-доги', price: 18, image: 'https://images.unsplash.com/photo-1615297928064-24977384d0da?auto=format&fit=crop&w=600&q=80', description: 'Куриный бургер с хрустящей котлетой.' },
+          { id: 'hfc-b8', name: 'Гамбургер', category: 'Бургеры & Хот-доги', price: 22, image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80', description: 'Сочный гамбургер с огурцами.' },
+          { id: 'hfc-b9', name: 'БигТейсти', category: 'Бургеры & Хот-доги', price: 25, image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80', description: 'Большой бургер с фирменным дымным соусом.' },
+          { id: 'hfc-b10', name: 'Чизбургер', category: 'Бургеры & Хот-доги', price: 30, image: 'https://images.unsplash.com/photo-1534790566855-4cb788d389ec?auto=format&fit=crop&w=600&q=80', description: 'Чизбургер с расплавленным сыром.' },
+          { id: 'hfc-b11', name: 'Бургер с яйцом', category: 'Бургеры & Хот-доги', price: 35, image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80', description: 'Бургер с жареным яйцом и котлетой.' },
+          { id: 'hfc-b12', name: 'Двойной Чизбургер', category: 'Бургеры & Хот-доги', price: 40, image: 'https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=600&q=80', description: 'Две котлеты и двойной сыр.' },
+          { id: 'hfc-b13', name: 'HFC Бургер', category: 'Бургеры & Хот-доги', price: 38, image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80', description: 'Фирменный бургер HFC.' },
+          { id: 'hfc-b14', name: 'Биф Чикен', category: 'Бургеры & Хот-доги', price: 40, image: 'https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=600&q=80', description: 'Микс говяжьей и куриной котлеты.' },
+          { id: 'hfc-b15', name: 'Шеф-бургер', category: 'Бургеры & Хот-доги', price: 50, image: 'https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?auto=format&fit=crop&w=600&q=80', description: 'Большой шеф-бургер HFC.' },
+
+          // Закуски и Крылья
+          { id: 'hfc-z1', name: 'БИГ ВОХ', category: 'Закуски & Крылья', price: 70, image: 'https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=600&q=80', description: 'Крыло, бедро, грудка, ножка + картофель фри.' },
+          { id: 'hfc-z2', name: 'Крылья в сливочном соусе (8 шт)', category: 'Закуски & Крылья', price: 30, image: 'https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=600&q=80', description: '8 шт нежных сливочных крылышек.' },
+          { id: 'hfc-z3', name: 'Крылья в сливочном соусе (24 шт)', category: 'Закуски & Крылья', price: 90, image: 'https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=600&q=80', description: 'Большой сет из 24 крыльев.' },
+          { id: 'hfc-z4', name: 'Крылья с соусом Чили (8 шт)', category: 'Закуски & Крылья', price: 30, image: 'https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=600&q=80', description: '8 острых крылышек Чили.' },
+          { id: 'hfc-z5', name: 'Крылья с соусом Чили (24 шт)', category: 'Закуски & Крылья', price: 90, image: 'https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=600&q=80', description: '24 острых крылышек Чили.' },
+          { id: 'hfc-z6', name: 'Крылья барбекю (8 шт)', category: 'Закуски & Крылья', price: 30, image: 'https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=600&q=80', description: '8 крыльев в BBQ соусе.' },
+          { id: 'hfc-z7', name: 'Крылья барбекю (24 шт)', category: 'Закуски & Крылья', price: 90, image: 'https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=600&q=80', description: '24 крыльев BBQ.' },
+          { id: 'hfc-z8', name: 'Крылья в панировке (8 шт)', category: 'Закуски & Крылья', price: 30, image: 'https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=600&q=80', description: '8 шт хрустящих крыльев.' },
+          { id: 'hfc-z9', name: 'Филе в панировке (8 шт)', category: 'Закуски & Крылья', price: 30, image: 'https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=600&q=80', description: '8 кусочков сочного филе.' },
+          { id: 'hfc-z10', name: 'Нагетсы (4 шт)', category: 'Закуски & Крылья', price: 10, image: 'https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=600&q=80', description: '4 порции наггетсов.' },
+          { id: 'hfc-z11', name: 'Нагетсы (8 шт)', category: 'Закуски & Крылья', price: 20, image: 'https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=600&q=80', description: '8 порций наггетсов.' },
+          { id: 'hfc-z12', name: 'Нагетсы (12 шт)', category: 'Закуски & Крылья', price: 30, image: 'https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=600&q=80', description: '12 порций наггетсов.' },
+          { id: 'hfc-z13', name: 'Картофель ФРИ (малый)', category: 'Закуски & Крылья', price: 8, image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80', description: 'Малая порция фри.' },
+          { id: 'hfc-z14', name: 'Картофель ФРИ (средний)', category: 'Закуски & Крылья', price: 10, image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80', description: 'Средняя порция фри.' },
+          { id: 'hfc-z15', name: 'Картофель ФРИ (большой)', category: 'Закуски & Крылья', price: 12, image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80', description: 'Большая порция фри.' },
+          { id: 'hfc-z16', name: 'Стрипсы', category: 'Закуски & Крылья', price: 25, image: 'https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=600&q=80', description: 'Куриные стрипсы.' },
+          { id: 'hfc-z17', name: 'Байтсы 250гр', category: 'Закуски & Крылья', price: 25, image: 'https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=600&q=80', description: 'Хрустящие байтсы 250г.' },
+          { id: 'hfc-z18', name: 'Картофель по-деревенски', category: 'Закуски & Крылья', price: 10, image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80', description: 'Картофельные дольки.' },
+          { id: 'hfc-z19', name: 'Сырные палочки', category: 'Закуски & Крылья', price: 20, image: 'https://images.unsplash.com/photo-1534790566855-4cb788d389ec?auto=format&fit=crop&w=600&q=80', description: 'Хрустящие сырные палочки.' },
+          { id: 'hfc-z20', name: 'Ножки HFC (3 шт)', category: 'Закуски & Крылья', price: 25, image: 'https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=600&q=80', description: '3 шт обжаренных ножек.' },
+          { id: 'hfc-z21', name: 'Соусы в ассортименте', category: 'Закуски & Крылья', price: 3, image: 'https://images.unsplash.com/photo-1561758033-d89a9ad46330?auto=format&fit=crop&w=600&q=80', description: 'Соусы HFC.' },
+
+          // Твистеры
+          { id: 'hfc-t1', name: 'Классическая твистер', category: 'Твистеры', price: 20, image: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=600&q=80', description: 'Твистер в тонком лаваше.' },
+          { id: 'hfc-t2', name: 'В сырном и чесночном лаваше', category: 'Твистеры', price: 20, image: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=600&q=80', description: 'Лаваш со вкусом сыра и чеснока.' },
+          { id: 'hfc-t3', name: 'С соусом Чили', category: 'Твистеры', price: 20, image: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=600&q=80', description: 'Острый соус Чили.' },
+          { id: 'hfc-t4', name: 'В сырном Чеддер', category: 'Твистеры', price: 30, image: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=600&q=80', description: 'Твистер в сыре Чеддер.' },
+          { id: 'hfc-t5', name: 'С халапеньо', category: 'Твистеры', price: 25, image: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=600&q=80', description: 'Пикантный перчик халапеньо.' },
+          { id: 'hfc-t6', name: 'Цезарь твистер', category: 'Твистеры', price: 30, image: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=600&q=80', description: 'Соус цезарь и свежая зелень.' },
+          { id: 'hfc-t7', name: 'Вегетарианская', category: 'Твистеры', price: 15, image: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=600&q=80', description: 'Свежие овощи в лаваше.' },
+          { id: 'hfc-t8', name: 'Твистер с котлетой', category: 'Твистеры', price: 30, image: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=600&q=80', description: 'Твистер с котлетой.' },
+          { id: 'hfc-t9', name: 'С соусом HEINZ', category: 'Твистеры', price: 25, image: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=600&q=80', description: 'Оригинальный соус HEINZ.' },
+
+          // Пицца и Хачапури
+          { id: 'hfc-p1', name: 'Пицца 4 сезона (30см)', category: 'Пицца & Хачапури', price: 50, image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=600&q=80', description: '4 сезона размер 30см.' },
+          { id: 'hfc-p2', name: 'Пицца 4 сезона (40см)', category: 'Пицца & Хачапури', price: 110, image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=600&q=80', description: '4 сезона размер 40см.' },
+          { id: 'hfc-p3', name: 'Пицца с грибами (30см)', category: 'Пицца & Хачапури', price: 45, image: 'https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?auto=format&fit=crop&w=600&q=80', description: 'Пицца со свежими грибами.' },
+          { id: 'hfc-p4', name: 'Пицца куриный (30см)', category: 'Пицца & Хачапури', price: 40, image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=80', description: 'Куриная пицца.' },
+          { id: 'hfc-p5', name: 'Пицца BOSS', category: 'Пицца & Хачапури', price: 85, image: 'https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?auto=format&fit=crop&w=600&q=80', description: 'Фирменная мясная пицца BOSS.' },
+          { id: 'hfc-p6', name: 'Пиде', category: 'Пицца & Хачапури', price: 50, image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80', description: 'Традиционное турецкое Пиде.' },
+          { id: 'hfc-p7', name: 'Хачапури по-аджарски (малый)', category: 'Пицца & Хачапури', price: 30, image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80', description: 'Хачапури лодочка с яйцом.' },
+          { id: 'hfc-p8', name: 'Хачапури по-аджарски (большой)', category: 'Пицца & Хачапури', price: 85, image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80', description: 'Большой Аджарский хачапури.' },
+          { id: 'hfc-p9', name: 'Пицца HFC (30см)', category: 'Пицца & Хачапури', price: 35, image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80', description: 'Фирменная HFC.' },
+          { id: 'hfc-p10', name: 'Пицца HFC (40см)', category: 'Пицца & Хачапури', price: 105, image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80', description: 'Фирменная HFC 40см.' },
+          { id: 'hfc-p11', name: 'Пицца 4 сыра (30см)', category: 'Пицца & Хачапури', price: 40, image: 'https://images.unsplash.com/photo-1573821663912-569905455b1c?auto=format&fit=crop&w=600&q=80', description: '4 сыра.' },
+          { id: 'hfc-p12', name: 'Пицца мясной ассорти (30см)', category: 'Пицца & Хачапури', price: 35, image: 'https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?auto=format&fit=crop&w=600&q=80', description: 'Мясное ассорти.' },
+          { id: 'hfc-p13', name: 'Хачапури имеретинский', category: 'Пицца & Хачапури', price: 40, image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80', description: 'Круглый закрытый хачапури.' },
+          { id: 'hfc-p14', name: 'Пицца пеперони (30см)', category: 'Пицца & Хачапури', price: 40, image: 'https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=600&q=80', description: 'Пеперони.' },
+          { id: 'hfc-p15', name: 'Пицца маргарита (30см)', category: 'Пицца & Хачапури', price: 35, image: 'https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?auto=format&fit=crop&w=600&q=80', description: 'Маргарита.' },
+
+          // Напитки
+          { id: 'hfc-n1', name: 'Мохито (0.5л)', category: 'Напитки', price: 10, image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=600&q=80', description: 'Освежающий мохито.' },
+          { id: 'hfc-n2', name: 'Мохито (кувшин)', category: 'Напитки', price: 30, image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=600&q=80', description: 'Большой кувшин Мохито.' },
+          { id: 'hfc-n3', name: 'Чай с лимоном', category: 'Напитки', price: 5, image: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=600&q=80', description: 'Горячий чай с лимоном.' },
+          { id: 'hfc-n4', name: 'Кофе', category: 'Напитки', price: 5, image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80', description: 'Чашка горячего кофе.' },
+          { id: 'hfc-n5', name: 'Коктейль', category: 'Напитки', price: 5, image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=600&q=80', description: 'Молочный коктейль.' }
+        ]
+      },
+
+      // 2. УЛИЧНАЯ ЕДА (Street Food)
+      {
+        id: 'pita',
+        name: 'PITA Fast & Tasty',
+        category: 'streetfood',
+        rating: '4.9',
+        deliveryTime: '15-25 мин',
+        minOrder: '20 смн',
+        image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=800&q=80',
+        description: 'Настоящий сочный Нон Кабоб из 100% говядины, горячие хот-доги и шаурма.',
+        menu: [
+          // Нон кабоб
+          { id: 'pit-nk1', name: 'Нон Кабоб Классический (Стандарт)', category: 'Нон Кабоб', price: 27, image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=600&q=80', description: '100% сочная говядина в горячей мини-лепёшке с фирменным соусом.' },
+          { id: 'pit-nk2', name: 'Нон Кабоб Классический (Большая XL)', category: 'Нон Кабоб', price: 33, image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=600&q=80', description: 'Увеличенная порция говядины в большой лепёшке.' },
+          { id: 'pit-nk3', name: 'Нон Кабоб Острый (Стандарт)', category: 'Нон Кабоб', price: 29, image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=600&q=80', description: 'Говядина с пикантным острым соусом.' },
+          { id: 'pit-nk4', name: 'Нон Кабоб Острый (Большая XL)', category: 'Нон Кабоб', price: 35, image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=600&q=80', description: 'Большая лепёшка с острым соусом.' },
+          { id: 'pit-nk5', name: 'Нон Кабоб С сыром (Стандарт)', category: 'Нон Кабоб', price: 30, image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=600&q=80', description: 'Говядина с расплавленным тянущимся сыром.' },
+          { id: 'pit-nk6', name: 'Нон Кабоб С сыром (Большая XL)', category: 'Нон Кабоб', price: 36, image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=600&q=80', description: 'Большая лепёшка с говядиной и сыром.' },
+
+          // Шаурма
+          { id: 'pit-sh1', name: 'Шаурма Классическая (Стандарт)', category: 'Шаурма', price: 20, image: 'https://images.unsplash.com/photo-1561651823-34feb02250e4?auto=format&fit=crop&w=600&q=80', description: 'Курица, свежие овощи, фирменный соус.' },
+          { id: 'pit-sh2', name: 'Шаурма Классическая (Большая XL)', category: 'Шаурма', price: 25, image: 'https://images.unsplash.com/photo-1561651823-34feb02250e4?auto=format&fit=crop&w=600&q=80', description: 'Большая порция классической шаурмы.' },
+          { id: 'pit-sh3', name: 'Шаурма Острая (Стандарт)', category: 'Шаурма', price: 22, image: 'https://images.unsplash.com/photo-1561651823-34feb02250e4?auto=format&fit=crop&w=600&q=80', description: 'Острый соус для любителей острого.' },
+          { id: 'pit-sh4', name: 'Шаурма Острая (Большая XL)', category: 'Шаурма', price: 28, image: 'https://images.unsplash.com/photo-1561651823-34feb02250e4?auto=format&fit=crop&w=600&q=80', description: 'Большая острая шаурма.' },
+          { id: 'pit-sh5', name: 'Шаурма Сырная (Стандарт)', category: 'Шаурма', price: 23, image: 'https://images.unsplash.com/photo-1561651823-34feb02250e4?auto=format&fit=crop&w=600&q=80', description: 'Шаурма с тянущимся сыром.' },
+          { id: 'pit-sh6', name: 'Шаурма Сырная (Большая XL)', category: 'Шаурма', price: 28, image: 'https://images.unsplash.com/photo-1561651823-34feb02250e4?auto=format&fit=crop&w=600&q=80', description: 'Большая сырная шаурма.' },
+          { id: 'pit-sh7', name: 'Шаурма Острая + Сыр (Стандарт)', category: 'Шаурма', price: 25, image: 'https://images.unsplash.com/photo-1561651823-34feb02250e4?auto=format&fit=crop&w=600&q=80', description: 'Идеальное сочетание остроты и сыра.' },
+          { id: 'pit-sh8', name: 'Шаурма Острая + Сыр (Большая XL)', category: 'Шаурма', price: 30, image: 'https://images.unsplash.com/photo-1561651823-34feb02250e4?auto=format&fit=crop&w=600&q=80', description: 'ХИТ! Большая шаурма острый+сыр.' },
+          { id: 'pit-sh9', name: 'Шаурма с Томлёной Говядиной (Стандарт)', category: 'Шаурма', price: 30, image: 'https://images.unsplash.com/photo-1561651823-34feb02250e4?auto=format&fit=crop&w=600&q=80', description: '100% говядина, томаты, свежие овощи, лук.' },
+          { id: 'pit-sh10', name: 'Шаурма с Томлёной Говядиной (Большая)', category: 'Шаурма', price: 37, image: 'https://images.unsplash.com/photo-1561651823-34feb02250e4?auto=format&fit=crop&w=600&q=80', description: 'Большая шаурма с нежной томленой говядиной.' },
+
+          // Хот-доги
+          { id: 'pit-hd1', name: 'Хот-дог Классический', category: 'Хот-доги', price: 10, image: 'https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80', description: 'Сосиска, корейская морковь, овощи, фри.' },
+          { id: 'pit-hd2', name: 'Хот-дог Канадский (1 сосиска)', category: 'Хот-доги', price: 11, image: 'https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80', description: 'Канадская сосиска, овощи, фри, соус.' },
+          { id: 'pit-hd3', name: 'Хот-дог Канадский (1.5 сосиски)', category: 'Хот-доги', price: 15, image: 'https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80', description: 'Увеличенная порция сосиски.' },
+          { id: 'pit-hd4', name: 'Хот-дог Канадский (2 сосиски)', category: 'Хот-доги', price: 18, image: 'https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80', description: 'Двойная канадская сосиска.' },
+          { id: 'pit-hd5', name: 'Хот-дог Сырный (2 обычные сосиски)', category: 'Хот-доги', price: 14, image: 'https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80', description: 'Сосиски, моцарелла, голландский сыр, кукуруза.' },
+          { id: 'pit-hd6', name: 'Хот-дог Сырный Канадский (2 канадские)', category: 'Хот-доги', price: 17, image: 'https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80', description: 'Две канадские сосиски и двойной сыр.' },
+
+          // Добавки & Напитки
+          { id: 'pit-d1', name: 'Добавка Сыр', category: 'Добавки & Напитки', price: 3, image: 'https://images.unsplash.com/photo-1534790566855-4cb788d389ec?auto=format&fit=crop&w=600&q=80', description: 'Порция сыра.' },
+          { id: 'pit-d2', name: 'Добавка Халапеньо', category: 'Добавки & Напитки', price: 3, image: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=600&q=80', description: 'Острый халапеньо.' },
+          { id: 'pit-d3', name: 'Картофель фри PITA', category: 'Добавки & Напитки', price: 15, image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80', description: 'Порция хрустящего фри.' },
+          { id: 'pit-d4', name: 'Соус (Чесночный / Острый / Сырный)', category: 'Добавки & Напитки', price: 3, image: 'https://images.unsplash.com/photo-1561758033-d89a9ad46330?auto=format&fit=crop&w=600&q=80', description: 'Соус на выбор.' },
+          { id: 'pit-d5', name: 'Напитки в ассортименте', category: 'Добавки & Напитки', price: 7, image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=600&q=80', description: 'Освежающие напитки.' }
+        ]
+      },
+      {
+        id: 'jovid',
+        name: 'Jovid Hot-Dog',
+        category: 'streetfood',
+        rating: '4.8',
+        deliveryTime: '15-25 мин',
+        minOrder: '15 смн',
+        image: 'https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=800&q=80',
+        description: 'Легендарные уличные хот-доги, сытная шаурма от XL до Гиганта и согревающий кофе.',
+        menu: [
+          // Хот-доги
+          { id: 'jov-h1', name: 'Хотдог обычный', category: 'Хот-Доги', price: 7, image: 'https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80', description: 'Простой сытный хот-дог.' },
+          { id: 'jov-h2', name: 'Хотдог Классический', category: 'Хот-Доги', price: 10, image: 'https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80', description: 'Классический хот-дог с овощами.' },
+          { id: 'jov-h3', name: 'Хотдог Американский', category: 'Хот-Доги', price: 13, image: 'https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80', description: 'Американский соус и свежая сосиска.' },
+          { id: 'jov-h4', name: 'Хотдог в Лаваше', category: 'Хот-Доги', price: 15, image: 'https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80', description: 'Завёрнутый в горячий лаваш.' },
+
+          // Шаурма
+          { id: 'jov-s1', name: 'Шаурма в Лепешке', category: 'Шаурма', price: 15, image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=600&q=80', description: 'Мясо и салат в горячей лепёшке.' },
+          { id: 'jov-s2', name: 'Шаурма Классический', category: 'Шаурма', price: 20, image: 'https://images.unsplash.com/photo-1561651823-34feb02250e4?auto=format&fit=crop&w=600&q=80', description: 'Стандартная порция шаурмы.' },
+          { id: 'jov-s3', name: 'Шаурма XL', category: 'Шаурма', price: 25, image: 'https://images.unsplash.com/photo-1561651823-34feb02250e4?auto=format&fit=crop&w=600&q=80', description: 'Размер XL.' },
+          { id: 'jov-s4', name: 'Шаурма XXL', category: 'Шаурма', price: 30, image: 'https://images.unsplash.com/photo-1561651823-34feb02250e4?auto=format&fit=crop&w=600&q=80', description: 'Огромная XXL шаурма.' },
+          { id: 'jov-s5', name: 'Шаурма Гигант', category: 'Шаурма', price: 40, image: 'https://images.unsplash.com/photo-1561651823-34feb02250e4?auto=format&fit=crop&w=600&q=80', description: 'Самый большой размер Гигант.' },
+
+          // Кофе & Чай
+          { id: 'jov-n1', name: 'Кофе 3в1', category: 'Кофе & Чай', price: 3, image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80', description: 'Быстрый сладкий кофе.' },
+          { id: 'jov-n2', name: 'Чёрный кофе', category: 'Кофе & Чай', price: 3, image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80', description: 'Крепкий чёрный кофе.' },
+          { id: 'jov-n3', name: 'Капучино', category: 'Кофе & Чай', price: 5, image: 'https://images.unsplash.com/photo-1572442388796-11668ba67e53?auto=format&fit=crop&w=600&q=80', description: 'Ароматный капучино с пенкой.' },
+          { id: 'jov-n4', name: 'Чай с лимоном', category: 'Кофе & Чай', price: 6, image: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=600&q=80', description: 'Горячий лимонный чай.' },
+          { id: 'jov-n5', name: 'Фруктовый чай', category: 'Кофе & Чай', price: 10, image: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=600&q=80', description: 'Ароматный фруктовый чай.' },
+
+          // Дополнение
+          { id: 'jov-d1', name: 'Халапень', category: 'Дополнение', price: 2, image: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=600&q=80', description: 'Перчик халапеньо.' },
+          { id: 'jov-d2', name: 'Голландский сыр', category: 'Дополнение', price: 5, image: 'https://images.unsplash.com/photo-1534790566855-4cb788d389ec?auto=format&fit=crop&w=600&q=80', description: 'Сыр голландский.' },
+          { id: 'jov-d3', name: 'Куринное мясо (50г)', category: 'Дополнение', price: 10, image: 'https://images.unsplash.com/photo-1615297928064-24977384d0da?auto=format&fit=crop&w=600&q=80', description: 'Доп. курица.' },
+          { id: 'jov-d4', name: 'Сосиска (Канадский)', category: 'Дополнение', price: 4, image: 'https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80', description: 'Канадская сосиска.' },
+          { id: 'jov-d5', name: 'Соусы', category: 'Дополнение', price: 3, image: 'https://images.unsplash.com/photo-1561758033-d89a9ad46330?auto=format&fit=crop&w=600&q=80', description: 'Фирменный соус.' }
+        ]
+      },
+      {
+        id: 'turki',
+        name: 'Кафе «Турки»',
+        category: 'streetfood',
+        rating: '4.6',
+        deliveryTime: '15-20 мин',
+        minOrder: '15 смн',
+        image: 'https://images.unsplash.com/photo-1561651823-34feb02250e4?auto=format&fit=crop&w=800&q=80',
+        description: 'Восточные хот-доги в свежей нони, Нон-кабоб и горячие напитки.',
+        menu: [
+          { id: 'tur-1', name: 'Хот-доги нони', category: 'Меню', price: 8, image: 'https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80', description: 'Сосиска в мягкой таджикской нони.' },
+          { id: 'tur-2', name: 'Хот-дог бо 2 сосиска', category: 'Меню', price: 10, image: 'https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80', description: 'Две сосиски с соусом.' },
+          { id: 'tur-3', name: 'Хот-дог бо сосиски канадский', category: 'Меню', price: 10, image: 'https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80', description: 'Хот-дог с канадской сосиской.' },
+          { id: 'tur-4', name: 'Хот-дог бо 2 сосиски канадский', category: 'Меню', price: 14, image: 'https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80', description: 'Две канадские сосиски.' },
+          { id: 'tur-5', name: 'Нон-кабоб', category: 'Меню', price: 20, image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=600&q=80', description: 'Сочный мясной кабоб в лепёшке.' },
+          { id: 'tur-6', name: 'Кофе', category: 'Меню', price: 3, image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80', description: 'Чашка кофе.' },
+          { id: 'tur-7', name: 'Кофе собой', category: 'Меню', price: 4, image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80', description: 'Кофе в стаканчике с собой.' },
+          { id: 'tur-8', name: 'Чой', category: 'Меню', price: 2, image: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=600&q=80', description: 'Горячий чай.' }
+        ]
+      },
+
+      // 3. ЧАЙХАНА
+      {
+        id: 'rayhon',
+        name: 'Кафе «Райхон»',
+        category: 'chaihona',
+        rating: '4.9',
+        deliveryTime: '25-40 мин',
+        minOrder: '30 смн',
+        image: 'https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&w=800&q=80',
+        description: 'Национальная кухня Пенджикента: Оши Палов, Шӯрбо, Қурутоб и пышная самбуса.',
+        menu: [
+          // Первые блюда
+          { id: 'ray-1', name: 'Шӯрбо', category: 'Ҳӯроки 1-ум (Первые)', price: 25, image: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=600&q=80', description: 'Наваристый национальный мясной суп.' },
+          { id: 'ray-2', name: 'Лағмон', category: 'Ҳӯроки 1-ум (Первые)', price: 25, image: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=600&q=80', description: 'Ароматный лагман с тянутой лапшой.' },
+          { id: 'ray-3', name: 'Голубци', category: 'Ҳӯроки 1-ум (Первые)', price: 25, image: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=600&q=80', description: 'Домашние голубцы.' },
+          { id: 'ray-4', name: 'Оши туруш', category: 'Ҳӯроки 1-ум (Первые)', price: 10, image: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=600&q=80', description: 'Традиционный кислый суп.' },
+          { id: 'ray-5', name: 'Бульон', category: 'Ҳӯроки 1-ум (Первые)', price: 7, image: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=600&q=80', description: 'Чистый горячий бульон.' },
+          { id: 'ray-6', name: 'Мастоба', category: 'Ҳӯроки 1-ум (Первые)', price: 22, image: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=600&q=80', description: 'Густой рисовый суп с катыком.' },
+          { id: 'ray-7', name: 'Шы зелёный', category: 'Ҳӯроки 1-ум (Первые)', price: 22, image: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=600&q=80', description: 'Зелёный щи со свежей зеленью.' },
+
+          // Вторые блюда
+          { id: 'ray-8', name: 'Оши Палов (0.5 порц)', category: 'Ҳӯроки 2-юм (Вторые)', price: 30, image: 'https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&w=600&q=80', description: 'Плов полпорции.' },
+          { id: 'ray-9', name: 'Оши Палов (1 порц)', category: 'Ҳӯроки 2-юм (Вторые)', price: 40, image: 'https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&w=600&q=80', description: 'Пенджикентский плов 1 полная порция.' },
+          { id: 'ray-10', name: 'Казан кабоб (0.5 порц)', category: 'Ҳӯроки 2-юм (Вторые)', price: 60, image: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80', description: 'Казан кабоб полпорции.' },
+          { id: 'ray-11', name: 'Казан кабоб (1 порц)', category: 'Ҳӯроки 2-юм (Вторые)', price: 100, image: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80', description: 'Казан кабоб целая порция.' },
+          { id: 'ray-12', name: 'Яхни (100гр)', category: 'Ҳӯроки 2-юм (Вторые)', price: 25, image: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80', description: 'Холодное отварное мясо.' },
+
+          // Самбуса
+          { id: 'ray-13', name: 'Самбӯса бо гӯшти реза (гов ва думба)', category: 'Самбӯсаҳои варақӣ', price: 15, image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80', description: 'Рубленая говядина и курдюк.' },
+          { id: 'ray-14', name: 'Самбӯса бо гӯшти реза (гов)', category: 'Самбӯсаҳои варақӣ', price: 10, image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80', description: 'Рубленая говядина.' },
+          { id: 'ray-15', name: 'Самбӯса бо гӯшти қимма', category: 'Самбӯсаҳои варақӣ', price: 6, image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80', description: 'Самбуса с фаршем.' },
+          { id: 'ray-16', name: 'Самбӯса бо картошка', category: 'Самбӯсаҳои варақӣ', price: 4, image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80', description: 'Самбуса с картофелем.' },
+          { id: 'ray-17', name: 'Самбӯса бо гӯшти реза (гӯсфанд)', category: 'Самбӯсаҳои варақӣ', price: 20, image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80', description: 'Рубленая баранина.' },
+
+          // Сезонные
+          { id: 'ray-18', name: 'Қурутоб бо гӯшт', category: 'Мавсимӣ (Салаты)', price: 45, image: 'https://images.unsplash.com/photo-1590577976322-3d2d6e2130d5?auto=format&fit=crop&w=600&q=80', description: 'Национальный курутоб с мясом.' },
+          { id: 'ray-19', name: 'Қурутоб бе гӯшт', category: 'Мавсимӣ (Салаты)', price: 30, image: 'https://images.unsplash.com/photo-1590577976322-3d2d6e2130d5?auto=format&fit=crop&w=600&q=80', description: 'Курутоб классический без мяса.' },
+          { id: 'ray-20', name: 'Шакароб', category: 'Мавсимӣ (Салаты)', price: 15, image: 'https://images.unsplash.com/photo-1590577976322-3d2d6e2130d5?auto=format&fit=crop&w=600&q=80', description: 'Салат из томатов и лука к плову.' },
+          { id: 'ray-21', name: 'Домашний салат', category: 'Мавсимӣ (Салаты)', price: 15, image: 'https://images.unsplash.com/photo-1590577976322-3d2d6e2130d5?auto=format&fit=crop&w=600&q=80', description: 'Свежий домашний салат.' },
+          { id: 'ray-22', name: 'Солёный салат', category: 'Мавсимӣ (Салаты)', price: 12, image: 'https://images.unsplash.com/photo-1590577976322-3d2d6e2130d5?auto=format&fit=crop&w=600&q=80', description: 'Ассорти из солений.' },
+          { id: 'ray-23', name: 'Чолоб', category: 'Мавсимӣ (Салаты)', price: 6, image: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=600&q=80', description: 'Освежающий чалоб.' },
+          { id: 'ray-24', name: 'Ҷӯрғоти ширинак буз+гов 250мл', category: 'Мавсимӣ (Салаты)', price: 5, image: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=600&q=80', description: 'Натуральный джургот (козий+коровий).' },
+
+          // На заказ
+          { id: 'ray-25', name: 'Казан кабоб 1кг', category: 'Фармоишӣ (На заказ)', price: 250, image: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80', description: '1 кг Казан кабоба.' },
+          { id: 'ray-26', name: 'Кабоб бо гӯшти гӯсфанд', category: 'Фармоишӣ (На заказ)', price: 260, image: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80', description: 'Кабоб из баранины на компанию.' },
+
+          // Напитки
+          { id: 'ray-27', name: 'Чойи кабуд', category: 'Нӯшокиҳо (Напитки)', price: 1, image: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=600&q=80', description: 'Зелёный чай.' },
+          { id: 'ray-28', name: 'Чойи сиёҳ', category: 'Нӯшокиҳо (Напитки)', price: 1, image: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=600&q=80', description: 'Чёрный чай.' },
+          { id: 'ray-29', name: 'Кофе сиёҳ', category: 'Нӯшокиҳо (Напитки)', price: 4, image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80', description: 'Чёрный кофе.' },
+          { id: 'ray-30', name: 'Кофе 3 в 1', category: 'Нӯшокиҳо (Напитки)', price: 5, image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80', description: 'Сладкий кофе 3в1.' },
+          { id: 'ray-31', name: 'Лимончой', category: 'Нӯшокиҳо (Напитки)', price: 10, image: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=600&q=80', description: 'Лимонный чай в чайнике.' },
+          { id: 'ray-32', name: 'Компот гелос ва олболу', category: 'Нӯшокиҳо (Напитки)', price: 5, image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=600&q=80', description: 'Компот из черешни и вишни.' },
+          { id: 'ray-33', name: 'Компоти зардолу 1л', category: 'Нӯшокиҳо (Напитки)', price: 10, image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=600&q=80', description: 'Абрикосовый компот 1 литр.' },
+          { id: 'ray-34', name: 'Компоти зардолу 1.5л', category: 'Нӯшокиҳо (Напитки)', price: 15, image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=600&q=80', description: 'Абрикосовый компот 1.5 литра.' }
+        ]
+      },
+
+      // 4. СУШИ & РОЛЛЫ
+      {
+        id: 'pandacha',
+        name: 'Pandacha',
+        category: 'sushi',
+        rating: '4.9',
+        deliveryTime: '30-50 мин',
+        minOrder: '40 смн',
+        image: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=800&q=80',
+        description: 'Японские суши и роллы, закрытая UFO-пицца, паста и хрустящие морепродукты.',
+        menu: [
+          // Роллы & Суши
+          { id: 'pan-1', name: 'Филадельфия с лососем и огурцом', category: 'Роллы & Суши', price: 70, image: 'https://images.unsplash.com/photo-1611143669185-af224c5e3252?auto=format&fit=crop&w=600&q=80', description: 'Лосось, огурец, сливочный сыр.' },
+          { id: 'pan-2', name: 'Калифорния с крабом и огурцом', category: 'Роллы & Суши', price: 65, image: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=600&q=80', description: 'Снежный краб, икра тобико, огурец.' },
+          { id: 'pan-3', name: 'Дракон с тунцом в кунжуте', category: 'Роллы & Суши', price: 65, image: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=600&q=80', description: 'Тунец, кунжут, сыр сливочный.' },
+          { id: 'pan-4', name: 'Филадельфия опалённая', category: 'Роллы & Суши', price: 80, image: 'https://images.unsplash.com/photo-1611143669185-af224c5e3252?auto=format&fit=crop&w=600&q=80', description: 'Опалённый лосось и сливочный сыр.' },
+          { id: 'pan-5', name: 'Маки с огурцами', category: 'Роллы & Суши', price: 20, image: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=600&q=80', description: 'Маки ролл с огурцом.' },
+          { id: 'pan-6', name: 'Маки с авокадо', category: 'Роллы & Суши', price: 30, image: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=600&q=80', description: 'Маки ролл с авокадо.' },
+          { id: 'pan-7', name: 'Сансей с креветками в кунжуте', category: 'Роллы & Суши', price: 65, image: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=600&q=80', description: 'Креветки, кунжут, сливочный сыр.' },
+          { id: 'pan-8', name: 'Хосо маки с лососем и креветками', category: 'Роллы & Суши', price: 54, image: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=600&q=80', description: 'Лосось и креветка.' },
+          { id: 'pan-9', name: 'Калифорния темпура', category: 'Роллы & Суши', price: 65, image: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=600&q=80', description: 'Запечённый горячий ролл.' },
+          { id: 'pan-10', name: 'Сансей с креветками темпура', category: 'Роллы & Суши', price: 70, image: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=600&q=80', description: 'Креветки темпура.' },
+          { id: 'pan-11', name: 'Дракон темпура', category: 'Роллы & Суши', price: 70, image: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=600&q=80', description: 'Горячий ролл Дракон.' },
+          { id: 'pan-12', name: 'Унаги угорь', category: 'Роллы & Суши', price: 80, image: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=600&q=80', description: 'Копченый угорь под соусом унаги.' },
+          { id: 'pan-13', name: 'Терияки с курицей запечённая', category: 'Роллы & Суши', price: 55, image: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=600&q=80', description: 'Курица терияки запеченная.' },
+          { id: 'pan-14', name: 'Ролл Аляска', category: 'Роллы & Суши', price: 77, image: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=600&q=80', description: 'Фирменный ролл Аляска.' },
+          { id: 'pan-15', name: 'Ролл Канада', category: 'Роллы & Суши', price: 95, image: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=600&q=80', description: 'Угорь, лосось, сливочный сыр.' },
+          { id: 'pan-16', name: 'Угорь Тамаго', category: 'Роллы & Суши', price: 90, image: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=600&q=80', description: 'Угорь с японским омлетом тамаго.' },
+          { id: 'pan-17', name: 'Чёрный Люкс', category: 'Роллы & Суши', price: 90, image: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=600&q=80', description: 'Премиум чёрный ролл.' },
+
+          // Паста
+          { id: 'pan-p1', name: 'Паста Фетучини с курицей', category: 'Паста', price: 27, image: 'https://images.unsplash.com/photo-1621996346565-e3def6164299?auto=format&fit=crop&w=600&q=80', description: 'Паста в сливочном соусе с грибами.' },
+          { id: 'pan-p2', name: 'Паста Папарделле с морепродуктами', category: 'Паста', price: 29, image: 'https://images.unsplash.com/photo-1621996346565-e3def6164299?auto=format&fit=crop&w=600&q=80', description: 'Морепродукты, тигровые креветки.' },
+          { id: 'pan-p3', name: 'Паста Арабьята', category: 'Паста', price: 35, image: 'https://images.unsplash.com/photo-1621996346565-e3def6164299?auto=format&fit=crop&w=600&q=80', description: 'Острая паста в томатном соусе.' },
+          { id: 'pan-p4', name: 'Паста Болоньезе', category: 'Паста', price: 60, image: 'https://images.unsplash.com/photo-1621996346565-e3def6164299?auto=format&fit=crop&w=600&q=80', description: 'Классический мясной соус болоньезе.' },
+
+          // UFO & Горячее
+          { id: 'pan-u1', name: 'UFO с яйцом', category: 'UFO & Горячее', price: 27, image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80', description: 'Запечатанный круглый UFO бургер.' },
+          { id: 'pan-u2', name: 'UFO с курицей', category: 'UFO & Горячее', price: 29, image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80', description: 'Курица в запечатанной булочке.' },
+          { id: 'pan-u3', name: 'UFO говядина', category: 'UFO & Горячее', price: 35, image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80', description: 'Сочная говядина UFO.' },
+          { id: 'pan-u4', name: 'UFO Биг-Мак', category: 'UFO & Горячее', price: 60, image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80', description: 'Максимальный UFO Биг-Мак.' },
+          { id: 'pan-u5', name: 'UFO Пандача', category: 'UFO & Горячее', price: 66, image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80', description: 'Фирменный UFO Пандача.' },
+          { id: 'pan-u6', name: 'Картофель фри', category: 'UFO & Горячее', price: 10, image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80', description: 'Хрустящий фри.' },
+          { id: 'pan-u7', name: 'Картофель по-деревенски', category: 'UFO & Горячее', price: 10, image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80', description: 'Картофельные дольки.' },
+          { id: 'pan-u8', name: 'Корн-дог', category: 'UFO & Горячее', price: 7, image: 'https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80', description: 'Сосиска в хрустящем кукурузном тесте.' },
+          { id: 'pan-u9', name: 'Куриные крылья', category: 'UFO & Горячее', price: 25, image: 'https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=600&q=80', description: 'Порция куриных крыльев.' },
+          { id: 'pan-u10', name: 'Стрипсы', category: 'UFO & Горячее', price: 25, image: 'https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=600&q=80', description: 'Куриные стрипсы.' },
+          { id: 'pan-u11', name: 'Спринг роллы с крабом', category: 'UFO & Горячее', price: 35, image: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=600&q=80', description: 'Хрустящие спринг-роллы.' },
+          { id: 'pan-u12', name: 'Креветки темпура', category: 'UFO & Горячее', price: 45, image: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=600&q=80', description: 'Тигровые креветки в темпуре.' },
+
+          // Пицца
+          { id: 'pan-pi1', name: 'Пицца Пепперони (средняя)', category: 'Пицца', price: 79, image: 'https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=600&q=80', description: 'Пепперони 79 смн.' },
+          { id: 'pan-pi2', name: 'Пицца Пепперони (большая)', category: 'Пицца', price: 99, image: 'https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=600&q=80', description: 'Пепперони 99 смн.' },
+          { id: 'pan-pi3', name: 'Пицца Маргарита', category: 'Пицца', price: 55, image: 'https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?auto=format&fit=crop&w=600&q=80', description: 'Классическая Маргарита.' },
+          { id: 'pan-pi4', name: 'Пицца Мясник', category: 'Пицца', price: 86, image: 'https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?auto=format&fit=crop&w=600&q=80', description: 'Мясная пицца.' },
+          { id: 'pan-pi5', name: 'Пицца Париж', category: 'Пицца', price: 66, image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80', description: 'Сырный Париж.' },
+          { id: 'pan-pi6', name: 'BBQ-пицца', category: 'Пицца', price: 67, image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80', description: 'Пицца соусом Барбекю.' },
+          { id: 'pan-pi7', name: 'Пицца 4-сыра', category: 'Пицца', price: 75, image: 'https://images.unsplash.com/photo-1573821663912-569905455b1c?auto=format&fit=crop&w=600&q=80', description: 'Четыре сыра.' },
+          { id: 'pan-pi8', name: 'Пицца Хафтранг', category: 'Пицца', price: 52, image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80', description: 'Разноцветная пицца Хафтранг.' },
+          { id: 'pan-pi9', name: 'Пицца Тик-Ток', category: 'Пицца', price: 40, image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80', description: 'Популярная пицца Тик-Ток.' },
+          { id: 'pan-pi10', name: 'Пицца Пандача', category: 'Пицца', price: 70, image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80', description: 'Фирменная пицца Пандача.' },
+
+          // Соусы
+          { id: 'pan-s1', name: 'Соус в ассортименте (5 смн)', category: 'Соусы', price: 5, image: 'https://images.unsplash.com/photo-1561758033-d89a9ad46330?auto=format&fit=crop&w=600&q=80', description: 'Томатный, Вишневый, Сырный, Сладкий чили, Острый, Барбекю, Чесночный, Медово-горчичный, Соевый, Васаби, Имбирь.' }
+        ]
+      }
+    ];
+
+    let currentRestaurant = null;
+    let cart = [];
+    let discountPercent = 0;
+    let activeCategory = 'Все';
+    let activeRestCat = 'all';
+
+    const qs = id => document.getElementById(id);
+
+    // Render Restaurants List
+    function renderRestaurants(category = 'all') {
+      activeRestCat = category;
+      const grid = qs('restaurantsGrid');
+      const q = (qs('searchInput').value || '').trim().toLowerCase();
+
+      let list = category === 'all'
+        ? restaurants
+        : restaurants.filter(r => r.category === category);
+
+      if (q) list = list.filter(r => (r.name + ' ' + r.description).toLowerCase().includes(q));
+
+      if (!list.length) {
+        grid.innerHTML = '<div class="empty"><span>🔍</span><p>Ничего не найдено</p><small>Попробуйте изменить запрос или фильтр</small></div>';
+        return;
+      }
+
+      grid.innerHTML = list.map((r, i) => `
+        <article class="rcard anim" style="--d:${i * 60}ms" onclick="openRestaurantMenu('${r.id}')">
+          <div class="rcard__media">
+            <img src="${r.image}" alt="${r.name}" loading="lazy">
+            <span class="rcard__index">${String(i + 1).padStart(2, '0')}</span>
+            <span class="rcard__rating">★ ${r.rating}</span>
+          </div>
+          <div class="rcard__body">
+            <h3>${r.name}</h3>
+            <p>${r.description}</p>
+            <div class="rcard__meta">
+              <div class="rcard__facts"><span>⏱ ${r.deliveryTime}</span><span>Мин. ${r.minOrder}</span></div>
+              <span class="rcard__cta">Меню →</span>
+            </div>
+          </div>
+        </article>`).join('');
+    }
+
+    function filterRestaurants(cat, btnElement) {
+      document.querySelectorAll('.rest-cat-btn').forEach(b => b.classList.remove('active'));
+      if (btnElement) btnElement.classList.add('active');
+      renderRestaurants(cat);
+    }
+
+    // Open Restaurant Menu View
+    function openRestaurantMenu(id) {
+      currentRestaurant = restaurants.find(r => r.id === id);
+      qs('restaurantsView').classList.add('hidden');
+      qs('menuView').classList.remove('hidden');
+      qs('searchInput').value = '';
+
+      qs('restaurantHeader').innerHTML = `
+        <img src="${currentRestaurant.image}" alt="${currentRestaurant.name}">
+        <div class="rhead__info">
+          <span class="rhead__label">Меню заведения</span>
+          <h1>${currentRestaurant.name}</h1>
+          <p>${currentRestaurant.description}</p>
+          <div class="rhead__stats">
+            <span class="star">★ ${currentRestaurant.rating}</span>
+            <span>⏱ ${currentRestaurant.deliveryTime}</span>
+            <span>🛍 Мин. ${currentRestaurant.minOrder}</span>
+          </div>
+        </div>`;
+
+      const categories = ['Все', ...new Set(currentRestaurant.menu.map(item => item.category))];
+      qs('menuCategoryFilter').innerHTML = categories.map((c, idx) => `
+        <button onclick="filterMenuItems('${c}', this)" class="chip menu-cat-btn ${idx === 0 ? 'active' : ''}">
+          ${c}
+        </button>`).join('');
+
+      activeCategory = 'Все';
+      renderMenuItems('Все');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function renderMenuItems(cat) {
+      const grid = qs('menuGrid');
+      if (!currentRestaurant) return;
+
+      const q = (qs('searchInput').value || '').trim().toLowerCase();
+      let items = cat === 'Все'
+        ? currentRestaurant.menu
+        : currentRestaurant.menu.filter(i => i.category === cat);
+
+      if (q) items = items.filter(i => i.name.toLowerCase().includes(q));
+
+      if (!items.length) {
+        grid.innerHTML = '<div class="empty"><span>🔍</span><p>Ничего не найдено</p><small>Попробуйте другой запрос</small></div>';
+        return;
+      }
+
+      grid.innerHTML = items.map((item, i) => `
+        <article class="mcard anim" style="--d:${Math.min(i, 8) * 50}ms">
+          <div class="mcard__media"><img src="${item.image}" alt="${item.name}" loading="lazy"></div>
+          <div class="mcard__body">
+            <h4>${item.name}</h4>
+            <p>${item.description}</p>
+            <div class="mcard__row">
+              <span class="price">${item.price}<i>смн</i></span>
+              <button onclick="addToCart('${item.id}')" class="btn-add">+ Добавить</button>
+            </div>
+          </div>
+        </article>`).join('');
+    }
+
+    function filterMenuItems(cat, btnElement) {
+      activeCategory = cat;
+      document.querySelectorAll('.menu-cat-btn').forEach(b => b.classList.remove('active'));
+      if (btnElement) btnElement.classList.add('active');
+      renderMenuItems(cat);
+    }
+
+    function handleSearch() {
+      const menuOpen = !qs('menuView').classList.contains('hidden');
+      if (menuOpen) renderMenuItems(activeCategory);
+      else renderRestaurants(activeRestCat);
+    }
+
+    function showRestaurantsView() {
+      qs('menuView').classList.add('hidden');
+      qs('restaurantsView').classList.remove('hidden');
+      qs('searchInput').value = '';
+      renderRestaurants(activeRestCat);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Cart Logic
+    function addToCart(itemId) {
+      const item = currentRestaurant.menu.find(i => i.id === itemId);
+      const existing = cart.find(c => c.id === itemId);
+
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ ...item, qty: 1 });
+      }
+
+      updateCartUI();
+    }
+
+    function updateCartQty(id, delta) {
+      const item = cart.find(c => c.id === id);
+      if (item) {
+        item.qty += delta;
+        if (item.qty <= 0) {
+          cart = cart.filter(c => c.id !== id);
+        }
+      }
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      const list = qs('cartItemsList');
+      let subtotal = 0;
+      let totalQty = 0;
+
+      cart.forEach(item => {
+        subtotal += item.price * item.qty;
+        totalQty += item.qty;
+      });
+
+      if (!cart.length) {
+        list.innerHTML = '<div class="cart__empty"><span>🛒</span><p>Корзина пуста</p><small>Добавьте блюда из меню заведения</small></div>';
+      } else {
+        list.innerHTML = cart.map(item => `
+          <div class="citem">
+            <img src="${item.image}" alt="${item.name}">
+            <div class="citem__info">
+              <h5>${item.name}</h5>
+              <span class="citem__price">${item.price} смн</span>
+            </div>
+            <div class="qty">
+              <button onclick="updateCartQty('${item.id}', -1)" aria-label="Убрать одну">−</button>
+              <span>${item.qty}</span>
+              <button onclick="updateCartQty('${item.id}', 1)" aria-label="Добавить одну">+</button>
+            </div>
+          </div>`).join('');
+      }
+
+      const badge = qs('cartCountBadge');
+      badge.innerText = totalQty;
+      badge.classList.remove('bump');
+      void badge.offsetWidth;
+      badge.classList.add('bump');
+
+      const deliveryFee = cart.length > 0 ? 5 : 0;
+      const discount = (subtotal * discountPercent) / 100;
+      const total = subtotal > 0 ? (subtotal - discount + deliveryFee) : 0;
+
+      qs('cartSubtotal').innerText = `${subtotal} смн`;
+      qs('cartDeliveryFee').innerText = `${deliveryFee} смн`;
+      qs('cartDiscount').innerText = `-${discount} смн`;
+      qs('cartTotal').innerText = `${total} смн`;
+
+      qs('discountRow').classList.toggle('show', discount > 0);
+    }
+
+    function toggleCartSidebar() {
+      const open = qs('cartSidebar').classList.toggle('open');
+      qs('cartOverlay').classList.toggle('open', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    }
+
+    function applyPromoCode() {
+      const code = qs('promoCodeInput').value.trim().toUpperCase();
+      if (code === 'SALE10') {
+        discountPercent = 10;
+        alert('Промокод на скидку 10% успешно применён!');
+      } else {
+        alert('Неверный промокод');
+      }
+      updateCartUI();
+    }
+
+    function checkoutWhatsApp() {
+      if (cart.length === 0) {
+        alert('Ваша корзина пуста! Добавьте товары из меню.');
+        return;
+      }
+
+      const name = qs('clientName').value.trim();
+      const phone = qs('clientPhone').value.trim();
+      const address = qs('clientAddress').value.trim();
+      const comment = qs('clientComment').value.trim();
+
+      if (!name || !phone || !address) {
+        alert('Пожалуйста, заполните Имя, Телефон и Адрес доставки!');
+        return;
+      }
+
+      let subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+      const discount = (subtotal * discountPercent) / 100;
+      const deliveryFee = 5;
+      const total = subtotal - discount + deliveryFee;
+
+      let text = `📦 *НОВЫЙ ЗАКАЗ — Express Еда (Пенджикент)*\n`;
+      text += `🏪 *Заведение:* ${currentRestaurant ? currentRestaurant.name : 'Express Еда'}\n\n`;
+      text += `👤 *Клиент:* ${name}\n`;
+      text += `📞 *Телефон:* ${phone}\n`;
+      text += `📍 *Адрес:* ${address}\n`;
+      if (comment) text += `💬 *Комментарий:* ${comment}\n`;
+
+      text += `\n📋 *СОСТАВ ЗАКАЗА:*\n`;
+      cart.forEach((item, index) => {
+        text += `${index + 1}. ${item.name} x${item.qty} = ${item.price * item.qty} смн\n`;
+      });
+
+      text += `\n💵 *РАСЧЁТ:*\n`;
+      text += `• Сумма товаров: ${subtotal} смн\n`;
+      if (discount > 0) text += `• Скидка (10%): -${discount} смн\n`;
+      text += `• Доставка по городу: ${deliveryFee} смн\n`;
+      text += `💰 *ИТОГО К ОПЛАТЕ:* *${total} смн*\n`;
+
+      const whatsappNumber = '992009553795';
+      const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
+      window.open(url, '_blank');
+    }
+
+    const ICON_SUN = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>';
+    const ICON_MOON = '<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>';
+
+    function toggleDarkMode() {
+      const isDark = document.documentElement.classList.toggle('dark');
+      qs('themeIcon').innerHTML = isDark ? ICON_SUN : ICON_MOON;
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && qs('cartSidebar').classList.contains('open')) {
+        toggleCartSidebar();
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderRestaurants('all');
+      updateCartUI();
+    });
+  </script>
+  </script>
+</body>
+</html>

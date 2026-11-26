@@ -1,0 +1,13 @@
+# backups (copies of site versions)
+index.backup.html
+index.orange.backup.html
+
+# temp build files
+_*.html
+_*.txt
+
+# other project's prompt
+style (2).md
+
+# misc
+.DS_Store
