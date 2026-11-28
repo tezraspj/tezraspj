@@ -11,3 +11,14 @@ style (2).md
 
 # misc
 .DS_Store
+
+# python / backend
+__pycache__/
+*.pyc
+.pytest_cache/
+server/.env
+server/delivery.db
+server/*.db
+
+# editors
+.vscode/

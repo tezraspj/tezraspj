@@ -1,0 +1,2450 @@
+[
+  {
+    "id": "simin",
+    "name": "Кафе «СиМин»",
+    "category": "fastfood",
+    "rating": "4.9",
+    "deliveryTime": "20-30 мин",
+    "minOrder": "20 смн",
+    "image": "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=800&q=80",
+    "description": "Легендарный фастфуд Пенджикента! Сочные бургеры, хрустящие бакеты и комбо-наборы.",
+    "menu": [
+      {
+        "id": "sim-1",
+        "name": "Шеф Бургер",
+        "category": "Бургеры",
+        "price": 26,
+        "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80",
+        "description": "Фирменный бургер с куриным филе, томатами и зеленью."
+      },
+      {
+        "id": "sim-2",
+        "name": "Гамбургер",
+        "category": "Бургеры",
+        "price": 20,
+        "image": "https://images.unsplash.com/photo-1571091718767-18b5b1457add?auto=format&fit=crop&w=600&q=80",
+        "description": "Классическая котлета, маринованные огурцы и соус."
+      },
+      {
+        "id": "sim-3",
+        "name": "Big-Бургер",
+        "category": "Бургеры",
+        "price": 22,
+        "image": "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=600&q=80",
+        "description": "Увеличенный бургер с двойным соусом."
+      },
+      {
+        "id": "sim-4",
+        "name": "ЧиКеН Бургер куриный",
+        "category": "Бургеры",
+        "price": 24,
+        "image": "https://images.unsplash.com/photo-1615297928064-24977384d0da?auto=format&fit=crop&w=600&q=80",
+        "description": "Сочная куриная котлета, салат и свежие томаты."
+      },
+      {
+        "id": "sim-5",
+        "name": "ЧизБургер",
+        "category": "Бургеры",
+        "price": 25,
+        "image": "https://images.unsplash.com/photo-1534790566855-4cb788d389ec?auto=format&fit=crop&w=600&q=80",
+        "description": "Сочный бургер с нежным расплавленным сыром Чеддер."
+      },
+      {
+        "id": "sim-6",
+        "name": "Даблю Бургер",
+        "category": "Бургеры",
+        "price": 30,
+        "image": "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=600&q=80",
+        "description": "Двойная котлета, сыр и фирменный соус."
+      },
+      {
+        "id": "sim-7",
+        "name": "Большой Бургер",
+        "category": "Бургеры",
+        "price": 50,
+        "image": "https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?auto=format&fit=crop&w=600&q=80",
+        "description": "Гигантский бургер для сытного перекуса."
+      },
+      {
+        "id": "sim-8",
+        "name": "Баскет СиМин (1 кг)",
+        "category": "Баскеты",
+        "price": 98,
+        "image": "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=600&q=80",
+        "description": "Микс куриных крыльев, голеней и стрипсов весом 1 кг."
+      },
+      {
+        "id": "sim-9",
+        "name": "Баскет Нагетцы (1 кг)",
+        "category": "Баскеты",
+        "price": 95,
+        "image": "https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=600&q=80",
+        "description": "1 килограмм хрустящих горячих наггетсов."
+      },
+      {
+        "id": "sim-10",
+        "name": "Баскет Голен (1 кг)",
+        "category": "Баскеты",
+        "price": 88,
+        "image": "https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=600&q=80",
+        "description": "Сочные обжаренные куриные голени весом 1 кг."
+      },
+      {
+        "id": "sim-11",
+        "name": "Баскет Крылышки (1 кг)",
+        "category": "Баскеты",
+        "price": 94,
+        "image": "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=600&q=80",
+        "description": "1 кг легендарных острых крылышек СиМин."
+      },
+      {
+        "id": "sim-12",
+        "name": "Комбо 3х1",
+        "category": "Комбо",
+        "price": 35,
+        "image": "https://images.unsplash.com/photo-1610440042657-612c34d95e9f?auto=format&fit=crop&w=600&q=80",
+        "description": "Бургер + Картофель Фри + Напиток."
+      },
+      {
+        "id": "sim-13",
+        "name": "Комбо 4х1",
+        "category": "Комбо",
+        "price": 30,
+        "image": "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f6?auto=format&fit=crop&w=600&q=80",
+        "description": "Твистер + Картофель Фри + Соус + Напиток."
+      },
+      {
+        "id": "sim-14",
+        "name": "Комбо 5х1",
+        "category": "Комбо",
+        "price": 38,
+        "image": "https://images.unsplash.com/photo-1561758033-d89a9ad46330?auto=format&fit=crop&w=600&q=80",
+        "description": "Стрипсы/Крылышки + Фри + Соус + Напиток."
+      },
+      {
+        "id": "sim-15",
+        "name": "Твистер",
+        "category": "Закуски",
+        "price": 22,
+        "image": "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=600&q=80",
+        "description": "Куриные стрипсы с овощами в лаваше."
+      },
+      {
+        "id": "sim-16",
+        "name": "Сэндвич большой бо қази",
+        "category": "Закуски",
+        "price": 23,
+        "image": "https://images.unsplash.com/photo-1509722747041-616f39b57569?auto=format&fit=crop&w=600&q=80",
+        "description": "Сэндвич с добавлением таджикского казы."
+      },
+      {
+        "id": "sim-17",
+        "name": "Хот-дог НАЧО",
+        "category": "Закуски",
+        "price": 15,
+        "image": "https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80",
+        "description": "Хот-дог с хрустящими начос."
+      },
+      {
+        "id": "sim-18",
+        "name": "Картошка Фри",
+        "category": "Закуски",
+        "price": 8,
+        "image": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80",
+        "description": "Хрустящая золотистая картошка фри."
+      },
+      {
+        "id": "sim-19",
+        "name": "Напитки 0.5 л",
+        "category": "Напитки",
+        "price": 6,
+        "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=600&q=80",
+        "description": "Coca-Cola, Fanta, Sprite или RC Cola."
+      }
+    ]
+  },
+  {
+    "id": "safar",
+    "name": "SaFar",
+    "category": "fastfood",
+    "rating": "4.8",
+    "deliveryTime": "25-35 мин",
+    "minOrder": "25 смн",
+    "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=80",
+    "description": "Фирменная пицца, насыщенные бургеры, аппетитные хот-доги, тан туни и баскеты.",
+    "menu": [
+      {
+        "id": "saf-p1",
+        "name": "Пицца Маргарита (30см)",
+        "category": "Пицца",
+        "price": 55,
+        "image": "https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?auto=format&fit=crop&w=600&q=80",
+        "description": "Соус маринара, сыр моцарелла, томаты, базилик, орегано."
+      },
+      {
+        "id": "saf-p2",
+        "name": "Пицца Маргарита (35см)",
+        "category": "Пицца",
+        "price": 65,
+        "image": "https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?auto=format&fit=crop&w=600&q=80",
+        "description": "Соус маринара, сыр моцарелла, томаты, базилик."
+      },
+      {
+        "id": "saf-p3",
+        "name": "Пицца Маргарита (40см)",
+        "category": "Пицца",
+        "price": 75,
+        "image": "https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?auto=format&fit=crop&w=600&q=80",
+        "description": "Соус маринара, сыр моцарелла, томаты, базилик."
+      },
+      {
+        "id": "saf-p4",
+        "name": "Пицца Маргарита (50см)",
+        "category": "Пицца",
+        "price": 90,
+        "image": "https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?auto=format&fit=crop&w=600&q=80",
+        "description": "Огромная Маргарита 50см."
+      },
+      {
+        "id": "saf-p5",
+        "name": "Пицца Гавайская (30см)",
+        "category": "Пицца",
+        "price": 55,
+        "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=80",
+        "description": "Соус маринара, моцарелла, куриная ветчина, ананас."
+      },
+      {
+        "id": "saf-p6",
+        "name": "Пицца Гавайская (50см)",
+        "category": "Пицца",
+        "price": 100,
+        "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=80",
+        "description": "Гавайская пицца размера 50см."
+      },
+      {
+        "id": "saf-p7",
+        "name": "Пицца Курица Грибы (30см)",
+        "category": "Пицца",
+        "price": 55,
+        "image": "https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?auto=format&fit=crop&w=600&q=80",
+        "description": "Куриное филе, грибы, сыр моцарелла, орегано."
+      },
+      {
+        "id": "saf-p8",
+        "name": "Пицца Курица Грибы (50см)",
+        "category": "Пицца",
+        "price": 100,
+        "image": "https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?auto=format&fit=crop&w=600&q=80",
+        "description": "Пицца Курица Грибы 50см."
+      },
+      {
+        "id": "saf-p9",
+        "name": "Пицца Пеперони (30см)",
+        "category": "Пицца",
+        "price": 55,
+        "image": "https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=600&q=80",
+        "description": "Салями пеперони, соус маринара, сыр моцарелла."
+      },
+      {
+        "id": "saf-p10",
+        "name": "Пицца Пеперони (50см)",
+        "category": "Пицца",
+        "price": 100,
+        "image": "https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=600&q=80",
+        "description": "Гигантская Пеперони 50см."
+      },
+      {
+        "id": "saf-p11",
+        "name": "Пицца 4 Сезона (30см)",
+        "category": "Пицца",
+        "price": 55,
+        "image": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=600&q=80",
+        "description": "Соус альфредо, маринара, пеперони, грибы, курица, томаты."
+      },
+      {
+        "id": "saf-p12",
+        "name": "Пицца 4 Сезона (50см)",
+        "category": "Пицца",
+        "price": 100,
+        "image": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=600&q=80",
+        "description": "Пицца 4 Сезона 50см."
+      },
+      {
+        "id": "saf-p13",
+        "name": "Пицца Нурона (30см)",
+        "category": "Пицца",
+        "price": 55,
+        "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80",
+        "description": "Соус маринара, моцарелла, сосиска полуканадская, картофель фри."
+      },
+      {
+        "id": "saf-p14",
+        "name": "SaFar фирменный (50см)",
+        "category": "Пицца",
+        "price": 100,
+        "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80",
+        "description": "Фирменный состав: альфредо, чеддер, курица, салями, грибы, говядина, ананас."
+      },
+      {
+        "id": "saf-p15",
+        "name": "Домашний Ассорти (30см)",
+        "category": "Пицца",
+        "price": 60,
+        "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80",
+        "description": "Салями, филе куриное, грибы, томаты, говядина, перец, лук."
+      },
+      {
+        "id": "saf-p16",
+        "name": "Кальцоне Буррак (30см)",
+        "category": "Пицца",
+        "price": 55,
+        "image": "https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?auto=format&fit=crop&w=600&q=80",
+        "description": "Закрытая пицца кальцоне с куриной ветчиной, салатом и пармезаном."
+      },
+      {
+        "id": "saf-p17",
+        "name": "Пицца 4 сыра (30см)",
+        "category": "Пицца",
+        "price": 55,
+        "image": "https://images.unsplash.com/photo-1573821663912-569905455b1c?auto=format&fit=crop&w=600&q=80",
+        "description": "Моцарелла, голландский, чеддер, пармезан."
+      },
+      {
+        "id": "saf-p18",
+        "name": "Пицца Мясная (30см)",
+        "category": "Пицца",
+        "price": 55,
+        "image": "https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?auto=format&fit=crop&w=600&q=80",
+        "description": "Куриное филе, говядина, салями, соус маринара."
+      },
+      {
+        "id": "saf-p19",
+        "name": "Цыплёнок ранч (30см)",
+        "category": "Пицца",
+        "price": 55,
+        "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=80",
+        "description": "Соус альфредо, моцарелла, куриное филе, помидоры."
+      },
+      {
+        "id": "saf-p20",
+        "name": "Трюфельная пицца (30см)",
+        "category": "Пицца",
+        "price": 55,
+        "image": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=600&q=80",
+        "description": "Соус альфредо, моцарелла, грибы, орегано."
+      },
+      {
+        "id": "saf-p21",
+        "name": "Пицца Цезарь (30см)",
+        "category": "Пицца",
+        "price": 55,
+        "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=80",
+        "description": "Куриное филе, салат айсберг, соус цезарь, пармезан."
+      },
+      {
+        "id": "saf-b1",
+        "name": "Гамбургер",
+        "category": "Бургеры",
+        "price": 24,
+        "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80",
+        "description": "Говяжья котлета, огурцы, лук, помидоры, кетчуп."
+      },
+      {
+        "id": "saf-b2",
+        "name": "Чизбургер",
+        "category": "Бургеры",
+        "price": 30,
+        "image": "https://images.unsplash.com/photo-1534790566855-4cb788d389ec?auto=format&fit=crop&w=600&q=80",
+        "description": "Говяжья котлета, сыр плавленый сливочный, овощи."
+      },
+      {
+        "id": "saf-b3",
+        "name": "Бургер в лаваше",
+        "category": "Бургеры",
+        "price": 30,
+        "image": "https://images.unsplash.com/photo-1561758033-d89a9ad46330?auto=format&fit=crop&w=600&q=80",
+        "description": "Лаваш, розовый соус, говяжья котлета, чипсы."
+      },
+      {
+        "id": "saf-b4",
+        "name": "Биф & чикен",
+        "category": "Бургеры",
+        "price": 32,
+        "image": "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=600&q=80",
+        "description": "Котлета из говядины + куриная котлета, сыр, чесночный соус."
+      },
+      {
+        "id": "saf-b5",
+        "name": "Potato бургер",
+        "category": "Бургеры",
+        "price": 33,
+        "image": "https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?auto=format&fit=crop&w=600&q=80",
+        "description": "Говяжья котлета, картофель фри, сыр плавленый."
+      },
+      {
+        "id": "saf-b6",
+        "name": "Даблбургер",
+        "category": "Бургеры",
+        "price": 38,
+        "image": "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=600&q=80",
+        "description": "Говяжья котлета 2X, особый кетчуп, сыр."
+      },
+      {
+        "id": "saf-b7",
+        "name": "Двойной чизбургер",
+        "category": "Бургеры",
+        "price": 40,
+        "image": "https://images.unsplash.com/photo-1534790566855-4cb788d389ec?auto=format&fit=crop&w=600&q=80",
+        "description": "Фирменный соус, сыр чедер, 2х говяжья котлета."
+      },
+      {
+        "id": "saf-b8",
+        "name": "Panj kent бургер",
+        "category": "Бургеры",
+        "price": 42,
+        "image": "https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?auto=format&fit=crop&w=600&q=80",
+        "description": "Чесночный соус, тушенная говядина, чипсы хрустящие."
+      },
+      {
+        "id": "saf-b9",
+        "name": "Чикенбургер",
+        "category": "Бургеры",
+        "price": 19,
+        "image": "https://images.unsplash.com/photo-1615297928064-24977384d0da?auto=format&fit=crop&w=600&q=80",
+        "description": "Куриные стрипсы, чесночный соус, салатный лист."
+      },
+      {
+        "id": "saf-b10",
+        "name": "Биг чикенбургер",
+        "category": "Бургеры",
+        "price": 22,
+        "image": "https://images.unsplash.com/photo-1615297928064-24977384d0da?auto=format&fit=crop&w=600&q=80",
+        "description": "Увеличенное куриное филе со свежими овощами."
+      },
+      {
+        "id": "saf-b11",
+        "name": "Чикен чиз",
+        "category": "Бургеры",
+        "price": 24,
+        "image": "https://images.unsplash.com/photo-1615297928064-24977384d0da?auto=format&fit=crop&w=600&q=80",
+        "description": "Куриная котлета, сырный соус, плавленый сыр."
+      },
+      {
+        "id": "saf-b12",
+        "name": "Цезарь бургер",
+        "category": "Бургеры",
+        "price": 27,
+        "image": "https://images.unsplash.com/photo-1615297928064-24977384d0da?auto=format&fit=crop&w=600&q=80",
+        "description": "Куриная котлета, яйцо, соус чили, пекинская капуста."
+      },
+      {
+        "id": "saf-h1",
+        "name": "Хот дог мини",
+        "category": "Хот-доги",
+        "price": 10,
+        "image": "https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80",
+        "description": "Булочка, соус чесночный, сосиска, огурцы."
+      },
+      {
+        "id": "saf-h2",
+        "name": "Хот дог стандарт",
+        "category": "Хот-доги",
+        "price": 12,
+        "image": "https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80",
+        "description": "Сосиска 2шт, чесночный соус, салат."
+      },
+      {
+        "id": "saf-h3",
+        "name": "Хот дог гриль",
+        "category": "Хот-доги",
+        "price": 12,
+        "image": "https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80",
+        "description": "Соус хот дог, сыр, кетчуп, сосиска, картошка."
+      },
+      {
+        "id": "saf-h4",
+        "name": "Хот дог лонгер",
+        "category": "Хот-доги",
+        "price": 13,
+        "image": "https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80",
+        "description": "Стрипсы, лук, помидор, розовый соус."
+      },
+      {
+        "id": "saf-h5",
+        "name": "Хот дог BBQ",
+        "category": "Хот-доги",
+        "price": 14,
+        "image": "https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80",
+        "description": "Соус BBQ, мед-горчичный соус, хрустящий лук."
+      },
+      {
+        "id": "saf-h6",
+        "name": "Хот дог SaFar",
+        "category": "Хот-доги",
+        "price": 16,
+        "image": "https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80",
+        "description": "Сосиска канадская, картофельные стружки, сыр."
+      },
+      {
+        "id": "saf-h7",
+        "name": "Хот кебаб",
+        "category": "Хот-доги",
+        "price": 17,
+        "image": "https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80",
+        "description": "Мясо тушенная говядина, острый перец, карамелизованный лук."
+      },
+      {
+        "id": "saf-h8",
+        "name": "Хот дог Panj kent",
+        "category": "Хот-доги",
+        "price": 22,
+        "image": "https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80",
+        "description": "Тушенная мясо, сосиска, кинза, сырный соус."
+      },
+      {
+        "id": "saf-t1",
+        "name": "Твистер острый",
+        "category": "Твистеры & Тан туни",
+        "price": 20,
+        "image": "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=600&q=80",
+        "description": "Стрипсы, острый соус, пекинский салат, томатный соус."
+      },
+      {
+        "id": "saf-t2",
+        "name": "Твистер классический",
+        "category": "Твистеры & Тан туни",
+        "price": 20,
+        "image": "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=600&q=80",
+        "description": "Лаваш, чесночный соус, стрипсы, огурцы."
+      },
+      {
+        "id": "saf-t3",
+        "name": "Твистер шаверма",
+        "category": "Твистеры & Тан туни",
+        "price": 22,
+        "image": "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=600&q=80",
+        "description": "Лаваш, стрипсы, маринованные огурчики, майонез."
+      },
+      {
+        "id": "saf-t4",
+        "name": "Твистер сырный",
+        "category": "Твистеры & Тан туни",
+        "price": 22,
+        "image": "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=600&q=80",
+        "description": "Лаваш сырный, розовый соус, картофель фри, стрипсы."
+      },
+      {
+        "id": "saf-t5",
+        "name": "Твистер шаверма сырный",
+        "category": "Твистеры & Тан туни",
+        "price": 22,
+        "image": "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=600&q=80",
+        "description": "Сырный лаваш, картофельные стружки, стрипсы."
+      },
+      {
+        "id": "saf-t6",
+        "name": "Тан туни с курицей",
+        "category": "Твистеры & Тан туни",
+        "price": 22,
+        "image": "https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=600&q=80",
+        "description": "Куриное филе, йогуртовый соус, кинза."
+      },
+      {
+        "id": "saf-t7",
+        "name": "Тан туни с говядиной",
+        "category": "Твистеры & Тан туни",
+        "price": 25,
+        "image": "https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=600&q=80",
+        "description": "Мясо говядины, помидор, йогуртовый соус."
+      },
+      {
+        "id": "saf-k1",
+        "name": "Баскет стрипцы 1кг",
+        "category": "Курица & Баскеты",
+        "price": 89,
+        "image": "https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=600&q=80",
+        "description": "1 кг хрустящих куриных стрипсов."
+      },
+      {
+        "id": "saf-k2",
+        "name": "Стрипцы 250гр",
+        "category": "Курица & Баскеты",
+        "price": 24,
+        "image": "https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=600&q=80",
+        "description": "Порция стрипсов 250 грамм."
+      },
+      {
+        "id": "saf-k3",
+        "name": "Баскет ножки 1кг",
+        "category": "Курица & Баскеты",
+        "price": 89,
+        "image": "https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=600&q=80",
+        "description": "1 кг хрустящих куриных ножек."
+      },
+      {
+        "id": "saf-k4",
+        "name": "Ножки 250гр",
+        "category": "Курица & Баскеты",
+        "price": 24,
+        "image": "https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=600&q=80",
+        "description": "Порция куриных ножек 250г."
+      },
+      {
+        "id": "saf-k5",
+        "name": "Баскет байтсы 1кг",
+        "category": "Курица & Баскеты",
+        "price": 89,
+        "image": "https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=600&q=80",
+        "description": "1 кг куриных байтсов."
+      },
+      {
+        "id": "saf-k6",
+        "name": "Байтсы 250гр",
+        "category": "Курица & Баскеты",
+        "price": 24,
+        "image": "https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=600&q=80",
+        "description": "Порция байтсов 250г."
+      },
+      {
+        "id": "saf-k7",
+        "name": "Баскет крылышки 1кг",
+        "category": "Курица & Баскеты",
+        "price": 89,
+        "image": "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=600&q=80",
+        "description": "1 кг обжаренных острых крылышек."
+      },
+      {
+        "id": "saf-k8",
+        "name": "Крылышки 250гр",
+        "category": "Курица & Баскеты",
+        "price": 24,
+        "image": "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=600&q=80",
+        "description": "Порция крылышек 250г."
+      },
+      {
+        "id": "saf-k9",
+        "name": "Баскет наггетсы 1кг",
+        "category": "Курица & Баскеты",
+        "price": 89,
+        "image": "https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=600&q=80",
+        "description": "1 кг сочных наггетсов."
+      },
+      {
+        "id": "saf-k10",
+        "name": "Наггетсы 250гр",
+        "category": "Курица & Баскеты",
+        "price": 24,
+        "image": "https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=600&q=80",
+        "description": "Наггетсы порция 250г."
+      },
+      {
+        "id": "saf-k11",
+        "name": "Баскет микс 1кг",
+        "category": "Курица & Баскеты",
+        "price": 89,
+        "image": "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=600&q=80",
+        "description": "1 кг ассорти курицы."
+      },
+      {
+        "id": "saf-k12",
+        "name": "Микс 250гр",
+        "category": "Курица & Баскеты",
+        "price": 24,
+        "image": "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=600&q=80",
+        "description": "Микс порция 250г."
+      },
+      {
+        "id": "saf-c1",
+        "name": "Комбо Асия",
+        "category": "Комбо & Гарниры",
+        "price": 25,
+        "image": "https://images.unsplash.com/photo-1610440042657-612c34d95e9f?auto=format&fit=crop&w=600&q=80",
+        "description": "Байтсы 125г, фри 70г, сосиска 2шт, соус, сок."
+      },
+      {
+        "id": "saf-c2",
+        "name": "Комбо 3 в 1",
+        "category": "Комбо & Гарниры",
+        "price": 30,
+        "image": "https://images.unsplash.com/photo-1610440042657-612c34d95e9f?auto=format&fit=crop&w=600&q=80",
+        "description": "Фри + Кола 0.5 + Чикен бургер."
+      },
+      {
+        "id": "saf-c3",
+        "name": "Комбо X 3в1",
+        "category": "Комбо & Гарниры",
+        "price": 35,
+        "image": "https://images.unsplash.com/photo-1610440042657-612c34d95e9f?auto=format&fit=crop&w=600&q=80",
+        "description": "Фри + Кола 0.5 + Гамбургер."
+      },
+      {
+        "id": "saf-c4",
+        "name": "Комбо 5 в 1",
+        "category": "Комбо & Гарниры",
+        "price": 40,
+        "image": "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f6?auto=format&fit=crop&w=600&q=80",
+        "description": "Мясо микс, соус, булочка, фри, кола 0.5."
+      },
+      {
+        "id": "saf-c5",
+        "name": "Комбо бургер 5 в 1",
+        "category": "Комбо & Гарниры",
+        "price": 55,
+        "image": "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f6?auto=format&fit=crop&w=600&q=80",
+        "description": "Мясо микс, соус, чикен бургер, фри, кола 0.5."
+      },
+      {
+        "id": "saf-c6",
+        "name": "Баскет комбо 2x",
+        "category": "Комбо & Гарниры",
+        "price": 75,
+        "image": "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=600&q=80",
+        "description": "Мясо 2 порции микс, соус 2шт, фри 2 порции, кола 2шт."
+      },
+      {
+        "id": "saf-c7",
+        "name": "Френд бокс",
+        "category": "Комбо & Гарниры",
+        "price": 100,
+        "image": "https://images.unsplash.com/photo-1610440042657-612c34d95e9f?auto=format&fit=crop&w=600&q=80",
+        "description": "2 бургера, фри, мясо микс, RC-кола 1L, 2 соуса."
+      },
+      {
+        "id": "saf-c8",
+        "name": "Фри с соусом",
+        "category": "Комбо & Гарниры",
+        "price": 12,
+        "image": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80",
+        "description": "Картофель фри с порцией соуса."
+      },
+      {
+        "id": "saf-c9",
+        "name": "Фри с сосиской и соусом",
+        "category": "Комбо & Гарниры",
+        "price": 16,
+        "image": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80",
+        "description": "Картофель фри с нарезной сосиской."
+      },
+      {
+        "id": "saf-c10",
+        "name": "Фри с тушеным мясом",
+        "category": "Комбо & Гарниры",
+        "price": 18,
+        "image": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80",
+        "description": "Картофель фри с тушеной говядиной или курицей."
+      },
+      {
+        "id": "saf-c11",
+        "name": "Картофель по-деревенски 125гр",
+        "category": "Комбо & Гарниры",
+        "price": 10,
+        "image": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80",
+        "description": "Ароматные дольки картофеля."
+      },
+      {
+        "id": "saf-c12",
+        "name": "Фри 125гр",
+        "category": "Комбо & Гарниры",
+        "price": 10,
+        "image": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80",
+        "description": "Хрустящий картофель фри."
+      },
+      {
+        "id": "saf-a1",
+        "name": "Котлета из говядины 100гр",
+        "category": "Дополнения",
+        "price": 14,
+        "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80",
+        "description": "Дополнительная котлета 100г."
+      },
+      {
+        "id": "saf-a2",
+        "name": "Котлета из курицы 100гр",
+        "category": "Дополнения",
+        "price": 7,
+        "image": "https://images.unsplash.com/photo-1615297928064-24977384d0da?auto=format&fit=crop&w=600&q=80",
+        "description": "Куриная котлета 100г."
+      },
+      {
+        "id": "saf-a3",
+        "name": "Сыр плавленый 1шт",
+        "category": "Дополнения",
+        "price": 3,
+        "image": "https://images.unsplash.com/photo-1534790566855-4cb788d389ec?auto=format&fit=crop&w=600&q=80",
+        "description": "Ломтик плавленого сыра."
+      },
+      {
+        "id": "saf-a4",
+        "name": "Перец халапеньо 15гр",
+        "category": "Дополнения",
+        "price": 0.5,
+        "image": "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=600&q=80",
+        "description": "Острый халапеньо (50 дирамов)."
+      },
+      {
+        "id": "saf-a5",
+        "name": "Соусы на выбор (Сырный/Чесночный/Острый)",
+        "category": "Дополнения",
+        "price": 2.5,
+        "image": "https://images.unsplash.com/photo-1561758033-d89a9ad46330?auto=format&fit=crop&w=600&q=80",
+        "description": "Порция соуса."
+      },
+      {
+        "id": "saf-a6",
+        "name": "Булочка 1шт",
+        "category": "Дополнения",
+        "price": 2.5,
+        "image": "https://images.unsplash.com/photo-1509722747041-616f39b57569?auto=format&fit=crop&w=600&q=80",
+        "description": "Свежая булочка."
+      }
+    ]
+  },
+  {
+    "id": "hfc",
+    "name": "Halal Fried Chicken (HFC)",
+    "category": "fastfood",
+    "rating": "4.7",
+    "deliveryTime": "20-35 мин",
+    "minOrder": "20 смн",
+    "image": "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=800&q=80",
+    "description": "Халяльный куриный фастфуд: крылышки, бургеры, пиццы, хачапури и твистеры.",
+    "menu": [
+      {
+        "id": "hfc-b1",
+        "name": "Классический хот-дог",
+        "category": "Бургеры & Хот-доги",
+        "price": 8,
+        "image": "https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80",
+        "description": "Классическая сосиска с соусами."
+      },
+      {
+        "id": "hfc-b2",
+        "name": "Сырный хот-дог",
+        "category": "Бургеры & Хот-доги",
+        "price": 10,
+        "image": "https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80",
+        "description": "Хот-дог с обильным сырным соусом."
+      },
+      {
+        "id": "hfc-b3",
+        "name": "Барбекю хот-дог",
+        "category": "Бургеры & Хот-доги",
+        "price": 12,
+        "image": "https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80",
+        "description": "Хот-дог с соусом Барбекю."
+      },
+      {
+        "id": "hfc-b4",
+        "name": "Датский хот-дог",
+        "category": "Бургеры & Хот-доги",
+        "price": 12,
+        "image": "https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80",
+        "description": "Датский рецепт со сливочным соусом."
+      },
+      {
+        "id": "hfc-b5",
+        "name": "Лонгер",
+        "category": "Бургеры & Хот-доги",
+        "price": 15,
+        "image": "https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80",
+        "description": "Удлиненный хот-дог с филе."
+      },
+      {
+        "id": "hfc-b6",
+        "name": "Хот-дог HFC",
+        "category": "Бургеры & Хот-доги",
+        "price": 15,
+        "image": "https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80",
+        "description": "Фирменный хот-дог от шефа HFC."
+      },
+      {
+        "id": "hfc-b7",
+        "name": "Чикенбургер",
+        "category": "Бургеры & Хот-доги",
+        "price": 18,
+        "image": "https://images.unsplash.com/photo-1615297928064-24977384d0da?auto=format&fit=crop&w=600&q=80",
+        "description": "Куриный бургер с хрустящей котлетой."
+      },
+      {
+        "id": "hfc-b8",
+        "name": "Гамбургер",
+        "category": "Бургеры & Хот-доги",
+        "price": 22,
+        "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80",
+        "description": "Сочный гамбургер с огурцами."
+      },
+      {
+        "id": "hfc-b9",
+        "name": "БигТейсти",
+        "category": "Бургеры & Хот-доги",
+        "price": 25,
+        "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80",
+        "description": "Большой бургер с фирменным дымным соусом."
+      },
+      {
+        "id": "hfc-b10",
+        "name": "Чизбургер",
+        "category": "Бургеры & Хот-доги",
+        "price": 30,
+        "image": "https://images.unsplash.com/photo-1534790566855-4cb788d389ec?auto=format&fit=crop&w=600&q=80",
+        "description": "Чизбургер с расплавленным сыром."
+      },
+      {
+        "id": "hfc-b11",
+        "name": "Бургер с яйцом",
+        "category": "Бургеры & Хот-доги",
+        "price": 35,
+        "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80",
+        "description": "Бургер с жареным яйцом и котлетой."
+      },
+      {
+        "id": "hfc-b12",
+        "name": "Двойной Чизбургер",
+        "category": "Бургеры & Хот-доги",
+        "price": 40,
+        "image": "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=600&q=80",
+        "description": "Две котлеты и двойной сыр."
+      },
+      {
+        "id": "hfc-b13",
+        "name": "HFC Бургер",
+        "category": "Бургеры & Хот-доги",
+        "price": 38,
+        "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80",
+        "description": "Фирменный бургер HFC."
+      },
+      {
+        "id": "hfc-b14",
+        "name": "Биф Чикен",
+        "category": "Бургеры & Хот-доги",
+        "price": 40,
+        "image": "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=600&q=80",
+        "description": "Микс говяжьей и куриной котлеты."
+      },
+      {
+        "id": "hfc-b15",
+        "name": "Шеф-бургер",
+        "category": "Бургеры & Хот-доги",
+        "price": 50,
+        "image": "https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?auto=format&fit=crop&w=600&q=80",
+        "description": "Большой шеф-бургер HFC."
+      },
+      {
+        "id": "hfc-z1",
+        "name": "БИГ ВОХ",
+        "category": "Закуски & Крылья",
+        "price": 70,
+        "image": "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=600&q=80",
+        "description": "Крыло, бедро, грудка, ножка + картофель фри."
+      },
+      {
+        "id": "hfc-z2",
+        "name": "Крылья в сливочном соусе (8 шт)",
+        "category": "Закуски & Крылья",
+        "price": 30,
+        "image": "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=600&q=80",
+        "description": "8 шт нежных сливочных крылышек."
+      },
+      {
+        "id": "hfc-z3",
+        "name": "Крылья в сливочном соусе (24 шт)",
+        "category": "Закуски & Крылья",
+        "price": 90,
+        "image": "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=600&q=80",
+        "description": "Большой сет из 24 крыльев."
+      },
+      {
+        "id": "hfc-z4",
+        "name": "Крылья с соусом Чили (8 шт)",
+        "category": "Закуски & Крылья",
+        "price": 30,
+        "image": "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=600&q=80",
+        "description": "8 острых крылышек Чили."
+      },
+      {
+        "id": "hfc-z5",
+        "name": "Крылья с соусом Чили (24 шт)",
+        "category": "Закуски & Крылья",
+        "price": 90,
+        "image": "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=600&q=80",
+        "description": "24 острых крылышек Чили."
+      },
+      {
+        "id": "hfc-z6",
+        "name": "Крылья барбекю (8 шт)",
+        "category": "Закуски & Крылья",
+        "price": 30,
+        "image": "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=600&q=80",
+        "description": "8 крыльев в BBQ соусе."
+      },
+      {
+        "id": "hfc-z7",
+        "name": "Крылья барбекю (24 шт)",
+        "category": "Закуски & Крылья",
+        "price": 90,
+        "image": "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=600&q=80",
+        "description": "24 крыльев BBQ."
+      },
+      {
+        "id": "hfc-z8",
+        "name": "Крылья в панировке (8 шт)",
+        "category": "Закуски & Крылья",
+        "price": 30,
+        "image": "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=600&q=80",
+        "description": "8 шт хрустящих крыльев."
+      },
+      {
+        "id": "hfc-z9",
+        "name": "Филе в панировке (8 шт)",
+        "category": "Закуски & Крылья",
+        "price": 30,
+        "image": "https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=600&q=80",
+        "description": "8 кусочков сочного филе."
+      },
+      {
+        "id": "hfc-z10",
+        "name": "Нагетсы (4 шт)",
+        "category": "Закуски & Крылья",
+        "price": 10,
+        "image": "https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=600&q=80",
+        "description": "4 порции наггетсов."
+      },
+      {
+        "id": "hfc-z11",
+        "name": "Нагетсы (8 шт)",
+        "category": "Закуски & Крылья",
+        "price": 20,
+        "image": "https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=600&q=80",
+        "description": "8 порций наггетсов."
+      },
+      {
+        "id": "hfc-z12",
+        "name": "Нагетсы (12 шт)",
+        "category": "Закуски & Крылья",
+        "price": 30,
+        "image": "https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=600&q=80",
+        "description": "12 порций наггетсов."
+      },
+      {
+        "id": "hfc-z13",
+        "name": "Картофель ФРИ (малый)",
+        "category": "Закуски & Крылья",
+        "price": 8,
+        "image": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80",
+        "description": "Малая порция фри."
+      },
+      {
+        "id": "hfc-z14",
+        "name": "Картофель ФРИ (средний)",
+        "category": "Закуски & Крылья",
+        "price": 10,
+        "image": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80",
+        "description": "Средняя порция фри."
+      },
+      {
+        "id": "hfc-z15",
+        "name": "Картофель ФРИ (большой)",
+        "category": "Закуски & Крылья",
+        "price": 12,
+        "image": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80",
+        "description": "Большая порция фри."
+      },
+      {
+        "id": "hfc-z16",
+        "name": "Стрипсы",
+        "category": "Закуски & Крылья",
+        "price": 25,
+        "image": "https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=600&q=80",
+        "description": "Куриные стрипсы."
+      },
+      {
+        "id": "hfc-z17",
+        "name": "Байтсы 250гр",
+        "category": "Закуски & Крылья",
+        "price": 25,
+        "image": "https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=600&q=80",
+        "description": "Хрустящие байтсы 250г."
+      },
+      {
+        "id": "hfc-z18",
+        "name": "Картофель по-деревенски",
+        "category": "Закуски & Крылья",
+        "price": 10,
+        "image": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80",
+        "description": "Картофельные дольки."
+      },
+      {
+        "id": "hfc-z19",
+        "name": "Сырные палочки",
+        "category": "Закуски & Крылья",
+        "price": 20,
+        "image": "https://images.unsplash.com/photo-1534790566855-4cb788d389ec?auto=format&fit=crop&w=600&q=80",
+        "description": "Хрустящие сырные палочки."
+      },
+      {
+        "id": "hfc-z20",
+        "name": "Ножки HFC (3 шт)",
+        "category": "Закуски & Крылья",
+        "price": 25,
+        "image": "https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=600&q=80",
+        "description": "3 шт обжаренных ножек."
+      },
+      {
+        "id": "hfc-z21",
+        "name": "Соусы в ассортименте",
+        "category": "Закуски & Крылья",
+        "price": 3,
+        "image": "https://images.unsplash.com/photo-1561758033-d89a9ad46330?auto=format&fit=crop&w=600&q=80",
+        "description": "Соусы HFC."
+      },
+      {
+        "id": "hfc-t1",
+        "name": "Классическая твистер",
+        "category": "Твистеры",
+        "price": 20,
+        "image": "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=600&q=80",
+        "description": "Твистер в тонком лаваше."
+      },
+      {
+        "id": "hfc-t2",
+        "name": "В сырном и чесночном лаваше",
+        "category": "Твистеры",
+        "price": 20,
+        "image": "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=600&q=80",
+        "description": "Лаваш со вкусом сыра и чеснока."
+      },
+      {
+        "id": "hfc-t3",
+        "name": "С соусом Чили",
+        "category": "Твистеры",
+        "price": 20,
+        "image": "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=600&q=80",
+        "description": "Острый соус Чили."
+      },
+      {
+        "id": "hfc-t4",
+        "name": "В сырном Чеддер",
+        "category": "Твистеры",
+        "price": 30,
+        "image": "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=600&q=80",
+        "description": "Твистер в сыре Чеддер."
+      },
+      {
+        "id": "hfc-t5",
+        "name": "С халапеньо",
+        "category": "Твистеры",
+        "price": 25,
+        "image": "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=600&q=80",
+        "description": "Пикантный перчик халапеньо."
+      },
+      {
+        "id": "hfc-t6",
+        "name": "Цезарь твистер",
+        "category": "Твистеры",
+        "price": 30,
+        "image": "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=600&q=80",
+        "description": "Соус цезарь и свежая зелень."
+      },
+      {
+        "id": "hfc-t7",
+        "name": "Вегетарианская",
+        "category": "Твистеры",
+        "price": 15,
+        "image": "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=600&q=80",
+        "description": "Свежие овощи в лаваше."
+      },
+      {
+        "id": "hfc-t8",
+        "name": "Твистер с котлетой",
+        "category": "Твистеры",
+        "price": 30,
+        "image": "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=600&q=80",
+        "description": "Твистер с котлетой."
+      },
+      {
+        "id": "hfc-t9",
+        "name": "С соусом HEINZ",
+        "category": "Твистеры",
+        "price": 25,
+        "image": "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=600&q=80",
+        "description": "Оригинальный соус HEINZ."
+      },
+      {
+        "id": "hfc-p1",
+        "name": "Пицца 4 сезона (30см)",
+        "category": "Пицца & Хачапури",
+        "price": 50,
+        "image": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=600&q=80",
+        "description": "4 сезона размер 30см."
+      },
+      {
+        "id": "hfc-p2",
+        "name": "Пицца 4 сезона (40см)",
+        "category": "Пицца & Хачапури",
+        "price": 110,
+        "image": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=600&q=80",
+        "description": "4 сезона размер 40см."
+      },
+      {
+        "id": "hfc-p3",
+        "name": "Пицца с грибами (30см)",
+        "category": "Пицца & Хачапури",
+        "price": 45,
+        "image": "https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?auto=format&fit=crop&w=600&q=80",
+        "description": "Пицца со свежими грибами."
+      },
+      {
+        "id": "hfc-p4",
+        "name": "Пицца куриный (30см)",
+        "category": "Пицца & Хачапури",
+        "price": 40,
+        "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=80",
+        "description": "Куриная пицца."
+      },
+      {
+        "id": "hfc-p5",
+        "name": "Пицца BOSS",
+        "category": "Пицца & Хачапури",
+        "price": 85,
+        "image": "https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?auto=format&fit=crop&w=600&q=80",
+        "description": "Фирменная мясная пицца BOSS."
+      },
+      {
+        "id": "hfc-p6",
+        "name": "Пиде",
+        "category": "Пицца & Хачапури",
+        "price": 50,
+        "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
+        "description": "Традиционное турецкое Пиде."
+      },
+      {
+        "id": "hfc-p7",
+        "name": "Хачапури по-аджарски (малый)",
+        "category": "Пицца & Хачапури",
+        "price": 30,
+        "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
+        "description": "Хачапури лодочка с яйцом."
+      },
+      {
+        "id": "hfc-p8",
+        "name": "Хачапури по-аджарски (большой)",
+        "category": "Пицца & Хачапури",
+        "price": 85,
+        "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
+        "description": "Большой Аджарский хачапури."
+      },
+      {
+        "id": "hfc-p9",
+        "name": "Пицца HFC (30см)",
+        "category": "Пицца & Хачапури",
+        "price": 35,
+        "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80",
+        "description": "Фирменная HFC."
+      },
+      {
+        "id": "hfc-p10",
+        "name": "Пицца HFC (40см)",
+        "category": "Пицца & Хачапури",
+        "price": 105,
+        "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80",
+        "description": "Фирменная HFC 40см."
+      },
+      {
+        "id": "hfc-p11",
+        "name": "Пицца 4 сыра (30см)",
+        "category": "Пицца & Хачапури",
+        "price": 40,
+        "image": "https://images.unsplash.com/photo-1573821663912-569905455b1c?auto=format&fit=crop&w=600&q=80",
+        "description": "4 сыра."
+      },
+      {
+        "id": "hfc-p12",
+        "name": "Пицца мясной ассорти (30см)",
+        "category": "Пицца & Хачапури",
+        "price": 35,
+        "image": "https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?auto=format&fit=crop&w=600&q=80",
+        "description": "Мясное ассорти."
+      },
+      {
+        "id": "hfc-p13",
+        "name": "Хачапури имеретинский",
+        "category": "Пицца & Хачапури",
+        "price": 40,
+        "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
+        "description": "Круглый закрытый хачапури."
+      },
+      {
+        "id": "hfc-p14",
+        "name": "Пицца пеперони (30см)",
+        "category": "Пицца & Хачапури",
+        "price": 40,
+        "image": "https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=600&q=80",
+        "description": "Пеперони."
+      },
+      {
+        "id": "hfc-p15",
+        "name": "Пицца маргарита (30см)",
+        "category": "Пицца & Хачапури",
+        "price": 35,
+        "image": "https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?auto=format&fit=crop&w=600&q=80",
+        "description": "Маргарита."
+      },
+      {
+        "id": "hfc-n1",
+        "name": "Мохито (0.5л)",
+        "category": "Напитки",
+        "price": 10,
+        "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=600&q=80",
+        "description": "Освежающий мохито."
+      },
+      {
+        "id": "hfc-n2",
+        "name": "Мохито (кувшин)",
+        "category": "Напитки",
+        "price": 30,
+        "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=600&q=80",
+        "description": "Большой кувшин Мохито."
+      },
+      {
+        "id": "hfc-n3",
+        "name": "Чай с лимоном",
+        "category": "Напитки",
+        "price": 5,
+        "image": "https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=600&q=80",
+        "description": "Горячий чай с лимоном."
+      },
+      {
+        "id": "hfc-n4",
+        "name": "Кофе",
+        "category": "Напитки",
+        "price": 5,
+        "image": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80",
+        "description": "Чашка горячего кофе."
+      },
+      {
+        "id": "hfc-n5",
+        "name": "Коктейль",
+        "category": "Напитки",
+        "price": 5,
+        "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=600&q=80",
+        "description": "Молочный коктейль."
+      }
+    ]
+  },
+  {
+    "id": "pita",
+    "name": "PITA Fast & Tasty",
+    "category": "streetfood",
+    "rating": "4.9",
+    "deliveryTime": "15-25 мин",
+    "minOrder": "20 смн",
+    "image": "https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=800&q=80",
+    "description": "Настоящий сочный Нон Кабоб из 100% говядины, горячие хот-доги и шаурма.",
+    "menu": [
+      {
+        "id": "pit-nk1",
+        "name": "Нон Кабоб Классический (Стандарт)",
+        "category": "Нон Кабоб",
+        "price": 27,
+        "image": "https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=600&q=80",
+        "description": "100% сочная говядина в горячей мини-лепёшке с фирменным соусом."
+      },
+      {
+        "id": "pit-nk2",
+        "name": "Нон Кабоб Классический (Большая XL)",
+        "category": "Нон Кабоб",
+        "price": 33,
+        "image": "https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=600&q=80",
+        "description": "Увеличенная порция говядины в большой лепёшке."
+      },
+      {
+        "id": "pit-nk3",
+        "name": "Нон Кабоб Острый (Стандарт)",
+        "category": "Нон Кабоб",
+        "price": 29,
+        "image": "https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=600&q=80",
+        "description": "Говядина с пикантным острым соусом."
+      },
+      {
+        "id": "pit-nk4",
+        "name": "Нон Кабоб Острый (Большая XL)",
+        "category": "Нон Кабоб",
+        "price": 35,
+        "image": "https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=600&q=80",
+        "description": "Большая лепёшка с острым соусом."
+      },
+      {
+        "id": "pit-nk5",
+        "name": "Нон Кабоб С сыром (Стандарт)",
+        "category": "Нон Кабоб",
+        "price": 30,
+        "image": "https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=600&q=80",
+        "description": "Говядина с расплавленным тянущимся сыром."
+      },
+      {
+        "id": "pit-nk6",
+        "name": "Нон Кабоб С сыром (Большая XL)",
+        "category": "Нон Кабоб",
+        "price": 36,
+        "image": "https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=600&q=80",
+        "description": "Большая лепёшка с говядиной и сыром."
+      },
+      {
+        "id": "pit-sh1",
+        "name": "Шаурма Классическая (Стандарт)",
+        "category": "Шаурма",
+        "price": 20,
+        "image": "https://images.unsplash.com/photo-1561651823-34feb02250e4?auto=format&fit=crop&w=600&q=80",
+        "description": "Курица, свежие овощи, фирменный соус."
+      },
+      {
+        "id": "pit-sh2",
+        "name": "Шаурма Классическая (Большая XL)",
+        "category": "Шаурма",
+        "price": 25,
+        "image": "https://images.unsplash.com/photo-1561651823-34feb02250e4?auto=format&fit=crop&w=600&q=80",
+        "description": "Большая порция классической шаурмы."
+      },
+      {
+        "id": "pit-sh3",
+        "name": "Шаурма Острая (Стандарт)",
+        "category": "Шаурма",
+        "price": 22,
+        "image": "https://images.unsplash.com/photo-1561651823-34feb02250e4?auto=format&fit=crop&w=600&q=80",
+        "description": "Острый соус для любителей острого."
+      },
+      {
+        "id": "pit-sh4",
+        "name": "Шаурма Острая (Большая XL)",
+        "category": "Шаурма",
+        "price": 28,
+        "image": "https://images.unsplash.com/photo-1561651823-34feb02250e4?auto=format&fit=crop&w=600&q=80",
+        "description": "Большая острая шаурма."
+      },
+      {
+        "id": "pit-sh5",
+        "name": "Шаурма Сырная (Стандарт)",
+        "category": "Шаурма",
+        "price": 23,
+        "image": "https://images.unsplash.com/photo-1561651823-34feb02250e4?auto=format&fit=crop&w=600&q=80",
+        "description": "Шаурма с тянущимся сыром."
+      },
+      {
+        "id": "pit-sh6",
+        "name": "Шаурма Сырная (Большая XL)",
+        "category": "Шаурма",
+        "price": 28,
+        "image": "https://images.unsplash.com/photo-1561651823-34feb02250e4?auto=format&fit=crop&w=600&q=80",
+        "description": "Большая сырная шаурма."
+      },
+      {
+        "id": "pit-sh7",
+        "name": "Шаурма Острая + Сыр (Стандарт)",
+        "category": "Шаурма",
+        "price": 25,
+        "image": "https://images.unsplash.com/photo-1561651823-34feb02250e4?auto=format&fit=crop&w=600&q=80",
+        "description": "Идеальное сочетание остроты и сыра."
+      },
+      {
+        "id": "pit-sh8",
+        "name": "Шаурма Острая + Сыр (Большая XL)",
+        "category": "Шаурма",
+        "price": 30,
+        "image": "https://images.unsplash.com/photo-1561651823-34feb02250e4?auto=format&fit=crop&w=600&q=80",
+        "description": "ХИТ! Большая шаурма острый+сыр."
+      },
+      {
+        "id": "pit-sh9",
+        "name": "Шаурма с Томлёной Говядиной (Стандарт)",
+        "category": "Шаурма",
+        "price": 30,
+        "image": "https://images.unsplash.com/photo-1561651823-34feb02250e4?auto=format&fit=crop&w=600&q=80",
+        "description": "100% говядина, томаты, свежие овощи, лук."
+      },
+      {
+        "id": "pit-sh10",
+        "name": "Шаурма с Томлёной Говядиной (Большая)",
+        "category": "Шаурма",
+        "price": 37,
+        "image": "https://images.unsplash.com/photo-1561651823-34feb02250e4?auto=format&fit=crop&w=600&q=80",
+        "description": "Большая шаурма с нежной томленой говядиной."
+      },
+      {
+        "id": "pit-hd1",
+        "name": "Хот-дог Классический",
+        "category": "Хот-доги",
+        "price": 10,
+        "image": "https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80",
+        "description": "Сосиска, корейская морковь, овощи, фри."
+      },
+      {
+        "id": "pit-hd2",
+        "name": "Хот-дог Канадский (1 сосиска)",
+        "category": "Хот-доги",
+        "price": 11,
+        "image": "https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80",
+        "description": "Канадская сосиска, овощи, фри, соус."
+      },
+      {
+        "id": "pit-hd3",
+        "name": "Хот-дог Канадский (1.5 сосиски)",
+        "category": "Хот-доги",
+        "price": 15,
+        "image": "https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80",
+        "description": "Увеличенная порция сосиски."
+      },
+      {
+        "id": "pit-hd4",
+        "name": "Хот-дог Канадский (2 сосиски)",
+        "category": "Хот-доги",
+        "price": 18,
+        "image": "https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80",
+        "description": "Двойная канадская сосиска."
+      },
+      {
+        "id": "pit-hd5",
+        "name": "Хот-дог Сырный (2 обычные сосиски)",
+        "category": "Хот-доги",
+        "price": 14,
+        "image": "https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80",
+        "description": "Сосиски, моцарелла, голландский сыр, кукуруза."
+      },
+      {
+        "id": "pit-hd6",
+        "name": "Хот-дог Сырный Канадский (2 канадские)",
+        "category": "Хот-доги",
+        "price": 17,
+        "image": "https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80",
+        "description": "Две канадские сосиски и двойной сыр."
+      },
+      {
+        "id": "pit-d1",
+        "name": "Добавка Сыр",
+        "category": "Добавки & Напитки",
+        "price": 3,
+        "image": "https://images.unsplash.com/photo-1534790566855-4cb788d389ec?auto=format&fit=crop&w=600&q=80",
+        "description": "Порция сыра."
+      },
+      {
+        "id": "pit-d2",
+        "name": "Добавка Халапеньо",
+        "category": "Добавки & Напитки",
+        "price": 3,
+        "image": "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=600&q=80",
+        "description": "Острый халапеньо."
+      },
+      {
+        "id": "pit-d3",
+        "name": "Картофель фри PITA",
+        "category": "Добавки & Напитки",
+        "price": 15,
+        "image": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80",
+        "description": "Порция хрустящего фри."
+      },
+      {
+        "id": "pit-d4",
+        "name": "Соус (Чесночный / Острый / Сырный)",
+        "category": "Добавки & Напитки",
+        "price": 3,
+        "image": "https://images.unsplash.com/photo-1561758033-d89a9ad46330?auto=format&fit=crop&w=600&q=80",
+        "description": "Соус на выбор."
+      },
+      {
+        "id": "pit-d5",
+        "name": "Напитки в ассортименте",
+        "category": "Добавки & Напитки",
+        "price": 7,
+        "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=600&q=80",
+        "description": "Освежающие напитки."
+      }
+    ]
+  },
+  {
+    "id": "jovid",
+    "name": "Jovid Hot-Dog",
+    "category": "streetfood",
+    "rating": "4.8",
+    "deliveryTime": "15-25 мин",
+    "minOrder": "15 смн",
+    "image": "https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=800&q=80",
+    "description": "Легендарные уличные хот-доги, сытная шаурма от XL до Гиганта и согревающий кофе.",
+    "menu": [
+      {
+        "id": "jov-h1",
+        "name": "Хотдог обычный",
+        "category": "Хот-Доги",
+        "price": 7,
+        "image": "https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80",
+        "description": "Простой сытный хот-дог."
+      },
+      {
+        "id": "jov-h2",
+        "name": "Хотдог Классический",
+        "category": "Хот-Доги",
+        "price": 10,
+        "image": "https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80",
+        "description": "Классический хот-дог с овощами."
+      },
+      {
+        "id": "jov-h3",
+        "name": "Хотдог Американский",
+        "category": "Хот-Доги",
+        "price": 13,
+        "image": "https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80",
+        "description": "Американский соус и свежая сосиска."
+      },
+      {
+        "id": "jov-h4",
+        "name": "Хотдог в Лаваше",
+        "category": "Хот-Доги",
+        "price": 15,
+        "image": "https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80",
+        "description": "Завёрнутый в горячий лаваш."
+      },
+      {
+        "id": "jov-s1",
+        "name": "Шаурма в Лепешке",
+        "category": "Шаурма",
+        "price": 15,
+        "image": "https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=600&q=80",
+        "description": "Мясо и салат в горячей лепёшке."
+      },
+      {
+        "id": "jov-s2",
+        "name": "Шаурма Классический",
+        "category": "Шаурма",
+        "price": 20,
+        "image": "https://images.unsplash.com/photo-1561651823-34feb02250e4?auto=format&fit=crop&w=600&q=80",
+        "description": "Стандартная порция шаурмы."
+      },
+      {
+        "id": "jov-s3",
+        "name": "Шаурма XL",
+        "category": "Шаурма",
+        "price": 25,
+        "image": "https://images.unsplash.com/photo-1561651823-34feb02250e4?auto=format&fit=crop&w=600&q=80",
+        "description": "Размер XL."
+      },
+      {
+        "id": "jov-s4",
+        "name": "Шаурма XXL",
+        "category": "Шаурма",
+        "price": 30,
+        "image": "https://images.unsplash.com/photo-1561651823-34feb02250e4?auto=format&fit=crop&w=600&q=80",
+        "description": "Огромная XXL шаурма."
+      },
+      {
+        "id": "jov-s5",
+        "name": "Шаурма Гигант",
+        "category": "Шаурма",
+        "price": 40,
+        "image": "https://images.unsplash.com/photo-1561651823-34feb02250e4?auto=format&fit=crop&w=600&q=80",
+        "description": "Самый большой размер Гигант."
+      },
+      {
+        "id": "jov-n1",
+        "name": "Кофе 3в1",
+        "category": "Кофе & Чай",
+        "price": 3,
+        "image": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80",
+        "description": "Быстрый сладкий кофе."
+      },
+      {
+        "id": "jov-n2",
+        "name": "Чёрный кофе",
+        "category": "Кофе & Чай",
+        "price": 3,
+        "image": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80",
+        "description": "Крепкий чёрный кофе."
+      },
+      {
+        "id": "jov-n3",
+        "name": "Капучино",
+        "category": "Кофе & Чай",
+        "price": 5,
+        "image": "https://images.unsplash.com/photo-1572442388796-11668ba67e53?auto=format&fit=crop&w=600&q=80",
+        "description": "Ароматный капучино с пенкой."
+      },
+      {
+        "id": "jov-n4",
+        "name": "Чай с лимоном",
+        "category": "Кофе & Чай",
+        "price": 6,
+        "image": "https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=600&q=80",
+        "description": "Горячий лимонный чай."
+      },
+      {
+        "id": "jov-n5",
+        "name": "Фруктовый чай",
+        "category": "Кофе & Чай",
+        "price": 10,
+        "image": "https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=600&q=80",
+        "description": "Ароматный фруктовый чай."
+      },
+      {
+        "id": "jov-d1",
+        "name": "Халапень",
+        "category": "Дополнение",
+        "price": 2,
+        "image": "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=600&q=80",
+        "description": "Перчик халапеньо."
+      },
+      {
+        "id": "jov-d2",
+        "name": "Голландский сыр",
+        "category": "Дополнение",
+        "price": 5,
+        "image": "https://images.unsplash.com/photo-1534790566855-4cb788d389ec?auto=format&fit=crop&w=600&q=80",
+        "description": "Сыр голландский."
+      },
+      {
+        "id": "jov-d3",
+        "name": "Куринное мясо (50г)",
+        "category": "Дополнение",
+        "price": 10,
+        "image": "https://images.unsplash.com/photo-1615297928064-24977384d0da?auto=format&fit=crop&w=600&q=80",
+        "description": "Доп. курица."
+      },
+      {
+        "id": "jov-d4",
+        "name": "Сосиска (Канадский)",
+        "category": "Дополнение",
+        "price": 4,
+        "image": "https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80",
+        "description": "Канадская сосиска."
+      },
+      {
+        "id": "jov-d5",
+        "name": "Соусы",
+        "category": "Дополнение",
+        "price": 3,
+        "image": "https://images.unsplash.com/photo-1561758033-d89a9ad46330?auto=format&fit=crop&w=600&q=80",
+        "description": "Фирменный соус."
+      }
+    ]
+  },
+  {
+    "id": "turki",
+    "name": "Кафе «Турки»",
+    "category": "streetfood",
+    "rating": "4.6",
+    "deliveryTime": "15-20 мин",
+    "minOrder": "15 смн",
+    "image": "https://images.unsplash.com/photo-1561651823-34feb02250e4?auto=format&fit=crop&w=800&q=80",
+    "description": "Восточные хот-доги в свежей нони, Нон-кабоб и горячие напитки.",
+    "menu": [
+      {
+        "id": "tur-1",
+        "name": "Хот-доги нони",
+        "category": "Меню",
+        "price": 8,
+        "image": "https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80",
+        "description": "Сосиска в мягкой таджикской нони."
+      },
+      {
+        "id": "tur-2",
+        "name": "Хот-дог бо 2 сосиска",
+        "category": "Меню",
+        "price": 10,
+        "image": "https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80",
+        "description": "Две сосиски с соусом."
+      },
+      {
+        "id": "tur-3",
+        "name": "Хот-дог бо сосиски канадский",
+        "category": "Меню",
+        "price": 10,
+        "image": "https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80",
+        "description": "Хот-дог с канадской сосиской."
+      },
+      {
+        "id": "tur-4",
+        "name": "Хот-дог бо 2 сосиски канадский",
+        "category": "Меню",
+        "price": 14,
+        "image": "https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80",
+        "description": "Две канадские сосиски."
+      },
+      {
+        "id": "tur-5",
+        "name": "Нон-кабоб",
+        "category": "Меню",
+        "price": 20,
+        "image": "https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=600&q=80",
+        "description": "Сочный мясной кабоб в лепёшке."
+      },
+      {
+        "id": "tur-6",
+        "name": "Кофе",
+        "category": "Меню",
+        "price": 3,
+        "image": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80",
+        "description": "Чашка кофе."
+      },
+      {
+        "id": "tur-7",
+        "name": "Кофе собой",
+        "category": "Меню",
+        "price": 4,
+        "image": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80",
+        "description": "Кофе в стаканчике с собой."
+      },
+      {
+        "id": "tur-8",
+        "name": "Чой",
+        "category": "Меню",
+        "price": 2,
+        "image": "https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=600&q=80",
+        "description": "Горячий чай."
+      }
+    ]
+  },
+  {
+    "id": "rayhon",
+    "name": "Кафе «Райхон»",
+    "category": "chaihona",
+    "rating": "4.9",
+    "deliveryTime": "25-40 мин",
+    "minOrder": "30 смн",
+    "image": "https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&w=800&q=80",
+    "description": "Национальная кухня Пенджикента: Оши Палов, Шӯрбо, Қурутоб и пышная самбуса.",
+    "menu": [
+      {
+        "id": "ray-1",
+        "name": "Шӯрбо",
+        "category": "Ҳӯроки 1-ум (Первые)",
+        "price": 25,
+        "image": "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=600&q=80",
+        "description": "Наваристый национальный мясной суп."
+      },
+      {
+        "id": "ray-2",
+        "name": "Лағмон",
+        "category": "Ҳӯроки 1-ум (Первые)",
+        "price": 25,
+        "image": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=600&q=80",
+        "description": "Ароматный лагман с тянутой лапшой."
+      },
+      {
+        "id": "ray-3",
+        "name": "Голубци",
+        "category": "Ҳӯроки 1-ум (Первые)",
+        "price": 25,
+        "image": "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=600&q=80",
+        "description": "Домашние голубцы."
+      },
+      {
+        "id": "ray-4",
+        "name": "Оши туруш",
+        "category": "Ҳӯроки 1-ум (Первые)",
+        "price": 10,
+        "image": "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=600&q=80",
+        "description": "Традиционный кислый суп."
+      },
+      {
+        "id": "ray-5",
+        "name": "Бульон",
+        "category": "Ҳӯроки 1-ум (Первые)",
+        "price": 7,
+        "image": "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=600&q=80",
+        "description": "Чистый горячий бульон."
+      },
+      {
+        "id": "ray-6",
+        "name": "Мастоба",
+        "category": "Ҳӯроки 1-ум (Первые)",
+        "price": 22,
+        "image": "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=600&q=80",
+        "description": "Густой рисовый суп с катыком."
+      },
+      {
+        "id": "ray-7",
+        "name": "Шы зелёный",
+        "category": "Ҳӯроки 1-ум (Первые)",
+        "price": 22,
+        "image": "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=600&q=80",
+        "description": "Зелёный щи со свежей зеленью."
+      },
+      {
+        "id": "ray-8",
+        "name": "Оши Палов (0.5 порц)",
+        "category": "Ҳӯроки 2-юм (Вторые)",
+        "price": 30,
+        "image": "https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&w=600&q=80",
+        "description": "Плов полпорции."
+      },
+      {
+        "id": "ray-9",
+        "name": "Оши Палов (1 порц)",
+        "category": "Ҳӯроки 2-юм (Вторые)",
+        "price": 40,
+        "image": "https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&w=600&q=80",
+        "description": "Пенджикентский плов 1 полная порция."
+      },
+      {
+        "id": "ray-10",
+        "name": "Казан кабоб (0.5 порц)",
+        "category": "Ҳӯроки 2-юм (Вторые)",
+        "price": 60,
+        "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80",
+        "description": "Казан кабоб полпорции."
+      },
+      {
+        "id": "ray-11",
+        "name": "Казан кабоб (1 порц)",
+        "category": "Ҳӯроки 2-юм (Вторые)",
+        "price": 100,
+        "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80",
+        "description": "Казан кабоб целая порция."
+      },
+      {
+        "id": "ray-12",
+        "name": "Яхни (100гр)",
+        "category": "Ҳӯроки 2-юм (Вторые)",
+        "price": 25,
+        "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80",
+        "description": "Холодное отварное мясо."
+      },
+      {
+        "id": "ray-13",
+        "name": "Самбӯса бо гӯшти реза (гов ва думба)",
+        "category": "Самбӯсаҳои варақӣ",
+        "price": 15,
+        "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
+        "description": "Рубленая говядина и курдюк."
+      },
+      {
+        "id": "ray-14",
+        "name": "Самбӯса бо гӯшти реза (гов)",
+        "category": "Самбӯсаҳои варақӣ",
+        "price": 10,
+        "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
+        "description": "Рубленая говядина."
+      },
+      {
+        "id": "ray-15",
+        "name": "Самбӯса бо гӯшти қимма",
+        "category": "Самбӯсаҳои варақӣ",
+        "price": 6,
+        "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
+        "description": "Самбуса с фаршем."
+      },
+      {
+        "id": "ray-16",
+        "name": "Самбӯса бо картошка",
+        "category": "Самбӯсаҳои варақӣ",
+        "price": 4,
+        "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
+        "description": "Самбуса с картофелем."
+      },
+      {
+        "id": "ray-17",
+        "name": "Самбӯса бо гӯшти реза (гӯсфанд)",
+        "category": "Самбӯсаҳои варақӣ",
+        "price": 20,
+        "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
+        "description": "Рубленая баранина."
+      },
+      {
+        "id": "ray-18",
+        "name": "Қурутоб бо гӯшт",
+        "category": "Мавсимӣ (Салаты)",
+        "price": 45,
+        "image": "https://images.unsplash.com/photo-1590577976322-3d2d6e2130d5?auto=format&fit=crop&w=600&q=80",
+        "description": "Национальный курутоб с мясом."
+      },
+      {
+        "id": "ray-19",
+        "name": "Қурутоб бе гӯшт",
+        "category": "Мавсимӣ (Салаты)",
+        "price": 30,
+        "image": "https://images.unsplash.com/photo-1590577976322-3d2d6e2130d5?auto=format&fit=crop&w=600&q=80",
+        "description": "Курутоб классический без мяса."
+      },
+      {
+        "id": "ray-20",
+        "name": "Шакароб",
+        "category": "Мавсимӣ (Салаты)",
+        "price": 15,
+        "image": "https://images.unsplash.com/photo-1590577976322-3d2d6e2130d5?auto=format&fit=crop&w=600&q=80",
+        "description": "Салат из томатов и лука к плову."
+      },
+      {
+        "id": "ray-21",
+        "name": "Домашний салат",
+        "category": "Мавсимӣ (Салаты)",
+        "price": 15,
+        "image": "https://images.unsplash.com/photo-1590577976322-3d2d6e2130d5?auto=format&fit=crop&w=600&q=80",
+        "description": "Свежий домашний салат."
+      },
+      {
+        "id": "ray-22",
+        "name": "Солёный салат",
+        "category": "Мавсимӣ (Салаты)",
+        "price": 12,
+        "image": "https://images.unsplash.com/photo-1590577976322-3d2d6e2130d5?auto=format&fit=crop&w=600&q=80",
+        "description": "Ассорти из солений."
+      },
+      {
+        "id": "ray-23",
+        "name": "Чолоб",
+        "category": "Мавсимӣ (Салаты)",
+        "price": 6,
+        "image": "https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=600&q=80",
+        "description": "Освежающий чалоб."
+      },
+      {
+        "id": "ray-24",
+        "name": "Ҷӯрғоти ширинак буз+гов 250мл",
+        "category": "Мавсимӣ (Салаты)",
+        "price": 5,
+        "image": "https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=600&q=80",
+        "description": "Натуральный джургот (козий+коровий)."
+      },
+      {
+        "id": "ray-25",
+        "name": "Казан кабоб 1кг",
+        "category": "Фармоишӣ (На заказ)",
+        "price": 250,
+        "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80",
+        "description": "1 кг Казан кабоба."
+      },
+      {
+        "id": "ray-26",
+        "name": "Кабоб бо гӯшти гӯсфанд",
+        "category": "Фармоишӣ (На заказ)",
+        "price": 260,
+        "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80",
+        "description": "Кабоб из баранины на компанию."
+      },
+      {
+        "id": "ray-27",
+        "name": "Чойи кабуд",
+        "category": "Нӯшокиҳо (Напитки)",
+        "price": 1,
+        "image": "https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=600&q=80",
+        "description": "Зелёный чай."
+      },
+      {
+        "id": "ray-28",
+        "name": "Чойи сиёҳ",
+        "category": "Нӯшокиҳо (Напитки)",
+        "price": 1,
+        "image": "https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=600&q=80",
+        "description": "Чёрный чай."
+      },
+      {
+        "id": "ray-29",
+        "name": "Кофе сиёҳ",
+        "category": "Нӯшокиҳо (Напитки)",
+        "price": 4,
+        "image": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80",
+        "description": "Чёрный кофе."
+      },
+      {
+        "id": "ray-30",
+        "name": "Кофе 3 в 1",
+        "category": "Нӯшокиҳо (Напитки)",
+        "price": 5,
+        "image": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80",
+        "description": "Сладкий кофе 3в1."
+      },
+      {
+        "id": "ray-31",
+        "name": "Лимончой",
+        "category": "Нӯшокиҳо (Напитки)",
+        "price": 10,
+        "image": "https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=600&q=80",
+        "description": "Лимонный чай в чайнике."
+      },
+      {
+        "id": "ray-32",
+        "name": "Компот гелос ва олболу",
+        "category": "Нӯшокиҳо (Напитки)",
+        "price": 5,
+        "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=600&q=80",
+        "description": "Компот из черешни и вишни."
+      },
+      {
+        "id": "ray-33",
+        "name": "Компоти зардолу 1л",
+        "category": "Нӯшокиҳо (Напитки)",
+        "price": 10,
+        "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=600&q=80",
+        "description": "Абрикосовый компот 1 литр."
+      },
+      {
+        "id": "ray-34",
+        "name": "Компоти зардолу 1.5л",
+        "category": "Нӯшокиҳо (Напитки)",
+        "price": 15,
+        "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=600&q=80",
+        "description": "Абрикосовый компот 1.5 литра."
+      }
+    ]
+  },
+  {
+    "id": "pandacha",
+    "name": "Pandacha",
+    "category": "sushi",
+    "rating": "4.9",
+    "deliveryTime": "30-50 мин",
+    "minOrder": "40 смн",
+    "image": "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=800&q=80",
+    "description": "Японские суши и роллы, закрытая UFO-пицца, паста и хрустящие морепродукты.",
+    "menu": [
+      {
+        "id": "pan-1",
+        "name": "Филадельфия с лососем и огурцом",
+        "category": "Роллы & Суши",
+        "price": 70,
+        "image": "https://images.unsplash.com/photo-1611143669185-af224c5e3252?auto=format&fit=crop&w=600&q=80",
+        "description": "Лосось, огурец, сливочный сыр."
+      },
+      {
+        "id": "pan-2",
+        "name": "Калифорния с крабом и огурцом",
+        "category": "Роллы & Суши",
+        "price": 65,
+        "image": "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=600&q=80",
+        "description": "Снежный краб, икра тобико, огурец."
+      },
+      {
+        "id": "pan-3",
+        "name": "Дракон с тунцом в кунжуте",
+        "category": "Роллы & Суши",
+        "price": 65,
+        "image": "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=600&q=80",
+        "description": "Тунец, кунжут, сыр сливочный."
+      },
+      {
+        "id": "pan-4",
+        "name": "Филадельфия опалённая",
+        "category": "Роллы & Суши",
+        "price": 80,
+        "image": "https://images.unsplash.com/photo-1611143669185-af224c5e3252?auto=format&fit=crop&w=600&q=80",
+        "description": "Опалённый лосось и сливочный сыр."
+      },
+      {
+        "id": "pan-5",
+        "name": "Маки с огурцами",
+        "category": "Роллы & Суши",
+        "price": 20,
+        "image": "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=600&q=80",
+        "description": "Маки ролл с огурцом."
+      },
+      {
+        "id": "pan-6",
+        "name": "Маки с авокадо",
+        "category": "Роллы & Суши",
+        "price": 30,
+        "image": "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=600&q=80",
+        "description": "Маки ролл с авокадо."
+      },
+      {
+        "id": "pan-7",
+        "name": "Сансей с креветками в кунжуте",
+        "category": "Роллы & Суши",
+        "price": 65,
+        "image": "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=600&q=80",
+        "description": "Креветки, кунжут, сливочный сыр."
+      },
+      {
+        "id": "pan-8",
+        "name": "Хосо маки с лососем и креветками",
+        "category": "Роллы & Суши",
+        "price": 54,
+        "image": "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=600&q=80",
+        "description": "Лосось и креветка."
+      },
+      {
+        "id": "pan-9",
+        "name": "Калифорния темпура",
+        "category": "Роллы & Суши",
+        "price": 65,
+        "image": "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=600&q=80",
+        "description": "Запечённый горячий ролл."
+      },
+      {
+        "id": "pan-10",
+        "name": "Сансей с креветками темпура",
+        "category": "Роллы & Суши",
+        "price": 70,
+        "image": "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=600&q=80",
+        "description": "Креветки темпура."
+      },
+      {
+        "id": "pan-11",
+        "name": "Дракон темпура",
+        "category": "Роллы & Суши",
+        "price": 70,
+        "image": "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=600&q=80",
+        "description": "Горячий ролл Дракон."
+      },
+      {
+        "id": "pan-12",
+        "name": "Унаги угорь",
+        "category": "Роллы & Суши",
+        "price": 80,
+        "image": "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=600&q=80",
+        "description": "Копченый угорь под соусом унаги."
+      },
+      {
+        "id": "pan-13",
+        "name": "Терияки с курицей запечённая",
+        "category": "Роллы & Суши",
+        "price": 55,
+        "image": "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=600&q=80",
+        "description": "Курица терияки запеченная."
+      },
+      {
+        "id": "pan-14",
+        "name": "Ролл Аляска",
+        "category": "Роллы & Суши",
+        "price": 77,
+        "image": "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=600&q=80",
+        "description": "Фирменный ролл Аляска."
+      },
+      {
+        "id": "pan-15",
+        "name": "Ролл Канада",
+        "category": "Роллы & Суши",
+        "price": 95,
+        "image": "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=600&q=80",
+        "description": "Угорь, лосось, сливочный сыр."
+      },
+      {
+        "id": "pan-16",
+        "name": "Угорь Тамаго",
+        "category": "Роллы & Суши",
+        "price": 90,
+        "image": "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=600&q=80",
+        "description": "Угорь с японским омлетом тамаго."
+      },
+      {
+        "id": "pan-17",
+        "name": "Чёрный Люкс",
+        "category": "Роллы & Суши",
+        "price": 90,
+        "image": "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=600&q=80",
+        "description": "Премиум чёрный ролл."
+      },
+      {
+        "id": "pan-p1",
+        "name": "Паста Фетучини с курицей",
+        "category": "Паста",
+        "price": 27,
+        "image": "https://images.unsplash.com/photo-1621996346565-e3def6164299?auto=format&fit=crop&w=600&q=80",
+        "description": "Паста в сливочном соусе с грибами."
+      },
+      {
+        "id": "pan-p2",
+        "name": "Паста Папарделле с морепродуктами",
+        "category": "Паста",
+        "price": 29,
+        "image": "https://images.unsplash.com/photo-1621996346565-e3def6164299?auto=format&fit=crop&w=600&q=80",
+        "description": "Морепродукты, тигровые креветки."
+      },
+      {
+        "id": "pan-p3",
+        "name": "Паста Арабьята",
+        "category": "Паста",
+        "price": 35,
+        "image": "https://images.unsplash.com/photo-1621996346565-e3def6164299?auto=format&fit=crop&w=600&q=80",
+        "description": "Острая паста в томатном соусе."
+      },
+      {
+        "id": "pan-p4",
+        "name": "Паста Болоньезе",
+        "category": "Паста",
+        "price": 60,
+        "image": "https://images.unsplash.com/photo-1621996346565-e3def6164299?auto=format&fit=crop&w=600&q=80",
+        "description": "Классический мясной соус болоньезе."
+      },
+      {
+        "id": "pan-u1",
+        "name": "UFO с яйцом",
+        "category": "UFO & Горячее",
+        "price": 27,
+        "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80",
+        "description": "Запечатанный круглый UFO бургер."
+      },
+      {
+        "id": "pan-u2",
+        "name": "UFO с курицей",
+        "category": "UFO & Горячее",
+        "price": 29,
+        "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80",
+        "description": "Курица в запечатанной булочке."
+      },
+      {
+        "id": "pan-u3",
+        "name": "UFO говядина",
+        "category": "UFO & Горячее",
+        "price": 35,
+        "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80",
+        "description": "Сочная говядина UFO."
+      },
+      {
+        "id": "pan-u4",
+        "name": "UFO Биг-Мак",
+        "category": "UFO & Горячее",
+        "price": 60,
+        "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80",
+        "description": "Максимальный UFO Биг-Мак."
+      },
+      {
+        "id": "pan-u5",
+        "name": "UFO Пандача",
+        "category": "UFO & Горячее",
+        "price": 66,
+        "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80",
+        "description": "Фирменный UFO Пандача."
+      },
+      {
+        "id": "pan-u6",
+        "name": "Картофель фри",
+        "category": "UFO & Горячее",
+        "price": 10,
+        "image": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80",
+        "description": "Хрустящий фри."
+      },
+      {
+        "id": "pan-u7",
+        "name": "Картофель по-деревенски",
+        "category": "UFO & Горячее",
+        "price": 10,
+        "image": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80",
+        "description": "Картофельные дольки."
+      },
+      {
+        "id": "pan-u8",
+        "name": "Корн-дог",
+        "category": "UFO & Горячее",
+        "price": 7,
+        "image": "https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80",
+        "description": "Сосиска в хрустящем кукурузном тесте."
+      },
+      {
+        "id": "pan-u9",
+        "name": "Куриные крылья",
+        "category": "UFO & Горячее",
+        "price": 25,
+        "image": "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=600&q=80",
+        "description": "Порция куриных крыльев."
+      },
+      {
+        "id": "pan-u10",
+        "name": "Стрипсы",
+        "category": "UFO & Горячее",
+        "price": 25,
+        "image": "https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=600&q=80",
+        "description": "Куриные стрипсы."
+      },
+      {
+        "id": "pan-u11",
+        "name": "Спринг роллы с крабом",
+        "category": "UFO & Горячее",
+        "price": 35,
+        "image": "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=600&q=80",
+        "description": "Хрустящие спринг-роллы."
+      },
+      {
+        "id": "pan-u12",
+        "name": "Креветки темпура",
+        "category": "UFO & Горячее",
+        "price": 45,
+        "image": "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=600&q=80",
+        "description": "Тигровые креветки в темпуре."
+      },
+      {
+        "id": "pan-pi1",
+        "name": "Пицца Пепперони (средняя)",
+        "category": "Пицца",
+        "price": 79,
+        "image": "https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=600&q=80",
+        "description": "Пепперони 79 смн."
+      },
+      {
+        "id": "pan-pi2",
+        "name": "Пицца Пепперони (большая)",
+        "category": "Пицца",
+        "price": 99,
+        "image": "https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=600&q=80",
+        "description": "Пепперони 99 смн."
+      },
+      {
+        "id": "pan-pi3",
+        "name": "Пицца Маргарита",
+        "category": "Пицца",
+        "price": 55,
+        "image": "https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?auto=format&fit=crop&w=600&q=80",
+        "description": "Классическая Маргарита."
+      },
+      {
+        "id": "pan-pi4",
+        "name": "Пицца Мясник",
+        "category": "Пицца",
+        "price": 86,
+        "image": "https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?auto=format&fit=crop&w=600&q=80",
+        "description": "Мясная пицца."
+      },
+      {
+        "id": "pan-pi5",
+        "name": "Пицца Париж",
+        "category": "Пицца",
+        "price": 66,
+        "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80",
+        "description": "Сырный Париж."
+      },
+      {
+        "id": "pan-pi6",
+        "name": "BBQ-пицца",
+        "category": "Пицца",
+        "price": 67,
+        "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80",
+        "description": "Пицца соусом Барбекю."
+      },
+      {
+        "id": "pan-pi7",
+        "name": "Пицца 4-сыра",
+        "category": "Пицца",
+        "price": 75,
+        "image": "https://images.unsplash.com/photo-1573821663912-569905455b1c?auto=format&fit=crop&w=600&q=80",
+        "description": "Четыре сыра."
+      },
+      {
+        "id": "pan-pi8",
+        "name": "Пицца Хафтранг",
+        "category": "Пицца",
+        "price": 52,
+        "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80",
+        "description": "Разноцветная пицца Хафтранг."
+      },
+      {
+        "id": "pan-pi9",
+        "name": "Пицца Тик-Ток",
+        "category": "Пицца",
+        "price": 40,
+        "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80",
+        "description": "Популярная пицца Тик-Ток."
+      },
+      {
+        "id": "pan-pi10",
+        "name": "Пицца Пандача",
+        "category": "Пицца",
+        "price": 70,
+        "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80",
+        "description": "Фирменная пицца Пандача."
+      },
+      {
+        "id": "pan-s1",
+        "name": "Соус в ассортименте (5 смн)",
+        "category": "Соусы",
+        "price": 5,
+        "image": "https://images.unsplash.com/photo-1561758033-d89a9ad46330?auto=format&fit=crop&w=600&q=80",
+        "description": "Томатный, Вишневый, Сырный, Сладкий чили, Острый, Барбекю, Чесночный, Медово-горчичный, Соевый, Васаби, Имбирь."
+      }
+    ]
+  }
+]

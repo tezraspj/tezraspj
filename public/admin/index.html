@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>tezraspj — Админ-панель</title>
+<style>
+  :root { --bg:#0A0A0A; --panel:#141414; --line:#262626; --fg:#F5F5F5; --muted:#8A8A8A; --yellow:#FFD600; --red:#FF4D4D; --green:#2FBF71; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--bg); color:var(--fg); font:14px/1.5 Inter,Arial,sans-serif; padding:24px; }
+  h1 { font-size:20px; margin-bottom:4px; } h1 span { color:var(--yellow); }
+  h2 { font-size:15px; margin:18px 0 8px; color:var(--yellow); }
+  .muted { color:var(--muted); font-size:12.5px; }
+  .row { display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin:10px 0; }
+  input,select,button,textarea { background:var(--panel); color:var(--fg); border:1px solid var(--line); border-radius:8px; padding:9px 12px; font-size:14px; }
+  input:focus,select:focus,textarea:focus { outline:none; border-color:var(--yellow); }
+  button { cursor:pointer; font-weight:600; transition:.15s; }
+  button:hover { border-color:var(--yellow); }
+  button.primary { background:var(--yellow); color:#0A0A0A; border-color:var(--yellow); }
+  button.danger { color:var(--red); }
+  button.small { padding:4px 9px; font-size:12.5px; }
+  table { width:100%; border-collapse:collapse; margin-top:6px; }
+  th,td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--line); font-size:13px; vertical-align:top; }
+  th { color:var(--muted); font-weight:600; text-transform:uppercase; font-size:11px; letter-spacing:.04em; }
+  .tag { display:inline-block; padding:2px 8px; border-radius:99px; font-size:11.5px; font-weight:700; background:#222; border:1px solid var(--line); }
+  .tag.new { background:#3a3000; border-color:var(--yellow); color:var(--yellow); }
+  .tag.done { background:#0e2b1c; border-color:var(--green); color:var(--green); }
+  .tag.cancelled { background:#2b0e0e; border-color:var(--red); color:var(--red); }
+  .card { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:16px; margin-top:14px; }
+  .hidden { display:none; }
+  #msg { min-height:20px; font-size:13px; margin-top:8px; }
+  #msg.ok { color:var(--green); } #msg.err { color:var(--red); }
+  .tabs button.active { background:var(--yellow); color:#0A0A0A; border-color:var(--yellow); }
+  .price { color:var(--yellow); font-weight:700; }
+  @media (max-width:640px){ body{padding:12px;} table{display:block;overflow-x:auto;} }
+</style>
+</head>
+<body>
+
+<h1>tezraspj <span>· админка</span></h1>
+<div class="muted">Управление ресторанами, меню, ценами, заказами, статусами и промокодами через Admin API</div>
+
+<!-- LOGIN -->
+<div class="card" id="loginCard">
+  <h2 style="margin-top:0">Вход по токену</h2>
+  <div class="muted">ADMIN_API_TOKEN задаётся в переменных окружения сервера (.env).</div>
+  <div class="row">
+    <input type="password" id="tokenInput" placeholder="ADMIN_API_TOKEN" style="min-width:320px;flex:1">
+    <button class="primary" onclick="login()">Войти</button>
+    <input type="text" id="apiBaseInput" placeholder="API base (http://localhost:8000)" style="min-width:260px;flex:1">
+  </div>
+  <div id="msg"></div>
+</div>
+
+<!-- PANEL -->
+<div id="panel" class="hidden">
+  <div class="row tabs">
+    <button class="active" data-tab="orders" onclick="showTab('orders',this)">📦 Заказы</button>
+    <button data-tab="menu" onclick="showTab('menu',this)">🍽 Меню и цены</button>
+    <button data-tab="restaurants" onclick="showTab('restaurants',this)">🏪 Рестораны</button>
+    <button data-tab="promos" onclick="showTab('promos',this)">🏷 Промокоды</button>
+    <span style="flex:1"></span>
+    <button class="danger" onclick="logout()">Выйти</button>
+  </div>
+
+  <!-- ORDERS -->
+  <div id="tab-orders">
+    <div class="row">
+      <select id="statusFilter" onchange="loadOrders()">
+        <option value="">Все статусы</option>
+      </select>
+      <button onclick="loadOrders()">Обновить</button>
+      <span class="muted">Статус меняется в строке заказа — сохраняется сразу.</span>
+    </div>
+    <table>
+      <thead><tr><th>#</th><th>Клиент</th><th>Состав</th><th>Сумма</th><th>Статус</th><th>Создан</th></tr></thead>
+      <tbody id="ordersBody"></tbody>
+    </table>
+  </div>
+
+  <!-- MENU -->
+  <div id="tab-menu" class="hidden">
+    <div class="row">
+      <select id="menuRestFilter" onchange="loadMenu()"><option value="">Все рестораны</option></select>
+      <button onclick="loadMenu()">Обновить</button>
+    </div>
+    <table>
+      <thead><tr><th>Блюдо</th><th>Ресторан</th><th>Категория</th><th>Цена, смн</th><th>Фото</th><th>Доступно</th><th></th></tr></thead>
+      <tbody id="menuBody"></tbody>
+    </table>
+  </div>
+
+  <!-- RESTAURANTS -->
+  <div id="tab-restaurants" class="hidden">
+    <table>
+      <thead><tr><th>ID</th><th>Название</th><th>Категория</th><th>Рейтинг</th><th>Доставка</th><th>Мин. заказ</th><th>Блюд</th><th>Активен</th></tr></thead>
+      <tbody id="restBody"></tbody>
+    </table>
+    <div class="muted" style="margin-top:8px">Создание/удаление заведений — через POST/DELETE /api/admin/restaurants (см. Swagger /docs).</div>
+  </div>
+
+  <!-- PROMOS -->
+  <div id="tab-promos" class="hidden">
+    <div class="row">
+      <input id="newPromoCode" placeholder="КОД (например NEW15)">
+      <input id="newPromoPercent" type="number" min="1" max="100" placeholder="%" style="width:90px">
+      <button class="primary" onclick="createPromo()">Создать</button>
+      <button onclick="loadPromos()">Обновить</button>
+    </div>
+    <table>
+      <thead><tr><th>Код</th><th>Скидка</th><th>Активен</th><th></th></tr></thead>
+      <tbody id="promosBody"></tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+const STATUSES = ['new','confirmed','preparing','delivering','done','cancelled'];
+const STATUS_LABEL = {new:'новый',confirmed:'подтверждён',preparing:'готовится',delivering:'в доставке',done:'выполнен',cancelled:'отменён'};
+let TOKEN = localStorage.getItem('tezraspj_admin_token') || '';
+let API = localStorage.getItem('tezraspj_admin_api') || 'http://localhost:8000';
+
+const msg = (t, ok) => { const el = document.getElementById('msg'); el.textContent = t; el.className = ok ? 'ok' : 'err'; };
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+async function api(path, options = {}) {
+  const res = await fetch(API.replace(/\/+$/,'') + path, {
+    method: options.method || 'GET',
+    headers: { 'Content-Type':'application/json', 'Authorization':'Bearer ' + TOKEN, ...(options.headers||{}) },
+    body: options.body ? JSON.stringify(options.body) : undefined
+  });
+  let data = null; try { data = await res.json(); } catch(e) {}
+  if (!res.ok) {
+    let detail = data && data.detail;
+    if (Array.isArray(detail)) detail = detail.map(d => d.msg || JSON.stringify(d)).join('; ');
+    throw new Error(detail || res.statusText);
+  }
+  return data;
+}
+
+async function login() {
+  TOKEN = document.getElementById('tokenInput').value.trim();
+  API = document.getElementById('apiBaseInput').value.trim() || 'http://localhost:8000';
+  if (!TOKEN) return msg('Введите токен', false);
+  try {
+    await api('/api/admin/orders');
+    localStorage.setItem('tezraspj_admin_token', TOKEN);
+    localStorage.setItem('tezraspj_admin_api', API);
+    document.getElementById('loginCard').classList.add('hidden');
+    document.getElementById('panel').classList.remove('hidden');
+    msg('', true);
+    init();
+  } catch (e) { msg('Вход отклонён: ' + e.message, false); }
+}
+
+function logout() {
+  TOKEN = ''; localStorage.removeItem('tezraspj_admin_token');
+  document.getElementById('panel').classList.add('hidden');
+  document.getElementById('loginCard').classList.remove('hidden');
+}
+
+function showTab(name, btn) {
+  document.querySelectorAll('.tabs button[data-tab]').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  ['orders','menu','restaurants','promos'].forEach(t =>
+    document.getElementById('tab-' + t).classList.toggle('hidden', t !== name));
+  ({orders:loadOrders, menu:loadMenu, restaurants:loadRestaurants, promos:loadPromos})[name]();
+}
+
+async function init() {
+  const sel = document.getElementById('statusFilter');
+  STATUSES.forEach(s => sel.insertAdjacentHTML('beforeend', `<option value="${s}">${STATUS_LABEL[s]}</option>`));
+  await loadOrders();
+}
+
+// ---------- Orders ----------
+async function loadOrders() {
+  try {
+    const status = document.getElementById('statusFilter').value;
+    const orders = await api('/api/admin/orders' + (status ? '?status=' + status : ''));
+    document.getElementById('ordersBody').innerHTML = orders.map(o => `
+      <tr>
+        <td><b>${o.id}</b></td>
+        <td>${esc(o.client_name)}<div class="muted">${esc(o.client_phone)}</div>
+            <div class="muted">📍 ${esc(o.client_address)}</div>
+            ${o.client_comment ? `<div class="muted">💬 ${esc(o.client_comment)}</div>` : ''}</td>
+        <td>${o.items.map(i => `${esc(i.name)} ×${i.qty} = <span class="price">${i.price*i.qty}</span>`).join('<br>')}
+            <div class="muted">заведение: ${esc(o.restaurant_id)}${o.promo_code ? ' · промо: '+esc(o.promo_code) : ''}</div></td>
+        <td><span class="price">${o.subtotal}</span>
+            ${o.discount ? `<div class="muted">скидка -${o.discount}</div>` : ''}
+            <div class="muted">доставка: ${o.delivery_fee === 0 ? '0 ✓' : o.delivery_fee}</div>
+            <b>итого ${o.total}</b></td>
+        <td>
+          <span class="tag ${o.status}">${STATUS_LABEL[o.status] || o.status}</span><br><br>
+          <select onchange="setStatus(${o.id}, this.value)" style="padding:4px 6px;font-size:12.5px">
+            ${STATUSES.map(s => `<option value="${s}" ${s===o.status?'selected':''}>${STATUS_LABEL[s]}</option>`).join('')}
+          </select>
+        </td>
+        <td class="muted">${new Date(o.created_at).toLocaleString('ru-RU')}</td>
+      </tr>`).join('') || '<tr><td colspan="6" class="muted">Заказов нет</td></tr>';
+  } catch (e) { msg('Ошибка загрузки заказов: ' + e.message, false); }
+}
+
+async function setStatus(id, status) {
+  try { await api(`/api/admin/orders/${id}/status`, {method:'PATCH', body:{status}}); loadOrders(); }
+  catch (e) { msg('Не удалось сменить статус: ' + e.message, false); }
+}
+
+// ---------- Menu ----------
+async function loadMenu() {
+  try {
+    const [items, rests] = await Promise.all([api('/api/admin/menu'), api('/api/admin/restaurants')]);
+    const rmap = Object.fromEntries(rests.map(r => [r.id, r.name]));
+    const sel = document.getElementById('menuRestFilter');
+    if (sel.options.length === 1) rests.forEach(r => sel.insertAdjacentHTML('beforeend', `<option value="${r.id}">${esc(r.name)}</option>`));
+    const filter = sel.value;
+    const shown = items.filter(m => !filter || m.restaurant_id === filter);
+    document.getElementById('menuBody').innerHTML = shown.map(m => `
+      <tr>
+        <td><b>${esc(m.name)}</b><div class="muted">${esc(m.id)}</div></td>
+        <td>${esc(rmap[m.restaurant_id] || m.restaurant_id)}</td>
+        <td class="muted">${esc(m.category)}</td>
+        <td><input type="number" step="0.5" min="0.5" value="${m.price}" style="width:90px;padding:5px 8px" id="price-${esc(m.id)}"></td>
+        <td class="muted" style="max-width:170px;overflow:hidden;text-overflow:ellipsis">${esc(m.image)}</td>
+        <td>${m.active ? '✓' : '—'}</td>
+        <td><button class="small primary" onclick="savePrice('${esc(m.id)}')">Сохранить</button></td>
+      </tr>`).join('');
+  } catch (e) { msg('Ошибка загрузки меню: ' + e.message, false); }
+}
+
+async function savePrice(id) {
+  try {
+    const items = await api('/api/admin/menu');
+    const m = items.find(x => x.id === id);
+    m.price = parseFloat(document.getElementById('price-' + id).value);
+    if (!(m.price > 0)) throw new Error('Цена должна быть больше 0');
+    await api('/api/admin/menu/' + encodeURIComponent(id), {method:'PUT', body:m});
+    msg('Цена «' + m.name + '» обновлена: ' + m.price + ' смн', true);
+    loadMenu();
+  } catch (e) { msg('Ошибка: ' + e.message, false); }
+}
+
+// ---------- Restaurants ----------
+async function loadRestaurants() {
+  try {
+    const rests = await api('/api/admin/restaurants');
+    document.getElementById('restBody').innerHTML = rests.map(r => `
+      <tr>
+        <td class="muted">${esc(r.id)}</td>
+        <td><b>${esc(r.name)}</b><div class="muted">${esc(r.description)}</div></td>
+        <td>${esc(r.category)}</td>
+        <td>★ ${r.rating}</td>
+        <td class="muted">${esc(r.delivery_time)}</td>
+        <td class="muted">${esc(r.min_order)}</td>
+        <td>${r.menu.length}</td>
+        <td>${r.active ? '✓' : '—'}</td>
+      </tr>`).join('');
+  } catch (e) { msg('Ошибка загрузки ресторанов: ' + e.message, false); }
+}
+
+// ---------- Promos ----------
+async function loadPromos() {
+  try {
+    const promos = await api('/api/admin/promos');
+    document.getElementById('promosBody').innerHTML = promos.map(p => `
+      <tr>
+        <td><b>${esc(p.code)}</b></td>
+        <td class="price">${p.percent}%</td>
+        <td>${p.active ? '✓' : '—'}</td>
+        <td>
+          <button class="small" onclick="togglePromo(${p.id}, ${!p.active})">${p.active ? 'Отключить' : 'Включить'}</button>
+          <button class="small danger" onclick="deletePromo(${p.id})">Удалить</button>
+        </td>
+      </tr>`).join('') || '<tr><td colspan="4" class="muted">Промокодов нет</td></tr>';
+  } catch (e) { msg('Ошибка загрузки промокодов: ' + e.message, false); }
+}
+
+async function createPromo() {
+  const code = document.getElementById('newPromoCode').value.trim().toUpperCase();
+  const percent = parseInt(document.getElementById('newPromoPercent').value, 10);
+  if (!code || !(percent > 0 && percent <= 100)) return msg('Укажите код и скидку 1–100%', false);
+  try {
+    await api('/api/admin/promos', {method:'POST', body:{code, percent, active:true}});
+    document.getElementById('newPromoCode').value = ''; document.getElementById('newPromoPercent').value = '';
+    msg('Промокод ' + code + ' создан', true); loadPromos();
+  } catch (e) { msg('Ошибка: ' + e.message, false); }
+}
+
+async function togglePromo(id, active) {
+  try {
+    const promos = await api('/api/admin/promos');
+    const p = promos.find(x => x.id === id);
+    await api('/api/admin/promos/' + id, {method:'PATCH', body:{code:p.code, percent:p.percent, active}});
+    loadPromos();
+  } catch (e) { msg('Ошибка: ' + e.message, false); }
+}
+
+async function deletePromo(id) {
+  if (!confirm('Удалить промокод?')) return;
+  try { await api('/api/admin/promos/' + id, {method:'DELETE'}); loadPromos(); }
+  catch (e) { msg('Ошибка: ' + e.message, false); }
+}
+
+// Auto-login if a token is stored.
+if (TOKEN) {
+  document.getElementById('tokenInput').value = TOKEN;
+  document.getElementById('apiBaseInput').value = API;
+  login();
+}
+</script>
+</body>
+</html>
